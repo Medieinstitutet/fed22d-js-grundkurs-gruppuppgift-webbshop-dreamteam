@@ -23,3 +23,5 @@
 12. hur er tidsplan ser ut, vad ni har för milstolpar och hur ni hanterar om ni märker att ni hamnar efter/före i planeringen
 
 Underskrift av:
+
+hej hej hej hej
