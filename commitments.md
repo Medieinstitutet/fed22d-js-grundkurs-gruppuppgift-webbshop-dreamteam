@@ -49,3 +49,4 @@ v.4 JS och CSS
 Underskrift av:
 Mostapha Echelhi,
 Filip Hedlén
+Simon Vindahl
