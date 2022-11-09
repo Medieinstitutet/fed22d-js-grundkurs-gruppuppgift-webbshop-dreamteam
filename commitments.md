@@ -47,5 +47,5 @@ v.3 JS
 v.4 JS och CSS
 
 Underskrift av:
-Mostapha Echelhi
+Mostapha Echelhi,
 Filip Hedlén
