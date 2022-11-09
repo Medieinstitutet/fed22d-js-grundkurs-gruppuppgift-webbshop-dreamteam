@@ -1,0 +1,156 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-family: Rubik, "Times New Roman", Times, serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+header {
+  position: absolute;
+  z-index: 3;
+}
+
+.menu {
+  position: fixed;
+}
+
+#button-menu {
+  position: fixed;
+  z-index: 6;
+  pointer-events: none;
+}
+
+#button-menu span {
+  display: block;
+  background-color: black;
+  border-radius: 6px;
+  margin-top: 2px;
+  position: relative;
+  width: 80%;
+  height: 3px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#button-menu,
+input {
+  width: 40px;
+  height: 40px;
+  top: 20px;
+  right: 20px;
+}
+
+input {
+  position: fixed;
+  z-index: 3;
+  opacity: 0;
+  cursor: pointer;
+}
+
+input + .menu #button-menu span:nth-child(2) {
+  left: -3px;
+  transition: left 0.2s ease-in-out;
+}
+
+input:hover + .menu #button-menu span:nth-child(2) {
+  left: 0px;
+}
+
+.menu #button-menu span:hover {
+  transform: scaleY(5);
+}
+
+input:checked + .menu #button-menu span {
+  transition: transform 1s ease-in-out;
+}
+
+input + .menu #button-menu span {
+  transition: transform 1s ease-in-out;
+}
+
+input:checked + .menu #button-menu span:nth-child(2) {
+  transform: scaleY(5);
+  left: 0px;
+}
+
+input:checked + .menu #button-menu span:nth-child(1) {
+  transform: scaleX(0);
+}
+
+input:checked + .menu #button-menu span:nth-child(3) {
+  transform: scaleX(0);
+}
+
+input:checked + .menu nav {
+  visibility: visible;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  width: 100vw;
+  height: 100vh;
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  visibility: hidden;
+  z-index: 3;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-evenly;
+  text-align: center;
+  background-color: rgba(255, 253, 253, 0.9);
+}
+
+nav a {
+  color: black;
+  text-transform: uppercase;
+  text-decoration: none;
+  height: 100%;
+}
+
+li {
+  font-size: 50px;
+  font-weight: bold;
+  filter: drop-shadow(0 0 0.9rem grey);
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+nav a:hover {
+  text-decoration: underline;
+  -webkit-text-decoration-color: #d200a2;
+  text-decoration-color: #d200a2;
+  cursor: pointer;
+}
+
+li:hover {
+  background-color: whitesmoke;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
