@@ -85,6 +85,14 @@ body {
   font-size: 1.5rem;
 }
 
+.cart{
+  position: absolute;
+    right: 7px;
+    top: -18px;
+    border-radius: 97px;
+    font-size: 1rem;
+}
+
 
 
 .nav-container .hamburger-lines {
@@ -173,3 +181,4 @@ body {
 .nav-container input[type="checkbox"]:checked ~ .shopping{
   display: none;
 }
+
