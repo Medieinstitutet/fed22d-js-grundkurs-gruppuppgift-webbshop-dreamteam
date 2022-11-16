@@ -10,7 +10,103 @@
     <script src="https://kit.fontawesome.com/9ec5564a33.js" crossorigin="anonymous"></script>
 
 </head>
+<style>
+    .form-one {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .selector {
+      position: relative;
+      width: 50%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
 
+    .selector-item_radio {
+      appearance: none;
+      display: none;
+    }
+
+    .radio-selector {
+      position: relative;
+      flex-basis: calc(50% / 2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .radio-selector-label {
+      position: relative;
+      height: 80%;
+      width: 100%;
+      text-align: center;
+      border-radius: 9999px;
+      font-weight: 900;
+      transition-duration: 0.5s;
+      transition-property: transform, color, box-shadow;
+      transform: none;
+    }
+
+    .selector-item_radio:checked + .radio-selector-label {
+      background-color: blue;
+      color: white;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    /*  ------------------------*/
+
+    .form-box {
+      width: 100%;
+
+      max-width: 50vw;
+      margin: 0 auto;
+      padding: 2rem;
+      box-shadow: 1px 1px 3px dimgrey, 3px 3px 7px grey;
+    }
+    label,
+    input,
+    textarea {
+      display: block;
+      margin: auto;
+      width: 100%;
+      font-size: 1.2rem;
+      line-height: 1.4;
+    }
+    .error {
+      display: block;
+      margin: auto;
+      font-size: 1.2rem;
+      line-height: 1.4;
+      color: red;
+    }
+
+    .form-item.error input {
+      border: 2px dotted red;
+    }
+
+    /* .form-item input{
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 20px;
+  
+} */
+    .form-item input:valid:required {
+      border: 2px solid green;
+    }
+
+    input.error {
+      background-color: #ffdddd;
+    }
+
+    #submit {
+      margin-top: 10px;
+    }
+  </style>
 <body>
 <header>
     <a>Gottfrids munkshop</a>
@@ -31,7 +127,118 @@
     
 
 </section>
+<section>
+      <!--  -->
 
+      <!-- <div class="form-one">
+        <form action="#" autocomplete="on">
+          <div>
+            <h4>Kundinformation  ----- </h4>
+            <p>* Required</p>
+          </div>  
+         
+        </form>
+      </div> -->
+
+      <section class="contact">
+        <div class="form-box">
+          <form id="contactForm" action="" onsubmit="return validateForm()">
+            <h3>Välj betalningssätt:</h3>
+            <div class="form-one">
+              <div class="selector">
+                <div class="radio-selector">
+                  <input
+                    type="radio"
+                    name="payment"
+                    value="value1"
+                    id="radio1"
+                    class="selector-item_radio"
+                    onclick="showDiv()"
+                  />
+                  <label for="radio1" class="radio-selector-label">
+                    Faktura
+                  </label>
+                </div>
+
+                <div class="radio-selector">
+                  <input
+                    type="radio"
+                    name="payment"
+                    value="value2"
+                    id="radio2"
+                    class="selector-item_radio"
+                    onclick="hideDiv()"
+                    checked
+                  />
+                  <label for="radio2" class="radio-selector-label">
+                    Kort
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="form-item">
+              <label for="fname">First name:*</label>
+              <input
+                class="required"
+                type="text"
+                id="fname"
+                name="fname"
+                required="required"
+              />
+              <div class="error"></div>
+            </div>
+            <div class="form-item">
+              <label for="lname">Last name:*</label>
+              <input class="required" type="text" id="lname" name="lname" />
+              <div class="error"></div>
+            </div>
+            <div class="form-item" id="personNummer" style="display: none">
+              <label for="Number">Personnummer*</label>
+              <input type="number" id="peronNr" name="" />
+              <div class="error"></div>
+            </div>
+            <div class="form-item">
+              <label for="email">E-mail*</label>
+              <input type="email" id="email" name="" required="required" />
+              <div class="error"></div>
+            </div>
+            <div class="form-item">
+              <label for="tel">Phone*</label>
+              <input type="tel" id="phone" name="" />
+              <div class="error"></div>
+            </div>
+            <div class="form-item">
+              <label for="street">Address*</label>
+              <input type="street" id="street" name="" />
+              <div class="error"></div>
+            </div>
+            <div class="form-item">
+              <label for="zip">Postnummer*</label>
+              <input type="zip" id="zip" name="" />
+              <div class="error"></div>
+            </div>
+            <div class="form-item">
+              <label for="city">Postort*</label>
+              <input type="city" id="city" name="" />
+              <div class="error"></div>
+            </div>
+            <div class="form-item">
+              <label for="text">Portkod</label>
+              <input type="text" id="portcode" name="" />
+              <div class="error"></div>
+            </div>
+            <div class="form-item">
+              <button type="submit" value="Submit" id="submit" onclick="save()">
+                Submit
+              </button>
+            </div>
+            <button type="button" onclick="clearForm()" value="Reset form">
+              Reset
+            </button>
+          </form>
+        </div>
+      </section>
+    </section>
 
 <section>
 
@@ -47,7 +254,121 @@
 
 
    
-<script src="script.js"></script>
+<script>
+      // Reset form
+      // // // // Fixa:::::: Ta bort "error" meddelandet
+      function clearForm() {
+        document.getElementById("contactForm").reset();
+        //-- document.getElementsByClassName("error").reset();
+      }
+
+      // Personnummer show/hide
+      function showDiv() {
+        document.getElementById("personNummer").style.display = "block";
+      }
+      function hideDiv() {
+        document.getElementById("personNummer").style.display = "none";
+      }
+      //
+
+      // Sparar input information
+      const form = document.getElementById("contactForm");
+      const firstName = document.getElementById("fname");
+      const secondName = document.getElementById("lname");
+      const personNr = document.getElementById("peronNr");
+      const email = document.getElementById("email");
+      const phone = document.getElementById("phone");
+      const street = document.getElementById("street");
+      const zip = document.getElementById("zip");
+      const city = document.getElementById("city");
+      const portCode = document.getElementById("portcode");
+
+      // Validerar form
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        validateInputs();
+      });
+
+      // Lägger till "error-message"
+      const setError = (element, message) => {
+        const inputControl = element.parentElement;
+        const errorDisplay = inputControl.querySelector(".error");
+        errorDisplay.innerText = message;
+        inputControl.classList.add("error");
+        inputControl.classList.remove("success");
+      };
+      // Tar bort "error-message"
+      const setSuccess = (element) => {
+        const inputControl = element.parentElement;
+        const errorDisplay = inputControl.querySelector(".error");
+        errorDisplay.innerText = "";
+        inputControl.classList.add("success");
+        inputControl.classList.remove("error");
+      };
+
+      // Tar bort överbliven text/mellanslag
+      const validateInputs = () => {
+        const fnameValue = firstName.value.trim();
+        const lnameValue = secondName.value.trim();
+        const idValue = personNr.value.trim();
+        const emailValue = email.value.trim();
+        const phoneValue = phone.value.trim();
+        const streetValue = street.value.trim();
+        const zipValue = zip.value.trim();
+        const cityValue = city.value.trim();
+
+        //Förnamn
+        if (fnameValue === "") {
+          setError(fname, "First name is required");
+        } else {
+          setSuccess(fname);
+        }
+        //Efternamn
+        if (lnameValue === "") {
+          setError(lname, "Last name is required");
+        } else {
+          setSuccess(lname);
+        }
+        //Personnummer
+        if (idValue === "") {
+          setError(peronNr, "Personnummer is required");
+        } else {
+          setSuccess(peronNr);
+        }
+        //Email --- Göra så man måste skriva ".com"?
+        if (emailValue === "") {
+          setError(email, "Email is required");
+        } else {
+          setSuccess(email);
+        }
+        // Telefon
+        if (phoneValue === "") {
+          setError(phone, "Telefonnummer is required");
+        } else {
+          setSuccess(phone);
+        }
+        //Address
+        if (streetValue === "") {
+          setError(street, "Address is required");
+        } else {
+          setSuccess(street);
+        }
+        //Postnummer
+        if (zipValue === "") {
+          setError(zip, "Postnummer is required");
+        } else {
+          setSuccess(zip);
+        }
+        //Postort
+        if (cityValue === "") {
+          setError(city, "Postnummer is required");
+        } else {
+          setSuccess(city);
+        }
+      };
+      //
+    </script>
 </body>
 
 </html>
