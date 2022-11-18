@@ -6,9 +6,6 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Poppins", sans-serif;
-}
 
 .container {
   max-width: 1050px;
@@ -181,4 +178,6 @@ body {
 .nav-container input[type="checkbox"]:checked ~ .shopping{
   display: none;
 }
+
+
 
