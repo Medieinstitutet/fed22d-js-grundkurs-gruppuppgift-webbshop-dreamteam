@@ -1,16 +1,12 @@
 <!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gottfrids munkar</title>
-    <script src="https://kit.fontawesome.com/9ec5564a33.js" crossorigin="anonymous"></script>
-
-</head>
-<style>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
     .form-one {
       position: relative;
       width: 100%;
@@ -67,10 +63,11 @@
       margin: 0 auto;
       padding: 2rem;
       box-shadow: 1px 1px 3px dimgrey, 3px 3px 7px grey;
-    }
-    label,
-    input,
-    textarea {
+    } 
+  .form-item-label,
+    
+    .form-item-input
+     {
       display: block;
       margin: auto;
       width: 100%;
@@ -107,27 +104,8 @@
       margin-top: 10px;
     }
   </style>
-<body>
-<header>
-    <a>Gottfrids munkshop</a>
-    <div>
-        <i class="fa-regular fa-cart-shopping"></i>
-        <span>Kostnad</span>
-
-    </div>
-    <nav></nav>
-
-
-
-</header>
-
-<section>
-    <div>Munk nummer 1</div> 
-    
-    
-
-</section>
-<section>
+  <body>
+    <section class="contactSction">
       <!--  -->
 
       <!-- <div class="form-one">
@@ -142,7 +120,57 @@
 
       <section class="contact">
         <div class="form-box">
-          <form id="contactForm" action="" onsubmit="return validateForm()">
+          <form id="contactForm" action="">
+            <fieldset>
+            
+            <div class="form-item">
+              <label class="form-item-label" for="fname">First name:*</label>
+              <input
+                class="required form-item-input"
+                type="text"
+                id="fname"
+                name="fname"
+                required="required"
+                onblur="requiredField(this)"
+              />
+              <div class="error"></div>
+            </div>
+            <div class="form-item">
+              <label class="form-item-label" for="lname">Last name:*</label>
+              <input class="required form-item-input" type="text" id="lname" name="lname" onblur="requiredField(this)" required="required"/>
+              <div class="error"></div>
+            </div>
+            
+            <div class="form-item">
+              <label class="form-item-label" for="email">E-mail*</label>
+              <input type="email" id="email" name=""  class="required form-item-input" onblur="requiredField(this)" required="required"/>
+              <div class="error"></div>
+            </div>
+            <div class="form-item">
+              <label class="form-item-label" for="tel">Phone*</label>
+              <input type="tel" id="phone" name="" class="required form-item-input" onblur="requiredField(this)" required="required"/>
+              <div class="error"></div>
+            </div>
+            <div class="form-item">
+              <label class="form-item-label" for="street">Address*</label>
+              <input type="street" id="street" name="" class="required form-item-input" onblur="requiredField(this)" required="required"/>
+              <div class="error"></div>
+            </div>
+            <div class="form-item">
+              <label class="form-item-label" for="zip">Postnummer*</label>
+              <input type="zip" id="zip" name="" class="required form-item-input" onblur="requiredField(this)" required="required"/>
+              <div class="error"></div>
+            </div>
+            <div class="form-item">
+              <label class="form-item-label" for="city" >Postort*</label>
+              <input type="city" id="city" name="" class="required form-item-input" onblur="requiredField(this)" required="required"/>
+              <div class="error"></div>
+            </div>
+            <div class="form-item">
+              <label class="form-item-label" for="text">Portkod</label>
+              <input type="text" id="portcode" name="" class="required form-item-input" />
+              <div class="error"></div>
+            </div>
             <h3>Välj betalningssätt:</h3>
             <div class="form-one">
               <div class="selector">
@@ -154,6 +182,7 @@
                     id="radio1"
                     class="selector-item_radio"
                     onclick="showDiv()"
+                    
                   />
                   <label for="radio1" class="radio-selector-label">
                     Faktura
@@ -168,7 +197,7 @@
                     id="radio2"
                     class="selector-item_radio"
                     onclick="hideDiv()"
-                    checked
+                    
                   />
                   <label for="radio2" class="radio-selector-label">
                     Kort
@@ -176,85 +205,58 @@
                 </div>
               </div>
             </div>
-            <div class="form-item">
-              <label for="fname">First name:*</label>
-              <input
-                class="required"
-                type="text"
-                id="fname"
-                name="fname"
-                required="required"
-              />
-              <div class="error"></div>
-            </div>
-            <div class="form-item">
-              <label for="lname">Last name:*</label>
-              <input class="required" type="text" id="lname" name="lname" />
-              <div class="error"></div>
-            </div>
             <div class="form-item" id="personNummer" style="display: none">
-              <label for="Number">Personnummer*</label>
-              <input type="number" id="peronNr" name="" />
+              <label class="form-item-label" for="Number" >Personnummer*</label>
+              <input type="number" id="peronNr" name="" class="required form-item-input" onblur="requiredField(this)" required="required"/>
+              <div class="error"></div>
+            </div>
+            <div class="form-item" id="kortnummer" style="display: none">
+              <label class="form-item-label" for="card" >Kortnummer*</label>
+              <input type="number" id="cardNr" name="" class="required form-item-input" onblur="requiredField(this)" required="required"/>
+              <div class="error"></div>
+            </div>
+            <div class="form-item" id="date" style="display: none">
+              <label class="form-item-label" for="card" >Date*</label>
+              <input type="number" id="dateNr" name="" class="required form-item-input" onblur="requiredField(this)" required="required"/>
+              <div class="error"></div>
+            </div>
+            <div class="form-item" id="cvc" style="display: none">
+              <label class="form-item-label" for="card" >CVC*</label>
+              <input type="number" id="cvcNr" name="" class="required form-item-input" onblur="requiredField(this)" required="required"/>
               <div class="error"></div>
             </div>
             <div class="form-item">
-              <label for="email">E-mail*</label>
-              <input type="email" id="email" name="" required="required" />
-              <div class="error"></div>
-            </div>
-            <div class="form-item">
-              <label for="tel">Phone*</label>
-              <input type="tel" id="phone" name="" />
-              <div class="error"></div>
-            </div>
-            <div class="form-item">
-              <label for="street">Address*</label>
-              <input type="street" id="street" name="" />
-              <div class="error"></div>
-            </div>
-            <div class="form-item">
-              <label for="zip">Postnummer*</label>
-              <input type="zip" id="zip" name="" />
-              <div class="error"></div>
-            </div>
-            <div class="form-item">
-              <label for="city">Postort*</label>
-              <input type="city" id="city" name="" />
-              <div class="error"></div>
-            </div>
-            <div class="form-item">
-              <label for="text">Portkod</label>
-              <input type="text" id="portcode" name="" />
-              <div class="error"></div>
-            </div>
-            <div class="form-item">
-              <button type="submit" value="Submit" id="submit" onclick="save()">
+              <button type="submit" value="Submit" id="submit"   onclick="save()">
                 Submit
               </button>
             </div>
             <button type="button" onclick="clearForm()" value="Reset form">
               Reset
             </button>
+          </fieldset>
           </form>
+          
         </div>
       </section>
     </section>
-
-<section>
-
-</section>
-
-
-
-
-
-
-
-
-
-
-   
-<script>
+    
+    <script>
+      
+// 
+      function requiredField(input) {
+    if (input.value.length < 2) {
+      //red border
+        input.style.borderColor = "#e74c3c";
+      
+    
+      
+    } else {
+      //green border
+        input.style.borderColor = "#2ecc71";
+        
+    }
+    }
+    //
       // Reset form
       // // // // Fixa:::::: Ta bort "error" meddelandet
       function clearForm() {
@@ -265,9 +267,19 @@
       // Personnummer show/hide
       function showDiv() {
         document.getElementById("personNummer").style.display = "block";
+
+
+
+        document.getElementById("kortnummer").style.display = "none";
+        document.getElementById("date").style.display = "none";
+        document.getElementById("cvc").style.display = "none";
       }
       function hideDiv() {
         document.getElementById("personNummer").style.display = "none";
+
+        document.getElementById("kortnummer").style.display = "block";
+        document.getElementById("date").style.display = "block";
+        document.getElementById("cvc").style.display = "block";
       }
       //
 
@@ -318,57 +330,14 @@
         const zipValue = zip.value.trim();
         const cityValue = city.value.trim();
 
-        //Förnamn
-        if (fnameValue === "") {
-          setError(fname, "First name is required");
-        } else {
-          setSuccess(fname);
-        }
-        //Efternamn
-        if (lnameValue === "") {
-          setError(lname, "Last name is required");
-        } else {
-          setSuccess(lname);
-        }
-        //Personnummer
-        if (idValue === "") {
-          setError(peronNr, "Personnummer is required");
-        } else {
-          setSuccess(peronNr);
-        }
-        //Email --- Göra så man måste skriva ".com"?
-        if (emailValue === "") {
-          setError(email, "Email is required");
-        } else {
-          setSuccess(email);
-        }
-        // Telefon
-        if (phoneValue === "") {
-          setError(phone, "Telefonnummer is required");
-        } else {
-          setSuccess(phone);
-        }
-        //Address
-        if (streetValue === "") {
-          setError(street, "Address is required");
-        } else {
-          setSuccess(street);
-        }
-        //Postnummer
-        if (zipValue === "") {
-          setError(zip, "Postnummer is required");
-        } else {
-          setSuccess(zip);
-        }
-        //Postort
-        if (cityValue === "") {
-          setError(city, "Postnummer is required");
-        } else {
-          setSuccess(city);
-        }
-      };
-      //
-    </script>
-</body>
+              };
+      //********************************************
+      //********************************************
+      //********************************************
 
+      
+
+
+    </script>
+  </body>
 </html>
