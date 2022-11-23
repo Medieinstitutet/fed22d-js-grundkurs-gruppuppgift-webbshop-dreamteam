@@ -6,338 +6,197 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <style>
-    .form-one {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .selector {
-      position: relative;
-      width: 50%;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-    }
+    <body>
+    <section class="contact">
+      <div class="form-box">
+        <form
+          id="contactForm"
+          class="contactForm"
+          action=""
+          autocomplete="on"
+          onsubmit="validateForm();"
+        >
+          <label class="form-item-label" for="fname">First name:*</label>
+          <input
+            class="form-item-input"
+            type="text"
+            id="fname"
+            name="fname"
+            required="required"
+            onblur="requiredField(this)"
+          />
+          <span class="error" id="errorfname" hidden></span>
 
-    .selector-item_radio {
-      appearance: none;
-      display: none;
-    }
+          <label class="form-item-label" for="lname">Last name:*</label>
+          <input
+            class="form-item-input"
+            type="text"
+            id="lname"
+            name="lname"
+            onblur="requiredField(this)"
+            required="required"
+          />
+          <span class="error" id="errorlname" hidden></span>
 
-    .radio-selector {
-      position: relative;
-      flex-basis: calc(50% / 2);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+          <label class="form-item-label" for="email">E-mail*</label>
+          <input
+            class="form-item-input"
+            type="email"
+            id="email"
+            name="email"
+            onblur="requiredField(this)"
+            required="required"
+          />
+          <span class="error" id="erroremail" hidden></span>
 
-    .radio-selector-label {
-      position: relative;
-      height: 80%;
-      width: 100%;
-      text-align: center;
-      border-radius: 9999px;
-      font-weight: 900;
-      transition-duration: 0.5s;
-      transition-property: transform, color, box-shadow;
-      transform: none;
-    }
+          <label class="form-item-label" for="tel">Phone*</label>
+          <input
+            type="text"
+            id="phone"
+            name="Telefon"
+            class="form-item-input"
+            onblur="requiredField(this)"
+            required="required"
+          />
+          <span class="error" id="errorphone" hidden></span>
 
-    .selector-item_radio:checked + .radio-selector-label {
-      background-color: blue;
-      color: white;
-      box-shadow: 0 0 4px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.5);
-    }
+          <label class="form-item-label" for="street">Adress*</label>
+          <input
+            type="text"
+            id="street"
+            name="Adress"
+            class="form-item-input"
+            onblur="requiredField(this)"
+            required="required"
+          />
+          <span class="error" id="erroradress" hidden></span>
 
-    /*  ------------------------*/
+          <label class="form-item-label" for="zip">Postnummer*</label>
+          <input
+            type="zip"
+            id="zip"
+            name="Postnummer"
+            class="form-item-input"
+            minlength="5"
+            onblur="requiredField(this)"
+            required="required"
+          />
+          <span class="error" id="errorzip" hidden></span>
 
-    .form-box {
-      width: 100%;
+          <label class="form-item-label" for="city">Postort*</label>
+          <input
+            type="city"
+            id="city"
+            name="Postort"
+            class="form-item-input"
+            onblur="requiredField(this)"
+            required="required"
+          />
+          <span class="error" id="errorcity" hidden></span>
 
-      max-width: 50vw;
-      margin: 0 auto;
-      padding: 2rem;
-      box-shadow: 1px 1px 3px dimgrey, 3px 3px 7px grey;
-    } 
-  .form-item-label,
-    
-    .form-item-input
-     {
-      display: block;
-      margin: auto;
-      width: 100%;
-      font-size: 1.2rem;
-      line-height: 1.4;
-    }
-    .error {
-      display: block;
-      margin: auto;
-      font-size: 1.2rem;
-      line-height: 1.4;
-      color: red;
-    }
+          <label class="form-item-label" for="portkod">Portkod</label>
+          <input
+            type="text"
+            id="portcode"
+            name="portkod"
+            class="form-item-input"
+          />
 
-    .form-item.error input {
-      border: 2px dotted red;
-    }
+          <div class="form-one">
+            <div class="selector">
+              <div class="radio-selector">
+                <h3>Pay:</h3>
 
-    /* .form-item input{
-  padding: 5px;
-  border-radius: 10px;
-  font-size: 20px;
-  
-} */
-    .form-item input:valid:required {
-      border: 2px solid green;
-    }
+                <input
+                  type="radio"
+                  name="betalning"
+                  value="faktura"
+                  id="radiofaktura"
+                  class="selector-item_radio"
+                  onclick="showfaktura()"
+                  required="required"
+                />
+                <label for="radiofaktura" class="radio-selector-label">
+                  Faktura
+                </label>
+                <span class="error" id="errorfaktura" hidden></span>
+              </div>
 
-    input.error {
-      background-color: #ffdddd;
-    }
-
-    #submit {
-      margin-top: 10px;
-    }
-  </style>
-  <body>
-    <section class="contactSction">
-      <!--  -->
-
-      <!-- <div class="form-one">
-        <form action="#" autocomplete="on">
-          <div>
-            <h4>Kundinformation  ----- </h4>
-            <p>* Required</p>
-          </div>  
-         
-        </form>
-      </div> -->
-
-      <section class="contact">
-        <div class="form-box">
-          <form id="contactForm" action="">
-            <fieldset>
-            
-            <div class="form-item">
-              <label class="form-item-label" for="fname">First name:*</label>
-              <input
-                class="required form-item-input"
-                type="text"
-                id="fname"
-                name="fname"
-                required="required"
-                onblur="requiredField(this)"
-              />
-              <div class="error"></div>
-            </div>
-            <div class="form-item">
-              <label class="form-item-label" for="lname">Last name:*</label>
-              <input class="required form-item-input" type="text" id="lname" name="lname" onblur="requiredField(this)" required="required"/>
-              <div class="error"></div>
-            </div>
-            
-            <div class="form-item">
-              <label class="form-item-label" for="email">E-mail*</label>
-              <input type="email" id="email" name=""  class="required form-item-input" onblur="requiredField(this)" required="required"/>
-              <div class="error"></div>
-            </div>
-            <div class="form-item">
-              <label class="form-item-label" for="tel">Phone*</label>
-              <input type="tel" id="phone" name="" class="required form-item-input" onblur="requiredField(this)" required="required"/>
-              <div class="error"></div>
-            </div>
-            <div class="form-item">
-              <label class="form-item-label" for="street">Address*</label>
-              <input type="street" id="street" name="" class="required form-item-input" onblur="requiredField(this)" required="required"/>
-              <div class="error"></div>
-            </div>
-            <div class="form-item">
-              <label class="form-item-label" for="zip">Postnummer*</label>
-              <input type="zip" id="zip" name="" class="required form-item-input" onblur="requiredField(this)" required="required"/>
-              <div class="error"></div>
-            </div>
-            <div class="form-item">
-              <label class="form-item-label" for="city" >Postort*</label>
-              <input type="city" id="city" name="" class="required form-item-input" onblur="requiredField(this)" required="required"/>
-              <div class="error"></div>
-            </div>
-            <div class="form-item">
-              <label class="form-item-label" for="text">Portkod</label>
-              <input type="text" id="portcode" name="" class="required form-item-input" />
-              <div class="error"></div>
-            </div>
-            <h3>Välj betalningssätt:</h3>
-            <div class="form-one">
-              <div class="selector">
-                <div class="radio-selector">
-                  <input
-                    type="radio"
-                    name="payment"
-                    value="value1"
-                    id="radio1"
-                    class="selector-item_radio"
-                    onclick="showDiv()"
-                    
-                  />
-                  <label for="radio1" class="radio-selector-label">
-                    Faktura
-                  </label>
-                </div>
-
-                <div class="radio-selector">
-                  <input
-                    type="radio"
-                    name="payment"
-                    value="value2"
-                    id="radio2"
-                    class="selector-item_radio"
-                    onclick="hideDiv()"
-                    
-                  />
-                  <label for="radio2" class="radio-selector-label">
-                    Kort
-                  </label>
-                </div>
+              <div class="radio-selector">
+                <input
+                  type="radio"
+                  name="betalning"
+                  value="kreditkort"
+                  id="radiokort"
+                  class="selector-item_radio"
+                  onclick="showcard()"
+                />
+                <label for="radiokort" class="radio-selector-label">
+                  Kort
+                </label>
+                <span class="error" id="errorkort" hidden></span>
               </div>
             </div>
-            <div class="form-item" id="personNummer" style="display: none">
-              <label class="form-item-label" for="Number" >Personnummer*</label>
-              <input type="number" id="peronNr" name="" class="required form-item-input" onblur="requiredField(this)" required="required"/>
-              <div class="error"></div>
-            </div>
-            <div class="form-item" id="kortnummer" style="display: none">
-              <label class="form-item-label" for="card" >Kortnummer*</label>
-              <input type="number" id="cardNr" name="" class="required form-item-input" onblur="requiredField(this)" required="required"/>
-              <div class="error"></div>
-            </div>
-            <div class="form-item" id="date" style="display: none">
-              <label class="form-item-label" for="card" >Date*</label>
-              <input type="number" id="dateNr" name="" class="required form-item-input" onblur="requiredField(this)" required="required"/>
-              <div class="error"></div>
-            </div>
-            <div class="form-item" id="cvc" style="display: none">
-              <label class="form-item-label" for="card" >CVC*</label>
-              <input type="number" id="cvcNr" name="" class="required form-item-input" onblur="requiredField(this)" required="required"/>
-              <div class="error"></div>
-            </div>
-            <div class="form-item">
-              <button type="submit" value="Submit" id="submit"   onclick="save()">
-                Submit
-              </button>
-            </div>
-            <button type="button" onclick="clearForm()" value="Reset form">
-              Reset
-            </button>
-          </fieldset>
-          </form>
-          
-        </div>
-      </section>
+          </div>
+
+          <div id="persondiv" style="display: none">
+            <label class="form-item-label" for="Number">Personnummer*</label>
+            <input
+              type="text"
+              id="personNr"
+              size="12"
+              minlength="10"
+              name="personnummer"
+              class="form-item-input hej"
+              onblur="requiredField(this)"
+            />
+            <span class="errorMessage" id="errorpersonnr" hidden></span>
+          </div>
+          <div id="kortdiv" style="display: none">
+            <label class="form-item-label" for="card">Kortnummer*</label>
+            <input
+              type="text"
+              id="cardNr"
+              name="kortnummer"
+              class="form-item-input"
+              onblur="requiredField(this)"
+            />
+            <span class="errorMessage" id="errorkortnr" hidden></span>
+
+            <label class="form-item-label" for="card">Date*</label>
+            <input
+              type="text"
+              id="dateNr"
+              name="datum-kort"
+              class="form-item-input"
+              onblur="requiredField(this)"
+            />
+            <span class="errorMessage" id="errordate" hidden></span>
+
+            <label class="form-item-label" for="card">CVC*</label>
+            <input
+              type="text"
+              id="cvcNr"
+              name="cvc"
+              class="form-item-input"
+              onblur="requiredField(this)"
+              size="3"
+            />
+            <span class="errorMessage" id="errorcvc" hidden></span>
+          </div>
+          <input
+            type="submit"
+            value="Submit"
+            id="submit"
+            onclick="save()"
+            class="form-button"
+            disabled
+          />
+
+          <input type="reset" onclick="clearForm()" value="Reset form" />
+        </form>
+      </div>
     </section>
     
-    <script>
-      
-// 
-      function requiredField(input) {
-    if (input.value.length < 2) {
-      //red border
-        input.style.borderColor = "#e74c3c";
-      
-    
-      
-    } else {
-      //green border
-        input.style.borderColor = "#2ecc71";
-        
-    }
-    }
-    //
-      // Reset form
-      // // // // Fixa:::::: Ta bort "error" meddelandet
-      function clearForm() {
-        document.getElementById("contactForm").reset();
-        //-- document.getElementsByClassName("error").reset();
-      }
-
-      // Personnummer show/hide
-      function showDiv() {
-        document.getElementById("personNummer").style.display = "block";
-
-
-
-        document.getElementById("kortnummer").style.display = "none";
-        document.getElementById("date").style.display = "none";
-        document.getElementById("cvc").style.display = "none";
-      }
-      function hideDiv() {
-        document.getElementById("personNummer").style.display = "none";
-
-        document.getElementById("kortnummer").style.display = "block";
-        document.getElementById("date").style.display = "block";
-        document.getElementById("cvc").style.display = "block";
-      }
-      //
-
-      // Sparar input information
-      const form = document.getElementById("contactForm");
-      const firstName = document.getElementById("fname");
-      const secondName = document.getElementById("lname");
-      const personNr = document.getElementById("peronNr");
-      const email = document.getElementById("email");
-      const phone = document.getElementById("phone");
-      const street = document.getElementById("street");
-      const zip = document.getElementById("zip");
-      const city = document.getElementById("city");
-      const portCode = document.getElementById("portcode");
-
-      // Validerar form
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        validateInputs();
-      });
-
-      // Lägger till "error-message"
-      const setError = (element, message) => {
-        const inputControl = element.parentElement;
-        const errorDisplay = inputControl.querySelector(".error");
-        errorDisplay.innerText = message;
-        inputControl.classList.add("error");
-        inputControl.classList.remove("success");
-      };
-      // Tar bort "error-message"
-      const setSuccess = (element) => {
-        const inputControl = element.parentElement;
-        const errorDisplay = inputControl.querySelector(".error");
-        errorDisplay.innerText = "";
-        inputControl.classList.add("success");
-        inputControl.classList.remove("error");
-      };
-
-      // Tar bort överbliven text/mellanslag
-      const validateInputs = () => {
-        const fnameValue = firstName.value.trim();
-        const lnameValue = secondName.value.trim();
-        const idValue = personNr.value.trim();
-        const emailValue = email.value.trim();
-        const phoneValue = phone.value.trim();
-        const streetValue = street.value.trim();
-        const zipValue = zip.value.trim();
-        const cityValue = city.value.trim();
-
-              };
-      //********************************************
-      //********************************************
-      //********************************************
-
-      
-
-
-    </script>
   </body>
 </html>
