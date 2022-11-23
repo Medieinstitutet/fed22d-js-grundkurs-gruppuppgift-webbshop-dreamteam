@@ -62,7 +62,196 @@
 
     </div>
 </section>
-   
+   <section class="contact">
+      <div class="form-box">
+        <form
+          id="contactForm"
+          class="contactForm"
+          action=""
+          autocomplete="on"
+          onsubmit="validateForm();"
+        >
+          <label class="form-item-label" for="fname">First name:*</label>
+          <input
+            class="form-item-input"
+            type="text"
+            id="fname"
+            name="fname"
+            required="required"
+            onblur="requiredField(this)"
+          />
+          <span class="error" id="errorfname" hidden></span>
+
+          <label class="form-item-label" for="lname">Last name:*</label>
+          <input
+            class="form-item-input"
+            type="text"
+            id="lname"
+            name="lname"
+            onblur="requiredField(this)"
+            required="required"
+          />
+          <span class="error" id="errorlname" hidden></span>
+
+          <label class="form-item-label" for="email">E-mail*</label>
+          <input
+            class="form-item-input"
+            type="email"
+            id="email"
+            name="email"
+            onblur="requiredField(this)"
+            required="required"
+          />
+          <span class="error" id="erroremail" hidden></span>
+
+          <label class="form-item-label" for="tel">Phone*</label>
+          <input
+            type="text"
+            id="phone"
+            name="Telefon"
+            class="form-item-input"
+            onblur="requiredField(this)"
+            required="required"
+          />
+          <span class="error" id="errorphone" hidden></span>
+
+          <label class="form-item-label" for="street">Adress*</label>
+          <input
+            type="text"
+            id="street"
+            name="Adress"
+            class="form-item-input"
+            onblur="requiredField(this)"
+            required="required"
+          />
+          <span class="error" id="erroradress" hidden></span>
+
+          <label class="form-item-label" for="zip">Postnummer*</label>
+          <input
+            type="zip"
+            id="zip"
+            name="Postnummer"
+            class="form-item-input"
+            minlength="5"
+            onblur="requiredField(this)"
+            required="required"
+          />
+          <span class="error" id="errorzip" hidden></span>
+
+          <label class="form-item-label" for="city">Postort*</label>
+          <input
+            type="city"
+            id="city"
+            name="Postort"
+            class="form-item-input"
+            onblur="requiredField(this)"
+            required="required"
+          />
+          <span class="error" id="errorcity" hidden></span>
+
+          <label class="form-item-label" for="portkod">Portkod</label>
+          <input
+            type="text"
+            id="portcode"
+            name="portkod"
+            class="form-item-input"
+          />
+
+          <div class="form-one">
+            <div class="selector">
+              <div class="radio-selector">
+                <h3>Pay:</h3>
+
+                <input
+                  type="radio"
+                  name="betalning"
+                  value="faktura"
+                  id="radiofaktura"
+                  class="selector-item_radio"
+                  onclick="showfaktura()"
+                  required="required"
+                />
+                <label for="radiofaktura" class="radio-selector-label">
+                  Faktura
+                </label>
+                <span class="error" id="errorfaktura" hidden></span>
+              </div>
+
+              <div class="radio-selector">
+                <input
+                  type="radio"
+                  name="betalning"
+                  value="kreditkort"
+                  id="radiokort"
+                  class="selector-item_radio"
+                  onclick="showcard()"
+                />
+                <label for="radiokort" class="radio-selector-label">
+                  Kort
+                </label>
+                <span class="error" id="errorkort" hidden></span>
+              </div>
+            </div>
+          </div>
+
+          <div id="persondiv" style="display: none">
+            <label class="form-item-label" for="Number">Personnummer*</label>
+            <input
+              type="text"
+              id="personNr"
+              size="12"
+              minlength="10"
+              name="personnummer"
+              class="form-item-input hej"
+              onblur="requiredField(this)"
+            />
+            <span class="errorMessage" id="errorpersonnr" hidden></span>
+          </div>
+          <div id="kortdiv" style="display: none">
+            <label class="form-item-label" for="card">Kortnummer*</label>
+            <input
+              type="text"
+              id="cardNr"
+              name="kortnummer"
+              class="form-item-input"
+              onblur="requiredField(this)"
+            />
+            <span class="errorMessage" id="errorkortnr" hidden></span>
+
+            <label class="form-item-label" for="card">Date*</label>
+            <input
+              type="text"
+              id="dateNr"
+              name="datum-kort"
+              class="form-item-input"
+              onblur="requiredField(this)"
+            />
+            <span class="errorMessage" id="errordate" hidden></span>
+
+            <label class="form-item-label" for="card">CVC*</label>
+            <input
+              type="text"
+              id="cvcNr"
+              name="cvc"
+              class="form-item-input"
+              onblur="requiredField(this)"
+              size="3"
+            />
+            <span class="errorMessage" id="errorcvc" hidden></span>
+          </div>
+          <input
+            type="submit"
+            value="Submit"
+            id="submit"
+            onclick="save()"
+            class="form-button"
+            disabled
+          />
+
+          <input type="reset" onclick="clearForm()" value="Reset form" />
+        </form>
+      </div>
+    </section>
 
 
 
