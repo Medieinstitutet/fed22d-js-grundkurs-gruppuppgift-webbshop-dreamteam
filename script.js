@@ -1,116 +1,258 @@
-     // Reset form
-      // // // // Fixa:::::: Ta bort "error" meddelandet
-      function clearForm() {
-        document.getElementById("contactForm").reset();
-        //-- document.getElementsByClassName("error").reset();
-      }
-
-      // Personnummer show/hide
-      function showDiv() {
-        document.getElementById("personNummer").style.display = "block";
-      }
-      function hideDiv() {
-        document.getElementById("personNummer").style.display = "none";
-      }
-      //
-
-      // Sparar input information
+// Sparar input information
+      const submitButton = document.getElementById("submit");
       const form = document.getElementById("contactForm");
       const firstName = document.getElementById("fname");
       const secondName = document.getElementById("lname");
-      const personNr = document.getElementById("peronNr");
       const email = document.getElementById("email");
       const phone = document.getElementById("phone");
       const street = document.getElementById("street");
       const zip = document.getElementById("zip");
       const city = document.getElementById("city");
+      const personNr = document.getElementById("personNr");
+      const cardNr = document.getElementById("cardNr");
+      const cardDate = document.getElementById("dateNr");
+      const cvcNr = document.getElementById("cvcNr");
+      const radioinvoice = document.getElementById("radiofaktura");
+      const radiocard = document.getElementById("radiokort");
       const portCode = document.getElementById("portcode");
 
-      // Validerar form
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
+      ///beställningsknappen///////////
 
-        validateInputs();
-      });
+      // Förnamn
+      firstName.addEventListener("change", checkfName);
+      let checkfNameInput = false;
 
-      // Lägger till "error-message"
-      const setError = (element, message) => {
-        const inputControl = element.parentElement;
-        const errorDisplay = inputControl.querySelector(".error");
-        errorDisplay.innerText = message;
-        inputControl.classList.add("error");
-        inputControl.classList.remove("success");
-      };
-      // Tar bort "error-message"
-      const setSuccess = (element) => {
-        const inputControl = element.parentElement;
-        const errorDisplay = inputControl.querySelector(".error");
-        errorDisplay.innerText = "";
-        inputControl.classList.add("success");
-        inputControl.classList.remove("error");
-      };
+      function checkfName() {
+        const exp = new RegExp("^[A-Za-zÅÄÖåäö\-]{1,}");
+        const errorMessage = document.getElementById("errorfname");
 
-      // Tar bort överbliven text/mellanslag
-      const validateInputs = () => {
-        const fnameValue = firstName.value.trim();
-        const lnameValue = secondName.value.trim();
-        const idValue = personNr.value.trim();
-        const emailValue = email.value.trim();
-        const phoneValue = phone.value.trim();
-        const streetValue = street.value.trim();
-        const zipValue = zip.value.trim();
-        const cityValue = city.value.trim();
+        if (exp.test(firstName.value)) {
+          errorMessage.setAttribute("hidden", "");
+          checkfNameInput = true;
+        } else {
+          errorMessage.innerHTML = "Skriv ditt förnamn med bokstäver";
+          errorMessage.removeAttribute("hidden");
+          checkfNameInput = false;
+        }
+        activatesubmitButton();
+      }
+      // Efternamn
+      secondName.addEventListener("change", checklName);
+      let checklNameInput = false;
 
-        //Förnamn
-        if (fnameValue === "") {
-          setError(fname, "First name is required");
-        } else {
-          setSuccess(fname);
-        }
-        //Efternamn
-        if (lnameValue === "") {
-          setError(lname, "Last name is required");
-        } else {
-          setSuccess(lname);
-        }
-        //Personnummer
-        if (idValue === "") {
-          setError(peronNr, "Personnummer is required");
-        } else {
-          setSuccess(peronNr);
-        }
-        //Email --- Göra så man måste skriva ".com"?
-        if (emailValue === "") {
-          setError(email, "Email is required");
-        } else {
-          setSuccess(email);
-        }
-        // Telefon
-        if (phoneValue === "") {
-          setError(phone, "Telefonnummer is required");
-        } else {
-          setSuccess(phone);
-        }
-        //Address
-        if (streetValue === "") {
-          setError(street, "Address is required");
-        } else {
-          setSuccess(street);
-        }
-        //Postnummer
-        if (zipValue === "") {
-          setError(zip, "Postnummer is required");
-        } else {
-          setSuccess(zip);
-        }
-        //Postort
-        if (cityValue === "") {
-          setError(city, "Postnummer is required");
-        } else {
-          setSuccess(city);
-        }
-      };
-      //********************************************
-      //********************************************
-      //********************************************
+      function checklName() {
+        const exp = new RegExp("^[A-Za-zÅÄÖåäö\-]{1,}$");
+        const errorMessage = document.getElementById("errorlname");
 
+        if (exp.test(secondName.value)) {
+          errorMessage.setAttribute("hidden", "");
+          checklNameInput = true;
+        } else {
+          errorMessage.innerHTML = "Skriv ditt efternamn med bokstäver";
+          errorMessage.removeAttribute("hidden");
+          checklNameInput = false;
+        }
+        activatesubmitButton();
+      }
+      // E-mail
+      email.addEventListener("change", checkemail);
+      let checkemailInput = false;
+
+      function checkemail() {
+        const exp = new RegExp(
+          "^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$"
+        );
+        const errorMessage = document.getElementById("erroremail");
+
+        if (exp.test(email.value)) {
+          errorMessage.setAttribute("hidden", "");
+          checkemailInput = true;
+        } else {
+          errorMessage.innerHTML = "Skriv e-postadress";
+          errorMessage.removeAttribute("hidden");
+          checkemailInput = false;
+        }
+        activatesubmitButton();
+      }
+      // Telefon
+      phone.addEventListener("change", checkphone);
+      let checkphoneInput = false;
+
+      function checkphone() {
+        const exp = new RegExp("^[-0-9]");
+        const errorMessage = document.getElementById("errorphone");
+
+        if (exp.test(phone.value)) {
+          errorMessage.setAttribute("hidden", "");
+          checkphoneInput = true;
+        } else {
+          errorMessage.innerHTML = "Skriv med hjälp av siffor och bindestreck";
+          errorMessage.removeAttribute("hidden");
+          checkphoneInput = false;
+        }
+        activatesubmitButton();
+      }
+      // Adress
+      street.addEventListener("change", checkstreet);
+      let checkstreetInput = false;
+
+      function checkstreet() {
+        const exp = new RegExp("^[0-9A-Za-zÅÄÖåäö\-]");
+        const errorMessage = document.getElementById("erroradress");
+
+        if (exp.test(street.value)) {
+          errorMessage.setAttribute("hidden", "");
+          checkstreetInput = true;
+        } else {
+          errorMessage.innerHTML = "Skriv din address";
+          errorMessage.removeAttribute("hidden");
+          checkstreetInput = false;
+        }
+        activatesubmitButton();
+      }
+      // Postnummer
+      zip.addEventListener("change", checkzip);
+      let checkzipInput = false;
+
+      function checkzip() {
+        const exp = new RegExp("^[0-9]");
+        const errorMessage = document.getElementById("errorzip");
+
+        if (exp.test(zip.value)) {
+          errorMessage.setAttribute("hidden", "");
+          checkzipInput = true;
+        } else {
+          errorMessage.innerHTML = "Skriv ditt postnummer med hjälp av siffror";
+          errorMessage.removeAttribute("hidden");
+          checkzipInput = false;
+        }
+        activatesubmitButton();
+      }
+      // Postort
+      city.addEventListener("change", checkcity);
+      let checkcityInput = false;
+
+      function checkcity() {
+        const exp = new RegExp("^[A-Za-zÅÄÖåäö\-]{1,}$");
+        const errorMessage = document.getElementById("errorcity");
+
+        if (exp.test(city.value)) {
+          errorMessage.setAttribute("hidden", "");
+          checkcityInput = true;
+        } else {
+          errorMessage.innerHTML = "Skriv din postort";
+          errorMessage.removeAttribute("hidden");
+          checkcityInput = false;
+        }
+        activatesubmitButton();
+      }
+      // Personnummer
+      personNr.addEventListener("change", checkpersonNr);
+      let checkpersonNrInput = false;
+
+      function checkpersonNr() {
+        const exp = new RegExp("^[-0-9]");
+        const errorMessage = document.getElementById("errorpersonnr");
+
+        if (exp.test(personNr.value)) {
+          errorMessage.setAttribute("hidden", "");
+          checkpersonNrInput = true;
+        } else {
+          errorMessage.innerHTML = "Skriv med siffor och bindestreck";
+          errorMessage.removeAttribute("hidden");
+          checkpersonNrInput = false;
+        }
+        activatesubmitButton();
+      }
+      // Kortnummer*
+      cardNr.addEventListener("change", checkcardNr);
+      let checkcardNrInput = false;
+
+      function checkcardNr() {
+        const exp = new RegExp("^[-0-9]");
+        const errorMessage = document.getElementById("errorkortnr");
+
+        if (exp.test(cardNr.value)) {
+          errorMessage.setAttribute("hidden", "");
+          checkcardNrInput = true;
+        } else {
+          errorMessage.innerHTML = "Skriv med siffor";
+          errorMessage.removeAttribute("hidden");
+          checkcardNrInput = false;
+        }
+        activatesubmitButton();
+      }
+      // Datum för kort
+      dateNr.addEventListener("change", checkdateNr);
+      let checkdateNrInput = false;
+
+      function checkdateNr() {
+        const exp = new RegExp("^[-0-9]");
+        const errorMessage = document.getElementById("errordate");
+
+        if (exp.test(dateNr.value)) {
+          errorMessage.setAttribute("hidden", "");
+          checkdateNrInput = true;
+        } else {
+          errorMessage.innerHTML = "Skriv med siffor";
+          errorMessage.removeAttribute("hidden");
+          checkdateNrInput = false;
+        }
+        activatesubmitButton();
+      }
+      // CVC
+      cvcNr.addEventListener("change", checkcvcNr);
+      let checkcvcNrInput = false;
+
+      function checkcvcNr() {
+        const exp = new RegExp("^[0-9]");
+        const errorMessage = document.getElementById("errorcvc");
+
+        if (exp.test(cvcNr.value)) {
+          errorMessage.setAttribute("hidden", "");
+          checkcvcNrInput = true;
+        } else {
+          errorMessage.innerHTML = "Skriv med siffor";
+          errorMessage.removeAttribute("hidden");
+          checkcvcNrInput = false;
+        }
+        activatesubmitButton();
+      }
+
+      // Personnummer show/hide + rensar
+      function showfaktura() {
+        document.getElementById("persondiv").style.display = "block";
+        document.getElementById("kortdiv").style.display = "none";
+        document.getElementById("cardNr").value = "";
+        document.getElementById("dateNr").value = "";
+        document.getElementById("cvcNr").value = "";
+      }
+      function showcard() {
+        document.getElementById("persondiv").style.display = "none";
+        document.getElementById("kortdiv").style.display = "block";
+        document.getElementById("personNr").value = "";
+      }
+      //
+
+      // Aktivering av submit-button
+      function activatesubmitButton() {
+        if (
+          checkfNameInput &&
+          checklNameInput &&
+          checkemailInput &&
+          checkphoneInput &&
+          checkstreetInput &&
+          checkzipInput &&
+          checkcityInput &&
+          ((checkcardNrInput &&
+            checkdateNrInput &&
+            checkcvcNrInput &&
+            radiocard.checked) ||
+            (checkpersonNrInput && radioinvoice.checked))
+        ) {
+          submitButton.removeAttribute("disabled");
+        } else {
+          // Lägger till disable på submit. "" gör att den uppdateras(?)
+          submitButton.setAttribute("disabled", "");
+        }
+      }
