@@ -6,6 +6,12 @@
   box-sizing: border-box;
 }
 
+.all-donuts {
+    display:grid;
+    grid-template-columns: auto;
+    justify-content: space-around;
+}
+
 body {
   background-color: white;
 }
@@ -37,6 +43,7 @@ body {
 .hide{
  display: none;
 }
+
 
 .container {
   max-width: 1050px;
