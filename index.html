@@ -15,43 +15,52 @@
 </head>
 
 <body>
-    <nav>
-      <div class="navbar">
-        <div class="container nav-container">
-            <input class="checkbox" type="checkbox" name="" id="" />
-            <div class="hamburger-lines">
-              <span class="line line1"></span>
-              <span class="line line2"></span>
-              <span class="line line3"></span>
-            </div>  
-          <div class="logo">
-            <h1>Gottfrids Munkshop</h1>
-          </div>
-          <div class="shopping">
-            <i class="fa-solid fa-cart-shopping"></i>
-            <div class="cart">0</i></div>
-          </div>
-          <div class="menu-items">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">about</a></li>
-            <li><a href="#">blogs</a></li>
-            <li><a href="#">contact</a></li>
-          </div>
+  <nav>
+    <div class="navbar">
+      <div class="container nav-container">
+          <input class="checkbox" type="checkbox" name="" id="" />
+          <div class="hamburger-lines">
+            <span class="line line1"></span>
+            <span class="line line2"></span>
+            <span class="line line3"></span>
+          </div>  
+        <div class="logo">
+          <h1>Gottfrids Munkshop</h1>
+        </div>
+        <div class="shopping">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <div class="cart">0</i></div>
+        </div>
+        <div class="toggle">
+          <button id="dark-mode" class="moon"><i class="fa-solid fa-moon"></i></button>
+          <button id="light-mode" class="sun hide"><i class="fa-solid fa-sun"></i></i></button>
+        </div>
+        <div class="menu-items">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">about</a></li>
+          <li><a href="#">blogs</a></li>
+          <li><a href="#">contact</a></li>
         </div>
       </div>
+    </div>
     </nav>
 
     
+<main>
+  <select class="filter">
+    <option selected disabled>Filtrera</option>
+    <option value="1" id="Order">A-Ö</option>
+    <option value="2" id="Price">Pris</option>
+    <option value="3" id="Rating">Betyg</option>
+    <option value="3" id="Catogori">Katogrier</option>
+  </select>
+</main>
+  <article id="menu">
+    
+  </article>
 
-    <select id="ordning">
-      <option selected disabled>Filtrera</option>
-      <option value="1">A-Ö</option>
-      <option value="2">Pris</option>
-      <option value="3">Rating</option>
-    </select>
-   
 
-
+  
 
 
 

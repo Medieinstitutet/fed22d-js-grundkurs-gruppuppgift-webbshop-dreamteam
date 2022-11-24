@@ -6,6 +6,37 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: white;
+}
+
+.toggle {
+  position: absolute;
+  top: 1.5rem;
+  left: 16rem;
+}
+
+.moon {
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+.sun {
+  border: none;
+  background-color: rgb(119, 0, 255);
+  color: white;
+  cursor: pointer;
+}
+
+.dark_mode{
+ background-color:rgb(119, 0, 255);
+ color: white;
+}
+
+.hide{
+ display: none;
+}
 
 .container {
   max-width: 1050px;
@@ -56,8 +87,8 @@
     display: block;
     height: 35px;
     width: 35px;
-    top: 17px;
-    right: 20px;
+    top: 1rem;
+    right: 0;
     z-index: 5;
     opacity: 0;
     cursor: pointer;
@@ -75,14 +106,22 @@
     cursor: pointer;
 }
 
-.shopping{
+#darkandlight{
+  cursor: pointer;
   position: absolute;
-  right: 5rem;
-  top: 17px;
+  top: 1.7rem;
+  left: 16rem;
+}
+
+.nav-container .shopping{
+  cursor: pointer;
+  position: absolute;
+  right: 3rem;
+  top: 1.5rem;
   font-size: 1.5rem;
 }
 
-.cart{
+.nav-container .cart{
   position: absolute;
     right: 7px;
     top: -18px;
@@ -97,8 +136,8 @@
   height: 35px;
   width: 35px;
   position: absolute;
-  top: 17px;
-  right: 20px;
+  top: 1rem;
+  right: 0;
   font-size: 1.2rem;
   z-index: 2;
   display: flex;
@@ -130,7 +169,6 @@
 
 .navbar .menu-items {
   padding-top: 120px;
-  box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
   height: 100vh;
   width: 100%;
   transform: translate(-150%);
@@ -150,10 +188,10 @@
 
 .logo {
   position: absolute;
-  top: 5px;
+  top: 1rem;
   font-size: 1.2rem;
-  color: #0e2431;
 }
+
 
 .nav-container input[type="checkbox"]:checked ~ .menu-items {
   transform: translateX(0);
@@ -178,6 +216,15 @@
 .nav-container input[type="checkbox"]:checked ~ .shopping{
   display: none;
 }
+
+.nav-container input[type="checkbox"]:checked ~ .toggle{
+  display: none;
+}
+
+.nav-container input[type="checkbox"]:checked ~ .filter{
+  display: none;
+}
+
 
 
 
