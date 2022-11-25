@@ -143,11 +143,11 @@ function renderDonuts() {
         </article>
     `;
   }
-  document.querySelectorAll('.add').forEach((btn) => {
+ document.querySelectorAll('.add').forEach((btn) => {
     btn.addEventListener('click', updateDonutAmount);
   });
   document.querySelectorAll('.remove').forEach((btn) => {
-    btn.addEventListener('click', updateDonutAmount);
+    btn.addEventListener('click', removeDonutAmount);
   });
 
 
@@ -164,21 +164,25 @@ function renderDonuts() {
   document.querySelector('#cartSum').innerHTML = sum;
 }
 
-function printOrderedDonuts() {
-  document.querySelector('#cart').innerHTML = '';
-
-  for(let i = 0; i < donuts.length; i++) {
-    if (donuts[i].amount > 0) {
-      document.querySelector('#cart').innerHTML += `<p>${donuts[i].name}</p>`;
-    }
-  }
-}
-
+// Lägger till antal på munk
 function updateDonutAmount(e) {
   const donutClicked = e.currentTarget.dataset.id;
   donuts[donutClicked].amount += 1;
 
-  renderDonuts();
+///////////////////////////////////////////////////////////////// GÖR KOD: till summa för "total" här 
+renderDonuts();
+}
+
+
+// Tar bort antal på munk
+function removeDonutAmount(e){
+  const donutClicked = e.currentTarget.dataset.id;
+
+  if(donuts[donutClicked].amount > 0){
+      donuts[donutClicked].amount -= 1; 
+   //////////////////////////////////////////GÖR KOD: Ta bort till "total" här
+  }
+      renderDonuts(); 
 }
 
 renderDonuts();
