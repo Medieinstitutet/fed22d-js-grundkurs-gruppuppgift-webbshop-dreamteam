@@ -52,7 +52,7 @@ const donuts = [
     amount: 0,
     image1: './images/vanilla-1.jpg',
     image2: './images/vanilla-2.jpg',
-    category: 'Övriga',
+    category: 'Vanilj',
   },
   {
     name: 'Jordgubbsmunk',
@@ -97,7 +97,7 @@ const donuts = [
     amount: 0,
     image1: './images/triple-chocolate-1.jpg',
     image2: 'images/triple-chocolate-2.jpg',
-    category: 'Chokladmunkar'
+    category: 'Choklad'
   },
   {
     name: 'Nougatmunk',
@@ -106,7 +106,7 @@ const donuts = [
     amount: 0,
     image1: './images/nougat-1.jpg',
     image2: './images/nougat-2.jpg',
-    category: 'Chokladmunkar'
+    category: 'Choklad'
   },
 ];
 

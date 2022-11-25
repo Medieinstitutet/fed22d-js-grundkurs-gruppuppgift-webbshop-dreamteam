@@ -219,6 +219,18 @@
   .nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
 	transform: rotate(-45deg);
   }
+
+  /*filter*/
+  .filter{
+	text-align-last: center;
+	background-color: #303030;
+    color: white;
+	}
+
+	.space {
+		margin: 1rem;
+	}
+  
  
   /*kontaktuppgifter*/
   #contact{
