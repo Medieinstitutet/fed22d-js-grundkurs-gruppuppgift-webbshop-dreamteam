@@ -68,6 +68,36 @@
 </section>
    <section class="contact">
       <div class="form-box">
+        <article>
+          <div>
+            <h2>Shopping Cart</h2>
+            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+          </div>
+
+          <div class="summa">
+            <div class="cart-item">
+              <label class="rabattkodLabel" for="rabatt">Rabattkod</label>
+              <input type="text" name="rabatt" id="rabattkod" />
+            </div>
+            <div class="cart-item">
+              <label>Kostnad</label>
+              <div class="cartvalue" id="cartCost">0</div>
+            </div>
+            <div class="cart-item">
+              <label>Extra kostnad</label>
+              <div class="cartvalue" id="cartExtraCost">0</div>
+            </div>
+            <div class="cart-item">
+              <label>Rabatt</label>
+              <div class="cartvalue" id="cartRabatt">0</div>
+            </div>
+            <div class="cart-item">
+              <label>Total kostnad</label>
+              <div class="cartvalue" id="cartTotal">0</div>
+            </div>
+            <input type="button" value="Fortsätt" />
+          </div>
+        </article>
         <form
           id="contactForm"
           class="contactForm"
@@ -253,6 +283,7 @@
           />
 
           <input type="reset" onclick="clearForm()" value="Reset form" />
+          <input type="button" value="Tillbaka till varukorgen" />
         </form>
       </div>
     </section>
