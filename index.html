@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gottfrids munkar</title>
+    <title>Gottfrids Munkar</title>
     <script src="https://kit.fontawesome.com/9ec5564a33.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="style.css">
@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <nav>
+    <nav id="home"> 
       <div class="navbar">
         <div class="container nav-container">
             <input class="checkbox" type="checkbox" name="" id="" />
@@ -31,28 +31,20 @@
             <i class="fa-solid fa-cart-shopping"></i>
             <div class="cart">0</i></div>
           </div>
+          <div class="sum">Total:</div>
+          <div class="sumofall">0</div>
           <div class="toggle">
             <button id="dark-mode" class="moon"><i class="fa-solid fa-moon"></i></button>
             <button id="light-mode" class="sun hide"><i class="fa-solid fa-sun"></i></i></button>
           </div>
           <div class="menu-items">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">about</a></li>
-            <li><a href="#">blogs</a></li>
-            <li><a href="#">contact</a></li>
+            <li><a href="#home">Hem</a></li>
+            <li><a href="#shopping-cart">Varukorg</a></li>
+            <li><a href="#contact">Kontakt</a></li>
           </div>
         </div>
       </div>
     </nav>
-    
-  <select class="filter">
-    <option selected disabled>Filtrera</option>
-    <option value="1" id="Order">A-Ö</option>
-    <option value="2" id="Price">Pris</option>
-    <option value="3" id="Rating">Betyg</option>
-    <option value="3" id="Catogori">Katogrier</option>
-  </select>
-  
     
 <section class="all-donuts">
   
@@ -66,7 +58,7 @@
 
     </div>
 </section>
-   <section class="contact">
+   <section id="shopping-cart" class="contact">
       <div class="form-box">
         <article>
           <div>
@@ -292,7 +284,23 @@
 
 
 
-
+<footer id="contact">
+  <section>
+    <h1>Kontaktinformation</h1>
+    <ul class="listofcontact">
+      <li>Adress:<br> Gustavslundsvägen 151 D, 167 51, Stockholm </li>
+      <li>Telefon: 08-442 95 00 </li>
+    </ul>
+  </section>
+  <section>
+    <h1>Öppen tider</h1>
+    <ul class="opentime">
+      <li>Vardagar: 07:00 - 17:00</li>
+      <li>Lördag: 09:00 - 15:00</li>
+      <li>Söndag: Stängt</li>
+    </ul>
+  </section>
+</footer>
 
 
 
