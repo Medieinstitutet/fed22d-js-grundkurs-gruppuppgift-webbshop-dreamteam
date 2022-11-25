@@ -159,9 +159,19 @@ function renderDonuts() {
   0
 
   );
-  printOrderedDonuts();
+  printOrdredDonuts();             
 
   document.querySelector('#cartSum').innerHTML = sum;
+}
+
+function printOrdredDonuts() {
+  document.querySelector('#cart').innerHTML = '';
+
+  for(let i = 0; i < donuts.length; i++) {
+    if (donuts[i].amount > 0) {
+      document.querySelector('#cart').innerHTML += `<p>${donuts[i].name}</p>`;
+    }
+  }
 }
 
 // Lägger till antal på munk
