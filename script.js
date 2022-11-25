@@ -164,6 +164,10 @@ function renderDonuts() {
   document.querySelector('#cartSum').innerHTML = sum;
 }
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 function printOrdredDonuts() {
   document.querySelector('#cart').innerHTML = '';
 
@@ -174,7 +178,10 @@ function printOrdredDonuts() {
   }
 }
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 // Lägger till antal på munk
 function updateDonutAmount(e) {
   const donutClicked = e.currentTarget.dataset.id;
