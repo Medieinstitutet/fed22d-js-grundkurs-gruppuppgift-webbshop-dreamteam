@@ -16,91 +16,105 @@ lightMode.addEventListener('click', () => {
 })
 
 
-//Array of dounts
+// munkarray filip
 const donuts = [
   {
     name: 'Chokladmunk med strössel',
     price: 20,
     rating: 4,
     amount: 0,
-    image1: 'images/chocolate-sprinkle-1.jpg',
-    image2: 'images/chocolate-sprinkle-2.jpg',
+    image1: './images/chocolate-sprinkle-1.jpg',
+    image2: './images/chocolate-sprinkle-2.jpg',
+    category: 'Choklad',
   },
   {
     name: 'Glaserad munk',
     price: 12,
     rating: 4,
     amount: 0,
-    image1: 'images/glazed-donut-1.jpg',
-    image2: 'images/glazed-donut-2.jpg',
+    image1: './images/glazed-donut-1.jpg',
+    image2: './images/glazed-donut-2.jpg',
+    category: 'Övriga',
   },
   {
     name: 'Chokladmunk',
     price: 15,
     rating: 5,
     amount: 0,
-    image1: 'images/chocolate-1.jpg',
-    image2: 'images/chocolate-2.jpg',
+    image1: './images/chocolate-1.jpg',
+    image2: './images/chocolate-2.jpg',
+    category: 'Choklad',
   },
   {
     name: 'Vaniljmunk',
     price: 15,
     rating: 5,
     amount: 0,
-    image1: 'images/vanilla-1.jpg',
-    image2: 'images/vanilla-2.jpg',
+    image1: './images/vanilla-1.jpg',
+    image2: './images/vanilla-2.jpg',
+    category: 'Övriga',
   },
   {
     name: 'Jordgubbsmunk',
     price: 15,
     rating: 4,
     amount: 0,
-    image1: 'images/strawberry-1.jpg',
-    image2: 'images/strawberry-2.jpg',
+    image1: './images/strawberry-1.jpg',
+    image2: './images/strawberry-2.jpg',
+    category: 'Bär och frukt',
   },
   {
     name: 'Äppelmunk',
     price: 17,
     rating: 4,
     amount: 0,
-    image1: 'images/apple-1.jpg',
-    image2: 'images/apple-2.jpg',
+    image1: './images/apple-1.jpg',
+    image2: './images/apple-2.jpg',
+    category: 'Bär och frukt',
   },
   {
     name: 'Citronmunk',
     price: 17,
     rating: 2,
     amount: 0,
-    image1: 'images/lemon-1.jpg',
-    image2: 'images/lemon-2.jpg',
+    image1: './images/lemon-1.jpg',
+    image2: './images/lemon-2.jpg',
+    category: 'Bär och frukt',
   },
   {
     name: 'Hallonmunk',
     price: 18,
     rating: 5,
     amount: 0,
-    image1: 'images/raspberry-1.jpg',
-    image2: 'images/raspberry-2.jpg',
+    image1: './images/raspberry-1.jpg',
+    image2: './images/raspberry-2.jpg',
+    category: 'Bär och frukt'
   },
   {
     name: 'Trippel chokladmunk',
     price: 20,
     rating: 4,
     amount: 0,
-    image1: 'images/triple-chocolate-1.jpg',
+    image1: './images/triple-chocolate-1.jpg',
     image2: 'images/triple-chocolate-2.jpg',
+    category: 'Chokladmunkar'
   },
   {
     name: 'Nougatmunk',
     price: 22,
     rating: 3,
     amount: 0,
-    image1: 'images/nougat-1.jpg',
-    image2: 'images/nougat-2.jpg',
+    image1: './images/nougat-1.jpg',
+    image2: './images/nougat-2.jpg',
+    category: 'Chokladmunkar'
   },
 ];
 
+// sortera munkar mostapha?
 
+
+
+// munk render filip
 const donutContainer = document.querySelector('#allDonuts');
 
 function renderDonuts() {
@@ -110,7 +124,7 @@ function renderDonuts() {
     donutContainer.innerHTML += `
         <article class="donut">
           <h2>${donuts[i].name}</h2><br>
-          <div class="donutImgs">
+          <div class="myImages">
             <img src="${donuts[i].image1}" width="300" height="300" alt="" id="donutImage1">
             <img src="${donuts[i].image2}" width="300" height="300" alt="" id="donutImage2">                                 
           </div>
@@ -126,7 +140,6 @@ function renderDonuts() {
           Antal köpta: <span class="amount">${donuts[i].amount}</span><br>
           <button class="remove" data-id="${i}">-</button>
           <button class="add" data-id="${i}">+</button>
-          
         </article>
     `;
   }
@@ -137,6 +150,7 @@ function renderDonuts() {
     btn.addEventListener('click', updateDonutAmount);
   });
 
+
   const sum = donuts.reduce(
   (previousValue, donut) => {
     return (donut.amount * donut.price) + previousValue;
@@ -145,12 +159,12 @@ function renderDonuts() {
   0
 
   );
-  printOrdredDonuts();
+  printOrderedDonuts();
 
   document.querySelector('#cartSum').innerHTML = sum;
 }
 
-function printOrdredDonuts() {
+function printOrderedDonuts() {
   document.querySelector('#cart').innerHTML = '';
 
   for(let i = 0; i < donuts.length; i++) {
@@ -171,24 +185,8 @@ renderDonuts();
 
 
 
-// munk slideshow
-var donutImgsIndex = 1;
-showDivs(ImgsIndex);
+// munk slideshow 
 
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
-
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("donutImgs");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  x[slideIndex-1].style.display = "block";  
-}
 // ***************Simon********************
 // Sparar input information
       const submitButton = document.getElementById("submit");
