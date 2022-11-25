@@ -159,7 +159,7 @@ function renderDonuts() {
   0
 
   );
-  // printOrderedDonuts();              ????????????????? ger error
+ printOrderedDonuts();             
 
   document.querySelector('#cartSum').innerHTML = sum;
 }
