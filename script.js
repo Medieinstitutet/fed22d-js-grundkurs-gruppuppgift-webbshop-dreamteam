@@ -136,15 +136,20 @@ function renderDonuts() {
               <span class="material-symbols-outlined">></span>
             </button>
           </div>
-          <span class="price">${donuts[i].price} kr</span><br>
+          <span class="price">Styckpris: ${donuts[i].price} kr</span><br>
           Antal köpta: <span class="amount">${donuts[i].amount}</span><br>
+          kostnad: <span class="amount">${donuts[i].price * donuts[i].amount}</span><br>
           <button class="remove" data-id="${i}">-</button>
+          <input class="CustomInput" type="number" value="0" data-id="${i}">
           <button class="add" data-id="${i}">+</button>
         </article>
     `;
   }
  document.querySelectorAll('.add').forEach((btn) => {
     btn.addEventListener('click', updateDonutAmount);
+  });
+  document.querySelectorAll('.CustomInput').forEach((input) => {
+    input.addEventListener('text', customDonutAmount);
   });
   document.querySelectorAll('.remove').forEach((btn) => {
     btn.addEventListener('click', removeDonutAmount);
@@ -173,6 +178,17 @@ function printOrdredDonuts() {
     }
   }
 }
+
+ // Lägger till antal på munk - custom
+ function customDonutAmount(e) {
+ const donutClicked = e.currentTarget.dataset.id;
+  donuts[donutClicked].click;
+
+
+renderDonuts();
+ }
+
+
 
 // Lägger till antal på munk
 function updateDonutAmount(e) {
