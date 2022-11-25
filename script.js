@@ -159,7 +159,7 @@ function renderDonuts() {
   0
 
   );
- printOrderedDonuts();             
+  printOrdredDonuts();             
 
   document.querySelector('#cartSum').innerHTML = sum;
 }
