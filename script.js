@@ -96,7 +96,7 @@ const donuts = [
     rating: 4,
     amount: 0,
     image1: './images/triple-chocolate-1.jpg',
-    image2: 'images/triple-chocolate-2.jpg',
+    image2: './images/triple-chocolate-2.jpg',
     category: 'Choklad'
   },
   {
@@ -238,6 +238,8 @@ renderDonuts();
 
       ///beställningsknappen///////////
 
+
+    
       // Förnamn
       firstName.addEventListener("change", checkfName);
       let checkfNameInput = false;
@@ -251,6 +253,8 @@ renderDonuts();
           checkfNameInput = true;
         } else {
           errorMessage.innerHTML = "Skriv ditt förnamn med bokstäver";
+          document.getElementById("errorfname").style.color = "red";  ////////////////////////////////////// Hur gör man för att lägga till alla enkelt?
+          document.getElementById("errorfname").style.border = "solid red";
           errorMessage.removeAttribute("hidden");
           checkfNameInput = false;
         }
