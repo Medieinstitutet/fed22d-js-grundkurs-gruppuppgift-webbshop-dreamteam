@@ -25,7 +25,7 @@ const donuts = [
     amount: 0,
     image1: './images/chocolate-sprinkle-1.jpg',
     image2: './images/chocolate-sprinkle-2.jpg',
-    category: 'Choklad',
+    category: ['Choklad']
   },
   {
     name: 'Glaserad munk',
@@ -34,7 +34,7 @@ const donuts = [
     amount: 0,
     image1: './images/glazed-donut-1.jpg',
     image2: './images/glazed-donut-2.jpg',
-    category: 'Övriga',
+    category: ['Övriga']
   },
   {
     name: 'Chokladmunk',
@@ -43,7 +43,7 @@ const donuts = [
     amount: 0,
     image1: './images/chocolate-1.jpg',
     image2: './images/chocolate-2.jpg',
-    category: 'Choklad',
+    category: ['Choklad']
   },
   {
     name: 'Vaniljmunk',
@@ -52,7 +52,7 @@ const donuts = [
     amount: 0,
     image1: './images/vanilla-1.jpg',
     image2: './images/vanilla-2.jpg',
-    category: 'Vanilj',
+    category: ['Vanilj']
   },
   {
     name: 'Jordgubbsmunk',
@@ -61,7 +61,7 @@ const donuts = [
     amount: 0,
     image1: './images/strawberry-1.jpg',
     image2: './images/strawberry-2.jpg',
-    category: 'Bär och frukt',
+    category: ['Bär', 'frukt']
   },
   {
     name: 'Äppelmunk',
@@ -70,7 +70,7 @@ const donuts = [
     amount: 0,
     image1: './images/apple-1.jpg',
     image2: './images/apple-2.jpg',
-    category: 'Bär och frukt',
+    category: ['Bär', 'frukt']
   },
   {
     name: 'Citronmunk',
@@ -79,7 +79,7 @@ const donuts = [
     amount: 0,
     image1: './images/lemon-1.jpg',
     image2: './images/lemon-2.jpg',
-    category: 'Bär och frukt',
+    category: ['Bär', 'frukt']
   },
   {
     name: 'Hallonmunk',
@@ -88,7 +88,7 @@ const donuts = [
     amount: 0,
     image1: './images/raspberry-1.jpg',
     image2: './images/raspberry-2.jpg',
-    category: 'Bär och frukt'
+    category: ['Bär', 'frukt']
   },
   {
     name: 'Trippel chokladmunk',
@@ -97,7 +97,7 @@ const donuts = [
     amount: 0,
     image1: './images/triple-chocolate-1.jpg',
     image2: './images/triple-chocolate-2.jpg',
-    category: 'Choklad'
+    category: ['Choklad']
   },
   {
     name: 'Nougatmunk',
@@ -106,7 +106,7 @@ const donuts = [
     amount: 0,
     image1: './images/nougat-1.jpg',
     image2: './images/nougat-2.jpg',
-    category: 'Choklad'
+    category: ['Choklad']
   },
 ];
 
