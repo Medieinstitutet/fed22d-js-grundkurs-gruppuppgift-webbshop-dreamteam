@@ -319,17 +319,7 @@
       font-size: 1.2rem;
       line-height: 1.4;
     }
-    .error {
-      display: block;
-      margin: auto;
-      font-size: 1.2rem;
-      line-height: 1.4;
-      color: red;
-    }
-
-    input.error {
-      background-color: #ffdddd;
-    }
+    
 
     #submit {
       margin-top: 10px;
