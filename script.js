@@ -117,105 +117,141 @@ const donuts = [
 // munk render filip
 const donutContainer = document.querySelector('#allDonuts');
 
-function renderDonuts() {
-  donutContainer.innerHTML = '';
 
+
+  
   for (let i = 0; i < donuts.length; i++) {
     donutContainer.innerHTML += `
         <article class="donut">
           <h2>${donuts[i].name}</h2><br>
-          <div class="myImages">
-            <img src="${donuts[i].image1}" width="300" height="300" alt="" id="donutImage1">
-            <img src="${donuts[i].image2}" width="300" height="300" alt="" id="donutImage2">                                 
-          </div>
-          <div class="controls">
+          <section class="donutCardContainer">
+          <div class="donutCardImgContainer">
+         
+         
+      <div class="myImages">
+            <img src="${donuts[i].image1}" width="300" height="300" alt="" class="donutImage1" id="donutImage1">
+            <img src="${donuts[i].image2}" width="300" height="300" alt="" class="donutImage2" id="donutImage2">                                 
+    </div>
+      <div class="controls">
             <button class="left" id="prevImg">
              <span class="material-symbols-outlined"><</span>
             </button>
             <button class="right" id="nextImg">
               <span class="material-symbols-outlined">></span>
             </button>
-          </div>
+    </div>
+      <div class="donutContainerPrice">
           <span class="price">Styckpris: ${donuts[i].price} kr</span><br>
           Antal köpta: <span class="amount">${donuts[i].amount}</span><br>
           kostnad: <span class="amount">${donuts[i].price * donuts[i].amount}</span><br>
-          <button class="remove" data-id="${i}">-</button>
-          <input class="CustomInput" type="number" value="0" data-id="${i}">
-          <button class="add" data-id="${i}">+</button>
+    </div>
+      <div class="donutContainerInput">
+          <button class="remove" data-id="${i}" data-operator="minus">-</button>
+          <input class="CustomInput" type="number" value="0" data-id="${i}" data-operator="amount">
+          <button class="add" data-id="${i}" data-operator="plus">+</button>
+     </div>
+          </section)
         </article>
-    `;
+    `};
+
+ 
+
+
+
+
+
+    
+//  document.querySelectorAll('.add').forEach((btn) => {
+//     btn.addEventListener('click', updateDonutAmount);
+//   });
+//   document.querySelectorAll('.CustomInput').forEach((input) => {
+//     input.addEventListener('text', customDonutAmount);
+//   });
+//   document.querySelectorAll('.remove').forEach((btn) => {
+//     btn.addEventListener('click', removeDonutAmount);
+//   });
+
+
+//   const sum = donuts.reduce(
+//   (previousValue, donut) => {
+//     return (donut.amount * donut.price) + previousValue;
+//   },
+
+//   0
+
+//   );
+//   printOrdredDonuts();             
+
+//   document.querySelector('.cartName').innerHTML = sum;
+
+
+// function printOrdredDonuts() {
+//   document.querySelector('.cartTotal').innerHTML = '';
+
+//   for(let i = 0; i < donuts.length; i++) {
+//     if (donuts[i].amount > 0) {
+//       document.querySelector('.cartTotal').innerHTML += `<p>${donuts[i].name}</p>`;
+//     }
+//   }
+// }
+
+//  // Lägger till antal på munk - custom
+//  function customDonutAmount(e) {
+//  const donutClicked = e.currentTarget.dataset.id;
+//   donuts[donutClicked].click;
+
+
+// renderDonuts();
+//  }
+
+
+ const prevImageBtn = document.querySelectorAll('#prevImg');        //Har adderat två knappar per munk i HTML ovanför och kallat på dessa.
+    const nextImageBtn = document.querySelectorAll('#nextImg');
+
+    for (let i = 0; i < prevImageBtn.length; i++){                      //Loopar igenom knapparna på alla munkar
+      prevImageBtn[i].addEventListener('click', swapImages)           //adventlisner klick på backåtknappen som triggar funktionen nedan
+      nextImageBtn[i].addEventListener('click', swapImages)           //adventlisner klick på framåtknappen som triggar funktionen nedan 
   }
- document.querySelectorAll('.add').forEach((btn) => {
-    btn.addEventListener('click', updateDonutAmount);
-  });
-  document.querySelectorAll('.CustomInput').forEach((input) => {
-    input.addEventListener('text', customDonutAmount);
-  });
-  document.querySelectorAll('.remove').forEach((btn) => {
-    btn.addEventListener('click', removeDonutAmount);
-  });
+  function swapImages(e){
+    const donutcardImg1Slideshow = e.currentTarget.parentElement.parentElement.querySelector('#donutImage1');         //Hämtat bild1 
+    const donutCardImg2Slideshow = e.currentTarget.parentElement.parentElement.querySelector('#donutImage2');         //Hämtat bild2
 
+    const firstDonut = donutcardImg1Slideshow.getAttribute('src');                  //Hämtar urlen till bild1
+    const secondDonut = donutCardImg2Slideshow.getAttribute('src');                 //Hämtar urlen till bild2
 
-  const sum = donuts.reduce(
-  (previousValue, donut) => {
-    return (donut.amount * donut.price) + previousValue;
-  },
-
-  0
-
-  );
-  printOrdredDonuts();             
-
-  document.querySelector('.cartName').innerHTML = sum;
-}
-
-function printOrdredDonuts() {
-  document.querySelector('.cartTotal').innerHTML = '';
-
-  for(let i = 0; i < donuts.length; i++) {
-    if (donuts[i].amount > 0) {
-      document.querySelector('.cartTotal').innerHTML += `<p>${donuts[i].name}</p>`;
-    }
-  }
-}
-
- // Lägger till antal på munk - custom
- function customDonutAmount(e) {
- const donutClicked = e.currentTarget.dataset.id;
-  donuts[donutClicked].click;
-
-
-renderDonuts();
- }
+    donutcardImg1Slideshow.setAttribute('src', secondDonut);                        //Första munken byts till andra
+    donutCardImg2Slideshow.setAttribute('src', firstDonut);                         //Andra munken byts till första
+};
 
 
 
-// Lägger till antal på munk
-function updateDonutAmount(e) {
-  const donutClicked = e.currentTarget.dataset.id;
-  donuts[donutClicked].amount += 1;
 
-///////////////////////////////////////////////////////////////// GÖR KOD: till summa för "total" här 
-renderDonuts();
-}
+// // Lägger till antal på munk
+// function updateDonutAmount(e) {
+//   const donutClicked = e.currentTarget.dataset.id;
+//   donuts[donutClicked].amount += 1;
 
-
-// Tar bort antal på munk
-function removeDonutAmount(e){
-  const donutClicked = e.currentTarget.dataset.id;
-
-  if(donuts[donutClicked].amount > 0){
-      donuts[donutClicked].amount -= 1; 
-   //////////////////////////////////////////GÖR KOD: Ta bort till "total" här
-  }
-      renderDonuts(); 
-}
-
-renderDonuts();
+// ///////////////////////////////////////////////////////////////// GÖR KOD: till summa för "total" här 
+// renderDonuts();
+// }
 
 
+// // Tar bort antal på munk
+// function removeDonutAmount(e){
+//   const donutClicked = e.currentTarget.dataset.id;
 
-// munk slideshow 
+//   if(donuts[donutClicked].amount > 0){
+//       donuts[donutClicked].amount -= 1; 
+//    //////////////////////////////////////////GÖR KOD: Ta bort till "total" här
+//   }
+//       renderDonuts(); 
+// }
+
+// renderDonuts();
+
+
+
+
 
 // ***************Simon********************
 // Sparar input information
