@@ -61,7 +61,7 @@ const donuts = [
     amount: 0,
     image1: './images/strawberry-1.jpg',
     image2: './images/strawberry-2.jpg',
-    category: ['Bär', 'frukt']
+    category: ['Bär och frukt']
   },
   {
     name: 'Äppelmunk',
@@ -70,7 +70,7 @@ const donuts = [
     amount: 0,
     image1: './images/apple-1.jpg',
     image2: './images/apple-2.jpg',
-    category: ['Bär', 'frukt']
+    category: ['Bär och frukt']
   },
   {
     name: 'Citronmunk',
@@ -79,7 +79,7 @@ const donuts = [
     amount: 0,
     image1: './images/lemon-1.jpg',
     image2: './images/lemon-2.jpg',
-    category: ['Bär', 'frukt']
+    category: ['Bär och frukt']
   },
   {
     name: 'Hallonmunk',
@@ -88,7 +88,7 @@ const donuts = [
     amount: 0,
     image1: './images/raspberry-1.jpg',
     image2: './images/raspberry-2.jpg',
-    category: ['Bär', 'frukt']
+    category: ['Bär och frukt']
   },
   {
     name: 'Trippel chokladmunk',
@@ -110,13 +110,26 @@ const donuts = [
   },
 ];
 
-// sortera munkar mostapha?
 
 
 
 // munk render filip
 const donutContainer = document.querySelector('#allDonuts');
+const categoryFilterRadios = document.querySelectorAll('[name="categoryFilter"]');
 
+//kopia av const dountas 
+let filteredDonuts = [...donuts];
+
+// vet inte hur jag ska få till det här
+/*
+function renderdonuts() {
+  donutContainer.innerHTML = '';
+}
+
+filteredDonuts.foreach((donut) => {
+   donutContainer.innerHTML += ` 
+})
+*/
 
 
   
@@ -140,6 +153,7 @@ const donutContainer = document.querySelector('#allDonuts');
               <span class="material-symbols-outlined">></span>
             </button>
     </div>
+    
       <div class="donutContainerPrice">
           <span class="price">Styckpris: ${donuts[i].price} kr</span><br>
           Antal köpta: <span class="amount">${donuts[i].amount}</span><br>
@@ -154,9 +168,25 @@ const donutContainer = document.querySelector('#allDonuts');
         </article>
     `};
 
- 
 
+//Visar vilken donut som kommer att synas     
+function updateCategoryFilter(e) {
+  //Hämta värdet på vald radio button
+  const selectedCategory = e.currentTarget.value;
+  //loopar igenom alla donuts
+  filteredDonuts = donuts.filter((donut) => {
+  if (donut.category.indexOf(selectedCategory) > -1) {
+    return true;
+  }
+  return false;
+  });
+} 
 
+//renderDonuts() ska var här enligt videon. 
+
+categoryFilterRadios.forEach((radioButton) => {
+  radioButton.addEventListener('click', updateCategoryFilter);
+});
 
 
 
