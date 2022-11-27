@@ -190,7 +190,22 @@ function renderDonuts() {
       btn.addEventListener('click', removeDonutAmount);
     });
   
-  
+
+    //Antal munkar ??
+    const donutLengt =donuts.reduce(
+      (previousValue, donut) => {
+        return (donut.amount * donut.price) + previousValue;
+      },
+    
+      0
+    
+      );
+
+
+
+
+
+  // Summan av alla munkar (Denna behöver ändras när vi ska lägga till extra kostnader)
     const sum = donuts.reduce(
     (previousValue, donut) => {
       return (donut.amount * donut.price) + previousValue;
@@ -204,12 +219,14 @@ function renderDonuts() {
     document.querySelector('.cartTotal').innerHTML = sum;
     document.querySelector('.totalAmount').innerHTML = sum;
   }
+
+  // Utskrift i Varukorg
   function printOrdredDonuts() {
     document.querySelector('.cartName').innerHTML = '';
   
     for(let i = 0; i < donuts.length; i++) {
       if (donuts[i].amount > 0) {
-        document.querySelector('.cartName').innerHTML += `<p>${donuts[i].name}</p>`;
+        document.querySelector('.cartName').innerHTML += `<p>Namn: ${donuts[i].name} Antal: ${donuts[i].amount} Kostnad: ${donuts[i].amount * donuts[i].price}</p>`;
         
       }
     }
