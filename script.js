@@ -191,20 +191,7 @@ function renderDonuts() {
     });
   
 
-    //Antal munkar ??
-    const donutLengt =donuts.reduce(
-      (previousValue, donut) => {
-        return (donut.amount * donut.price) + previousValue;
-      },
-    
-      0
-    
-      );
-
-
-
-
-
+  
   // Summan av alla munkar (Denna behöver ändras när vi ska lägga till extra kostnader)
     const sum = donuts.reduce(
     (previousValue, donut) => {
@@ -232,6 +219,10 @@ function renderDonuts() {
     }
   }
   
+  
+
+
+
    // Lägger till antal på munk - custom  -- FUNKAR EJ (än)
    function customDonutAmount(e) {
    const donutClicked = e.currentTarget.dataset.id;
