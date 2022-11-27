@@ -201,19 +201,21 @@ function renderDonuts() {
     );
     printOrdredDonuts();             
   
-    document.querySelector('.cartName').innerHTML = sum;
+    document.querySelector('.cartTotal').innerHTML = sum;
+    document.querySelector('.totalAmount').innerHTML = sum;
   }
   function printOrdredDonuts() {
-    document.querySelector('.cartTotal').innerHTML = '';
+    document.querySelector('.cartName').innerHTML = '';
   
     for(let i = 0; i < donuts.length; i++) {
       if (donuts[i].amount > 0) {
-        document.querySelector('.cartTotal').innerHTML += `<p>${donuts[i].name}</p>`;
+        document.querySelector('.cartName').innerHTML += `<p>${donuts[i].name}</p>`;
+        
       }
     }
   }
   
-   // Lägger till antal på munk - custom
+   // Lägger till antal på munk - custom  -- FUNKAR EJ (än)
    function customDonutAmount(e) {
    const donutClicked = e.currentTarget.dataset.id;
     donuts[donutClicked].click;
