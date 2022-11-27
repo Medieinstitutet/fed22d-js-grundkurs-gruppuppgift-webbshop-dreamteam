@@ -226,7 +226,7 @@ function renderDonuts() {
   
     for(let i = 0; i < donuts.length; i++) {
       if (donuts[i].amount > 0) {
-        document.querySelector('.cartName').innerHTML += `<p>Namn: ${donuts[i].name} Antal: ${donuts[i].amount} Kostnad: ${donuts[i].amount * donuts[i].price}</p>`;
+        document.querySelector('.cartName').innerHTML += `<p>Produkt: ${donuts[i].name} Antal: ${donuts[i].amount} Kostnad: ${donuts[i].amount * donuts[i].price}</p>`;
         
       }
     }
