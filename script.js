@@ -25,7 +25,7 @@ const donuts = [
     amount: 0,
     image1: './images/chocolate-sprinkle-1.jpg',
     image2: './images/chocolate-sprinkle-2.jpg',
-    category: ['Choklad']
+    category: 'Choklad',
   },
   {
     name: 'Glaserad munk',
@@ -34,7 +34,7 @@ const donuts = [
     amount: 0,
     image1: './images/glazed-donut-1.jpg',
     image2: './images/glazed-donut-2.jpg',
-    category: ['Övriga']
+    category: 'Övriga',
   },
   {
     name: 'Chokladmunk',
@@ -43,7 +43,7 @@ const donuts = [
     amount: 0,
     image1: './images/chocolate-1.jpg',
     image2: './images/chocolate-2.jpg',
-    category: ['Choklad']
+    category: 'Choklad',
   },
   {
     name: 'Vaniljmunk',
@@ -52,7 +52,7 @@ const donuts = [
     amount: 0,
     image1: './images/vanilla-1.jpg',
     image2: './images/vanilla-2.jpg',
-    category: ['Vanilj']
+    category: 'Vanilj',
   },
   {
     name: 'Jordgubbsmunk',
@@ -61,7 +61,7 @@ const donuts = [
     amount: 0,
     image1: './images/strawberry-1.jpg',
     image2: './images/strawberry-2.jpg',
-    category: ['Bär och frukt']
+    category: 'Bär och frukt',
   },
   {
     name: 'Äppelmunk',
@@ -70,7 +70,7 @@ const donuts = [
     amount: 0,
     image1: './images/apple-1.jpg',
     image2: './images/apple-2.jpg',
-    category: ['Bär och frukt']
+    category: 'Bär och frukt',
   },
   {
     name: 'Citronmunk',
@@ -79,7 +79,7 @@ const donuts = [
     amount: 0,
     image1: './images/lemon-1.jpg',
     image2: './images/lemon-2.jpg',
-    category: ['Bär och frukt']
+    category: 'Bär och frukt',
   },
   {
     name: 'Hallonmunk',
@@ -88,7 +88,7 @@ const donuts = [
     amount: 0,
     image1: './images/raspberry-1.jpg',
     image2: './images/raspberry-2.jpg',
-    category: ['Bär och frukt']
+    category: 'Bär och frukt'
   },
   {
     name: 'Trippel chokladmunk',
@@ -97,7 +97,7 @@ const donuts = [
     amount: 0,
     image1: './images/triple-chocolate-1.jpg',
     image2: './images/triple-chocolate-2.jpg',
-    category: ['Choklad']
+    category: 'Choklad'
   },
   {
     name: 'Nougatmunk',
@@ -106,32 +106,21 @@ const donuts = [
     amount: 0,
     image1: './images/nougat-1.jpg',
     image2: './images/nougat-2.jpg',
-    category: ['Choklad']
+    category: 'Choklad'
   },
 ];
 
+// sortera munkar mostapha?
 
 
 
 // munk render filip
 const donutContainer = document.querySelector('#allDonuts');
-const categoryFilterRadios = document.querySelectorAll('[name="categoryFilter"]');
+const basketDonuts = document.querySelector('#basketDonuts') 
+const totalPriceBasket = document.querySelector('#totalAmountBasket');
 
-//kopia av const dountas 
-let filteredDonuts = [...donuts];
-
-// vet inte hur jag ska få till det här
-/*
-function renderdonuts() {
+function renderDonuts() {
   donutContainer.innerHTML = '';
-}
-
-filteredDonuts.foreach((donut) => {
-   donutContainer.innerHTML += ` 
-})
-*/
-
-
   
   for (let i = 0; i < donuts.length; i++) {
     donutContainer.innerHTML += `
@@ -153,11 +142,16 @@ filteredDonuts.foreach((donut) => {
               <span class="material-symbols-outlined">></span>
             </button>
     </div>
-    
       <div class="donutContainerPrice">
           <span class="price">Styckpris: ${donuts[i].price} kr</span><br>
           Antal köpta: <span class="amount">${donuts[i].amount}</span><br>
           kostnad: <span class="amount">${donuts[i].price * donuts[i].amount}</span><br>
+          <span 
+
+
+
+
+
     </div>
       <div class="donutContainerInput">
           <button class="remove" data-id="${i}" data-operator="minus">-</button>
@@ -168,119 +162,91 @@ filteredDonuts.foreach((donut) => {
         </article>
     `};
 
-
-//Visar vilken donut som kommer att synas     
-function updateCategoryFilter(e) {
-  //Hämta värdet på vald radio button
-  const selectedCategory = e.currentTarget.value;
-  //loopar igenom alla donuts
-  filteredDonuts = donuts.filter((donut) => {
-  if (donut.category.indexOf(selectedCategory) > -1) {
-    return true;
-  }
-  return false;
-  });
-} 
-
-//renderDonuts() ska var här enligt videon. 
-
-categoryFilterRadios.forEach((radioButton) => {
-  radioButton.addEventListener('click', updateCategoryFilter);
-});
-
-
-
-    
-//  document.querySelectorAll('.add').forEach((btn) => {
-//     btn.addEventListener('click', updateDonutAmount);
-//   });
-//   document.querySelectorAll('.CustomInput').forEach((input) => {
-//     input.addEventListener('text', customDonutAmount);
-//   });
-//   document.querySelectorAll('.remove').forEach((btn) => {
-//     btn.addEventListener('click', removeDonutAmount);
-//   });
-
-
-//   const sum = donuts.reduce(
-//   (previousValue, donut) => {
-//     return (donut.amount * donut.price) + previousValue;
-//   },
-
-//   0
-
-//   );
-//   printOrdredDonuts();             
-
-//   document.querySelector('.cartName').innerHTML = sum;
-
-
-// function printOrdredDonuts() {
-//   document.querySelector('.cartTotal').innerHTML = '';
-
-//   for(let i = 0; i < donuts.length; i++) {
-//     if (donuts[i].amount > 0) {
-//       document.querySelector('.cartTotal').innerHTML += `<p>${donuts[i].name}</p>`;
-//     }
-//   }
-// }
-
-//  // Lägger till antal på munk - custom
-//  function customDonutAmount(e) {
-//  const donutClicked = e.currentTarget.dataset.id;
-//   donuts[donutClicked].click;
-
-
-// renderDonuts();
-//  }
-
-
- const prevImageBtn = document.querySelectorAll('#prevImg');        //Har adderat två knappar per munk i HTML ovanför och kallat på dessa.
+    const prevImageBtn = document.querySelectorAll('#prevImg');       
     const nextImageBtn = document.querySelectorAll('#nextImg');
 
-    for (let i = 0; i < prevImageBtn.length; i++){                      //Loopar igenom knapparna på alla munkar
-      prevImageBtn[i].addEventListener('click', swapImages)           //adventlisner klick på backåtknappen som triggar funktionen nedan
-      nextImageBtn[i].addEventListener('click', swapImages)           //adventlisner klick på framåtknappen som triggar funktionen nedan 
+    for (let i = 0; i < prevImageBtn.length; i++){                     
+      prevImageBtn[i].addEventListener('click', swapImages)           
+      nextImageBtn[i].addEventListener('click', swapImages)           
   }
   function swapImages(e){
-    const donutcardImg1Slideshow = e.currentTarget.parentElement.parentElement.querySelector('#donutImage1');         //Hämtat bild1 
-    const donutCardImg2Slideshow = e.currentTarget.parentElement.parentElement.querySelector('#donutImage2');         //Hämtat bild2
+    const donutcardImg1Slideshow = e.currentTarget.parentElement.parentElement.querySelector('#donutImage1');         
+    const donutCardImg2Slideshow = e.currentTarget.parentElement.parentElement.querySelector('#donutImage2');         
 
-    const firstDonut = donutcardImg1Slideshow.getAttribute('src');                  //Hämtar urlen till bild1
-    const secondDonut = donutCardImg2Slideshow.getAttribute('src');                 //Hämtar urlen till bild2
+    const firstDonut = donutcardImg1Slideshow.getAttribute('src');                  
+    const secondDonut = donutCardImg2Slideshow.getAttribute('src');                 
 
-    donutcardImg1Slideshow.setAttribute('src', secondDonut);                        //Första munken byts till andra
-    donutCardImg2Slideshow.setAttribute('src', firstDonut);                         //Andra munken byts till första
+    donutcardImg1Slideshow.setAttribute('src', secondDonut);                        
+    donutCardImg2Slideshow.setAttribute('src', firstDonut);                         
 };
 
-
-
-
-// // Lägger till antal på munk
-// function updateDonutAmount(e) {
-//   const donutClicked = e.currentTarget.dataset.id;
-//   donuts[donutClicked].amount += 1;
-
-// ///////////////////////////////////////////////////////////////// GÖR KOD: till summa för "total" här 
-// renderDonuts();
-// }
-
-
-// // Tar bort antal på munk
-// function removeDonutAmount(e){
-//   const donutClicked = e.currentTarget.dataset.id;
-
-//   if(donuts[donutClicked].amount > 0){
-//       donuts[donutClicked].amount -= 1; 
-//    //////////////////////////////////////////GÖR KOD: Ta bort till "total" här
-//   }
-//       renderDonuts(); 
-// }
-
-// renderDonuts();
-
-
-
+    document.querySelectorAll('.add').forEach((btn) => {
+      btn.addEventListener('click', updateDonutAmount);
+    });
+    document.querySelectorAll('.CustomInput').forEach((input) => {
+      input.addEventListener('text', customDonutAmount);
+    });
+    document.querySelectorAll('.remove').forEach((btn) => {
+      btn.addEventListener('click', removeDonutAmount);
+    });
+  
+  
+    const sum = donuts.reduce(
+    (previousValue, donut) => {
+      return (donut.amount * donut.price) + previousValue;
+    },
+  
+    0
+  
+    );
+    printOrdredDonuts();             
+  
+    document.querySelector('.cartName').innerHTML = sum;
+  }
+  function printOrdredDonuts() {
+    document.querySelector('.cartTotal').innerHTML = '';
+  
+    for(let i = 0; i < donuts.length; i++) {
+      if (donuts[i].amount > 0) {
+        document.querySelector('.cartTotal').innerHTML += `<p>${donuts[i].name}</p>`;
+      }
+    }
+  }
+  
+   // Lägger till antal på munk - custom
+   function customDonutAmount(e) {
+   const donutClicked = e.currentTarget.dataset.id;
+    donuts[donutClicked].click;
+  
+  
+  renderDonuts();
+   }
+  
+  
+  
+  // Lägger till antal på munk
+  function updateDonutAmount(e) {
+    const donutClicked = e.currentTarget.dataset.id;
+    donuts[donutClicked].amount += 1;
+  
+  
+  renderDonuts();
+  }
+  
+  
+  // Tar bort antal på munk
+  function removeDonutAmount(e){
+    const donutClicked = e.currentTarget.dataset.id;
+  
+    if(donuts[donutClicked].amount > 0){
+        donuts[donutClicked].amount -= 1; 
+     
+    }
+        renderDonuts(); 
+  }
+  
+  renderDonuts();
+    
 
 
 // ***************Simon********************
