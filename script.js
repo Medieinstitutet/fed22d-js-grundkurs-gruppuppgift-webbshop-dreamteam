@@ -146,7 +146,7 @@ function renderDonuts() {
           <span class="price">Styckpris: ${donuts[i].price} kr</span><br>
           Antal köpta: <span class="amount">${donuts[i].amount}</span><br>
           kostnad: <span class="amount">${donuts[i].price * donuts[i].amount}</span><br>
-          <span 
+          Betyg: <span class="rating">${donuts[i].rating}/5</span> 
 
 
 
@@ -154,9 +154,9 @@ function renderDonuts() {
 
     </div>
       <div class="donutContainerInput">
-          <button class="remove" data-id="${i}" data-operator="minus">-</button>
-          <input class="CustomInput" type="number" value="0" data-id="${i}" data-operator="amount">
-          <button class="add" data-id="${i}" data-operator="plus">+</button>
+          <button class="remove" data-id="${i}" >-</button>
+          <input class="CustomInput" type="number" value="0" data-id="${i}" >
+          <button class="add" data-id="${i}">+</button>
      </div>
           </section)
         </article>
