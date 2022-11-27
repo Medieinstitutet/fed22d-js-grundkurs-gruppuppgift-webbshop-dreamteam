@@ -127,8 +127,8 @@ function renderDonuts() {
         <article class="donut">
           <h2>${donuts[i].name}</h2><br>
           <section class="donutCardContainer">
-          <div class="donutCardImgContainer">
-         
+<div class="donutCardImgContainer">
+<div class="controlsImgSlideshow" id="controlsImgSlideshow">
          
       <div class="myImages">
             <img src="${donuts[i].image1}" width="300" height="300" alt="" class="donutImage1" id="donutImage1">
@@ -142,26 +142,24 @@ function renderDonuts() {
               <span class="material-symbols-outlined">></span>
             </button>
     </div>
+    </div>
       <div class="donutContainerPrice">
           <span class="price">Styckpris: ${donuts[i].price} kr</span><br>
-          Antal köpta: <span class="amount">${donuts[i].amount}</span><br>
-          kostnad: <span class="amount">${donuts[i].price * donuts[i].amount}</span><br>
-          Betyg: <span class="rating">${donuts[i].rating}/5</span> 
+          <span class="amount">Antal köpta:  ${donuts[i].amount} st</span><br>
+          <span class="amount">Pris:  ${donuts[i].price * donuts[i].amount} kr</span><br>
+           <span class="rating">Betyg: ${donuts[i].rating}/5</span> 
 
-
-
-
-
+    </div>
     </div>
       <div class="donutContainerInput">
           <button class="remove" data-id="${i}" >-</button>
-          <input class="CustomInput" type="number" value="0" data-id="${i}" >
+          
           <button class="add" data-id="${i}">+</button>
      </div>
-          </section)
+          </section>
         </article>
     `};
-
+// // // // // // // // // INPUT i - donutContainerInput - (om den ska användas)  <input class="CustomInput" type="number" value="0" data-id="${i}"> 
     const prevImageBtn = document.querySelectorAll('#prevImg');       
     const nextImageBtn = document.querySelectorAll('#nextImg');
 
