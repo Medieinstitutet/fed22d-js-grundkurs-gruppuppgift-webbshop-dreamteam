@@ -299,6 +299,8 @@ function renderDonuts() {
       
 
       
+
+
         // Gå vidare till kundinformation
 
         CheckOutButton.addEventListener("click", continueToPayment);
