@@ -135,8 +135,8 @@
           onsubmit="validateForm();"
         >
           
-        <label class="form-item-label"for="fname">
-          <span>Förnamn</span>  
+        <label class="form-item-label"for="fname">Förnamn</label>
+          
            <input
             class="form-item-input"
             type="text"
@@ -146,7 +146,7 @@
             placeholder="Tilltalsnamn"
           />
           <span class="error" id="errorfname"></span>
-         </label>
+         
         
         
         
@@ -314,11 +314,14 @@
           <label>
             <input type="checkbox" checked="checked" name="newsletter" /> 
             Jag vill prenumerera på nyhetsbrev
-          </label>
-          <label> 
-            <input type="checkbox" id="GDPR" name="GDPR" required/> 
+          </label> <br>
+          
+
+           <label> 
+            <input type="checkbox" id="gdpr" name="gdpr" required/> 
             Jag godkänner behandling av personuppgifter
-          </label>
+             <span class="errorMessage" id="errorgdpr" ></span> 
+          </label><br>  
 
 
 

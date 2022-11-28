@@ -275,7 +275,7 @@ function renderDonuts() {
       const radioinvoice = document.getElementById("radiofaktura");
       const radiocard = document.getElementById("radiokort");
       const portCode = document.getElementById("portcode");
-      const gdpr = document.getElementById('GDPR');
+      const gdpr = document.getElementById('gdpr');
 
       ///beställningsknappen///////////
 
@@ -484,7 +484,30 @@ function renderDonuts() {
         activatesubmitButton();
       }
 
-      // Personnummer show/hide + rensar
+      // checkGdprInput = gdpr.checked;  
+      
+
+
+
+
+
+
+        //GDPR
+        gdpr.addEventListener('click', checkGdpr);
+        let checkGdprInput = false;                                                  
+
+        function checkGdpr(){
+          if (checkGdprInput = gdpr.checked){
+             checkGdprInput=true;
+
+         } else {
+          checkGdprInput = false; 
+         }
+         activatesubmitButton();
+        }
+
+
+      // Personnummer show/hide + rensar                              ---- Göra till en div och bara köra en rad?
       function showfaktura() {
         document.getElementById("persondiv").style.display = "block";
         document.getElementById("kortdiv").style.display = "none";
@@ -509,6 +532,7 @@ function renderDonuts() {
           checkstreetInput &&
           checkzipInput &&
           checkcityInput &&
+          checkGdprInput &&
           ((checkcardNrInput &&
             checkdateNrInput &&
             checkcvcNrInput &&
