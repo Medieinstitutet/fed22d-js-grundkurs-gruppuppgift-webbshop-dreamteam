@@ -146,7 +146,7 @@ function renderDonuts() {
       <div class="donutContainerPrice">
           <span class="price">Styckpris: ${donuts[i].price} kr</span><br>
           <span class="amount">Antal: ${donuts[i].amount} st</span><br>
-          <span class="amount">Pris: ${donuts[i].price * donuts[i].amount} kr</span><br>
+          <span class="priceDefault">Pris: ${donuts[i].price * donuts[i].amount} kr</span><br>
            <span class="rating">Betyg: ${donuts[i].rating}/5</span> 
     </div>
     </div>
