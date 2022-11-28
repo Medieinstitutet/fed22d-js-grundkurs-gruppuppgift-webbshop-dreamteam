@@ -145,7 +145,7 @@ function renderDonuts() {
     </div>
       <div class="donutContainerPrice">
           <span class="price">Styckpris: ${donuts[i].price} kr</span><br>
-          <span class="amount">Antal köpta:  ${donuts[i].amount} st</span><br>
+          <span class="amount">Antal valda:  ${donuts[i].amount} st</span><br>
           <span class="amount">Pris:  ${donuts[i].price * donuts[i].amount} kr</span><br>
            <span class="rating">Betyg: ${donuts[i].rating}/5</span> 
 
@@ -275,6 +275,7 @@ function renderDonuts() {
       const radioinvoice = document.getElementById("radiofaktura");
       const radiocard = document.getElementById("radiokort");
       const portCode = document.getElementById("portcode");
+      const gdpr = document.getElementById('GDPR');
 
       ///beställningsknappen///////////
 

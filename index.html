@@ -134,16 +134,25 @@
           autocomplete="on"
           onsubmit="validateForm();"
         >
-          <label class="form-item-label" for="fname">First name:*</label>
-          <input
+          
+        <label class="form-item-label"for="fname">
+          <span>Förnamn</span>  
+           <input
             class="form-item-input"
             type="text"
             id="fname"
             name="fname"
             required="required"
-           
+            placeholder="Tilltalsnamn"
           />
           <span class="error" id="errorfname"></span>
+         </label>
+        
+        
+        
+        
+          
+          
 
           <label class="form-item-label" for="lname">Last name:*</label>
           <input
@@ -302,6 +311,19 @@
             />
             <span class="errorMessage" id="errorcvc" ></span>
           </div>
+          <label>
+            <input type="checkbox" checked="checked" name="newsletter" /> 
+            Jag vill prenumerera på nyhetsbrev
+          </label>
+          <label> 
+            <input type="checkbox" id="GDPR" name="GDPR" required/> 
+            Jag godkänner behandling av personuppgifter
+          </label>
+
+
+
+
+
           <input
             type="submit"
             value="Submit"
@@ -310,13 +332,13 @@
             class="form-button"
             disabled
           />
-
+          
           <input type="reset" onclick="clearForm()" value="Reset form" />
           <input type="button" value="Tillbaka till varukorgen" />
         </form>
       </div>
     </section>
-
+   
 
 
 

@@ -259,7 +259,7 @@ body {
   background-color: lightblue;
   border: 2px solid black;
   border-radius: 7px;
-  margin-top: 50px;
+  margin-top: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -308,8 +308,8 @@ body {
 }
 
 .donutContainerInput button {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 5px 10px 5px 10px;
+
   height: 30px;
   width: 30px;
   font-size: 1.5rem;
@@ -319,14 +319,14 @@ body {
   border-radius: 999px;
 }
 
-.donutContainerInput input {
+/* .donutContainerInput input {
   width: 100px;
   height: 30px;
   border-radius: 5px;
   border: black 2px solid;
   text-align: center;
   font-size: 1.5rem;
-}
+} */
 
 /* /////////////////////////////////////////////  */
 /* //////////////Simon///////////////             */
