@@ -131,8 +131,8 @@ function renderDonuts() {
 <div class="controlsImgSlideshow" id="controlsImgSlideshow">
          
       <div class="myImages">
-            <img src="${donuts[i].image1}" width="300" height="300" alt="" class="donutImage1" id="donutImage1">
-            <img src="${donuts[i].image2}" width="300" height="300" alt="" class="donutImage2" id="donutImage2">                                 
+            <img src="${donuts[i].image1}" width="290" height="290" alt="" class="donutImage1" id="donutImage1">
+            <img src="${donuts[i].image2}" width="290" height="290" alt="" class="donutImage2" id="donutImage2">                                 
     </div>
       <div class="controls">
             <button class="left" id="prevImg">
@@ -145,10 +145,9 @@ function renderDonuts() {
     </div>
       <div class="donutContainerPrice">
           <span class="price">Styckpris: ${donuts[i].price} kr</span><br>
-          <span class="amount">Antal valda:  ${donuts[i].amount} st</span><br>
-          <span class="amount">Pris:  ${donuts[i].price * donuts[i].amount} kr</span><br>
+          <span class="amount">Antal: ${donuts[i].amount} st</span><br>
+          <span class="amount">Pris: ${donuts[i].price * donuts[i].amount} kr</span><br>
            <span class="rating">Betyg: ${donuts[i].rating}/5</span> 
-
     </div>
     </div>
       <div class="donutContainerInput">
@@ -157,6 +156,7 @@ function renderDonuts() {
           <button class="add" data-id="${i}">+</button>
      </div>
           </section>
+    </div>
         </article>
     `};
 // // // // // // // // // INPUT i - donutContainerInput - (om den ska användas)  <input class="CustomInput" type="number" value="0" data-id="${i}"> 
