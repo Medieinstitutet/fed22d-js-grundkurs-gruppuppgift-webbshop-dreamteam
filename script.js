@@ -134,7 +134,7 @@ function renderDonuts() {
             <img src="${donuts[i].image1}" width="290" height="290" alt="" class="donutImage1" id="donutImage1">
             <img src="${donuts[i].image2}" width="290" height="290" alt="" class="donutImage2" id="donutImage2">                                 
     </div>
-      <div class="controls">
+      <div class="controls" id="controls">
             <button class="left" id="prevImg">
              <span class="material-symbols-outlined"><</span>
             </button>
@@ -181,9 +181,9 @@ function renderDonuts() {
     document.querySelectorAll('.add').forEach((btn) => {
       btn.addEventListener('click', updateDonutAmount);
     });
-    document.querySelectorAll('.CustomInput').forEach((input) => {
-      input.addEventListener('text', customDonutAmount);
-    });
+    // document.querySelectorAll('.CustomInput').forEach((input) => {
+    //   input.addEventListener('text', customDonutAmount);
+    // });
     document.querySelectorAll('.remove').forEach((btn) => {
       btn.addEventListener('click', removeDonutAmount);
     });
@@ -208,7 +208,7 @@ function renderDonuts() {
 
 
      
-  }
+  }  // // // // // // // // // //
 
 
   
@@ -220,7 +220,7 @@ function renderDonuts() {
     
     for(let i = 0; i < donuts.length; i++) {
       if (donuts[i].amount > 0) {
-        document.querySelector('.cartName').innerHTML += `<span>Produkt: ${donuts[i].name} Antal: ${donuts[i].amount} Pris: ${donuts[i].amount * donuts[i].price}</span>`;
+        document.querySelector('.cartName').innerHTML += `<span>Produkt: ${donuts[i].name} Antal: ${donuts[i].amount} Pris: ${donuts[i].amount * donuts[i].price}<br></span>`;
         
       }
     }
@@ -266,7 +266,7 @@ function renderDonuts() {
     
 
 
-// ***************Simon********************
+// ***********************************
 // Sparar input information
 
 
@@ -295,29 +295,31 @@ function renderDonuts() {
       const CheckOutButton = document.getElementById('CheckOutButton');
       const CheckOutButtonBack = document.getElementById('CheckOutButtonBack');
       const cartTotal = document.getElementById('cartTotal');
+      const allDonuts = document.getElementById('allDonuts');
       
 
-
-
+      
         // Gå vidare till kundinformation
 
         CheckOutButton.addEventListener("click", continueToPayment);
         function continueToPayment() {
-
-          // shop.style.display = 'none';
-          // sortBar.style.display = 'none';
+          
+          
           userForm.style.display = 'block';
           shop.style.display = 'none';
+
+          allDonuts.style.display = 'none';
+          
       }
 
         // Gå tillbaka till varukorgen
 
         CheckOutButtonBack.addEventListener("click", backToCheckout);
         function backToCheckout () {
-
+          
           userForm.style.display = 'none';
           shop.style.display = 'block';
-
+          allDonuts.style.display = '';
         }
 
 
