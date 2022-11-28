@@ -331,6 +331,10 @@ body {
 /* /////////////////////////////////////////////  */
 /* //////////////Simon///////////////             */
 
+.userForm {
+  display: none;
+}
+
 .form-one {
   position: relative;
   width: 100%;
@@ -385,6 +389,7 @@ body {
   margin: 0 auto;
   padding: 2rem;
   box-shadow: 1px 1px 3px dimgrey, 3px 3px 7px grey;
+  margin-bottom: 50px;
 }
 .form-item-label,
 .form-item-input {

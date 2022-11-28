@@ -191,27 +191,36 @@ function renderDonuts() {
 
   
   // Summan av alla munkar (Denna behöver ändras när vi ska lägga till extra kostnader)
-    const sum = donuts.reduce(
-    (previousValue, donut) => {
-      return (donut.amount * donut.price) + previousValue;
-    },
+     const sum = donuts.reduce(
+     (previousValue, donut) => {
+       return (donut.amount * donut.price) + previousValue;
+     },
   
-    0
+     0
   
-    );
+     );
+    
+    
     printOrdredDonuts();             
   
-    document.querySelector('.cartTotal').innerHTML = sum;
-    document.querySelector('.totalAmount').innerHTML = sum;
+    const cartTotal = document.querySelector('.cartTotal');
+    cartTotal.innerHTML = `<span>Pris: ${sum} kr</span>`
+
+
+     
   }
+
+
+  
+
 
   // Utskrift i Varukorg
   function printOrdredDonuts() {
     document.querySelector('.cartName').innerHTML = '';
-  
+    
     for(let i = 0; i < donuts.length; i++) {
       if (donuts[i].amount > 0) {
-        document.querySelector('.cartName').innerHTML += `<p>Produkt: ${donuts[i].name} Antal: ${donuts[i].amount} Kostnad: ${donuts[i].amount * donuts[i].price}</p>`;
+        document.querySelector('.cartName').innerHTML += `<span>Produkt: ${donuts[i].name} Antal: ${donuts[i].amount} Pris: ${donuts[i].amount * donuts[i].price}</span>`;
         
       }
     }
@@ -259,6 +268,11 @@ function renderDonuts() {
 
 // ***************Simon********************
 // Sparar input information
+
+
+
+
+
       const submitButton = document.getElementById("submit");
       const form = document.getElementById("contactForm");
       const firstName = document.getElementById("fname");
@@ -276,6 +290,38 @@ function renderDonuts() {
       const radiocard = document.getElementById("radiokort");
       const portCode = document.getElementById("portcode");
       const gdpr = document.getElementById('gdpr');
+      const userForm = document.getElementById('userForm');
+      const shop = document.getElementById('shop');
+      const CheckOutButton = document.getElementById('CheckOutButton');
+      const CheckOutButtonBack = document.getElementById('CheckOutButtonBack');
+      const cartTotal = document.getElementById('cartTotal');
+      
+
+
+
+        // Gå vidare till kundinformation
+
+        CheckOutButton.addEventListener("click", continueToPayment);
+        function continueToPayment() {
+
+          // shop.style.display = 'none';
+          // sortBar.style.display = 'none';
+          userForm.style.display = 'block';
+          shop.style.display = 'none';
+      }
+
+        // Gå tillbaka till varukorgen
+
+        CheckOutButtonBack.addEventListener("click", backToCheckout);
+        function backToCheckout () {
+
+          userForm.style.display = 'none';
+          shop.style.display = 'block';
+
+        }
+
+
+
 
       ///beställningsknappen///////////
 
