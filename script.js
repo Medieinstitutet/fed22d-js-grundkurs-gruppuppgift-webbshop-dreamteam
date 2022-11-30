@@ -595,3 +595,54 @@ function renderDonuts() {
           submitButton.setAttribute("disabled", "");
         }
       }
+/******************************************************************************************************************************** */
+const sortName = document.querySelector('#sortNAme')
+const sortPrice = document.querySelector('#sortPrice')
+const sortRating = document.querySelector('#sortRating')
+
+sortName.addEventListener('click', sortName);
+donuts.sort(function sortName (a, b) {
+if (a.name < b.name) {
+return -1;
+}
+if (a.name > b.name) {
+return 1;
+}
+return 0;
+
+
+
+})
+
+renderDonuts();
+
+sortPrice.addEventListener('click', sortPrice);
+donuts.sort(function sortPrice (a, b) {
+if (a.price < b.price) {
+return -1;
+}
+if (a.price > b.price) {
+return 1;
+}
+return 0;
+})
+
+renderDonuts();
+
+
+sortRating.addEventListener("click", sortRating);
+
+
+donuts.sort(function sortRating (a, b) {
+if (a.rating < b.rating) {
+return -1;
+}
+if (a.rating > b.rating) {
+return 1;
+}
+return 0;
+
+})
+
+renderDonuts();
+
