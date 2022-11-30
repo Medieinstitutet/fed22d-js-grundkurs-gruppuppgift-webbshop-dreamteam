@@ -625,7 +625,7 @@ const newDate = new Date();
         }
 
 
-      // Personnummer show/hide + rensar                              ---- Göra till en div och bara köra en rad?
+      // Personnummer show/hide + rensar     ---- Göra till en div och bara köra en rad?
       function showfaktura() {
         document.getElementById("persondiv").style.display = "block";
         document.getElementById("kortdiv").style.display = "none";
@@ -638,7 +638,7 @@ const newDate = new Date();
         document.getElementById("kortdiv").style.display = "block";
         document.getElementById("personNr").value = "";
       }
-      //
+         //
 
       // Aktivering av submit-button
       function activatesubmitButton() {
@@ -663,4 +663,3 @@ const newDate = new Date();
           submitButton.setAttribute("disabled", "");
         }
       }
-
