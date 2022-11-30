@@ -199,12 +199,11 @@ function renderDonuts() {
      0
   
      );
-    
-    
+        
     printOrdredDonuts();             
   
     const cartTotal = document.querySelector('.cartTotal');
-    cartTotal.innerHTML = `<span>Pris: ${sum} kr</span>`
+    cartTotal.innerHTML = `<span>Totaltsumma: ${sum} kr</span>`
 
 
      
@@ -220,7 +219,7 @@ function renderDonuts() {
     document.querySelector('#receiptOrderDonut').innerHTML = '';
     for(let i = 0; i < donuts.length; i++) {
       if (donuts[i].amount > 0) {
-        document.querySelector('.cartName').innerHTML += `<span>Produkt: ${donuts[i].name} Antal: ${donuts[i].amount} Pris: ${donuts[i].amount * donuts[i].price}<br></span>`;
+        document.querySelector('.cartName').innerHTML += `<div> <span class="cartNameProduct">Produkt: ${donuts[i].name}<br></span> <span class="cartNameQuantity">Antal: ${donuts[i].amount}</span> <span class="cartNamePrice">Pris: ${donuts[i].amount * donuts[i].price}<br><hr></span></div>`;
         document.querySelector('#receiptOrderDonut').innerHTML += `<span>Produkt:  ${donuts[i].name} Antal: ${donuts[i].amount} Pris: ${donuts[i].amount * donuts[i].price}<br></span>`;
         
       }
@@ -270,10 +269,6 @@ function renderDonuts() {
 // ***********************************
 // Sparar input information
 
-
-
-
-
       const submitButton = document.getElementById("submit");
       const contactForm = document.getElementById("contactForm");
       const userInputPayment = contactForm.elements['betalning'];
@@ -288,8 +283,8 @@ function renderDonuts() {
       const cardNr = document.getElementById("cardNr");
       const cardDate = document.getElementById("dateNr");
       const cvcNr = document.getElementById("cvcNr");
-      const radioinvoice = document.getElementById("radiofaktura");
-      const radiocard = document.getElementById("radiokort");
+      const radioinvoice = document.getElementById("radioinvoice");
+      const radiocard = document.getElementById("radiocard");
       const portCode = document.getElementById("portcode");
       const gdpr = document.getElementById('gdpr');
       const userForm = document.getElementById('userForm');
@@ -303,7 +298,13 @@ function renderDonuts() {
       const receiptOrder = document.getElementById('receiptOrder');
       const receiptOrderName = document.querySelector("#receiptOrderName");
       const receiptOrderContactInformation = document.getElementById("receiptOrderContactInformation");
+      const resetForm = document.getElementById("resetForm");
       
+      // Tömmer formulär
+      resetForm.addEventListener('click', resetFormButton);
+      function resetFormButton(){
+        document.getElementById('resetForm').reset();
+      }
 
       // Tömmer varukorgen
 
@@ -321,11 +322,9 @@ function renderDonuts() {
 
         CheckOutButton.addEventListener("click", continueToPayment);
         function continueToPayment() {
-          
-          
+                    
           userForm.style.display = 'block';
           shop.style.display = 'none';
-
           allDonuts.style.display = 'none';
           
       }
@@ -348,7 +347,6 @@ function renderDonuts() {
 
 submitButton.addEventListener("click", orderCompilation);
 
-
  function orderCompilation(e){
   e.preventDefault();
   receiptOrder.style.display = "block";
@@ -358,7 +356,6 @@ submitButton.addEventListener("click", orderCompilation);
 // Leveranstid
 
 const newDate = new Date();
-
 
 // Leverans på lördag och söndag
  if (newDate.getDay()==7 || newDate.getDay()==0){ 
@@ -370,9 +367,6 @@ const newDate = new Date();
 } else {
   deliveryTime.innerHTML = 'Ordern levereras om 30 minuter!';       
 }
-
-
-
 
 
 // Skriver ut innehåll från formuläret "receiptOrder"
@@ -401,11 +395,12 @@ const newDate = new Date();
 
         if (exp.test(firstName.value)) {
           errorMessage.setAttribute("hidden", "");
+          document.getElementById("fname").style=null;
           checkfNameInput = true;
         } else {
           errorMessage.innerHTML = "Skriv ditt förnamn med bokstäver";
-          document.getElementById("errorfname").style.color = "red";  ////////////////////////////////////// Hur gör man för att lägga till alla enkelt?
-          document.getElementById("errorfname").style.border = "solid red";
+          document.getElementById("fname").style.color = "red";  
+          document.getElementById("fname").style.border = "dotted red";
           errorMessage.removeAttribute("hidden");
           checkfNameInput = false;
         }
@@ -421,9 +416,12 @@ const newDate = new Date();
 
         if (exp.test(secondName.value)) {
           errorMessage.setAttribute("hidden", "");
+          document.getElementById("lname").style=null;
           checklNameInput = true;
         } else {
           errorMessage.innerHTML = "Skriv ditt efternamn med bokstäver";
+          document.getElementById("lname").style.color = "red";  
+          document.getElementById("lname").style.border = "dotted red";
           errorMessage.removeAttribute("hidden");
           checklNameInput = false;
         }
@@ -441,10 +439,13 @@ const newDate = new Date();
 
         if (exp.test(email.value)) {
           errorMessage.setAttribute("hidden", "");
+          document.getElementById("email").style=null;
           checkemailInput = true;
         } else {
-          errorMessage.innerHTML = "Skriv e-postadress";
+          errorMessage.innerHTML = "Skriv korrekt e-postadress";
           errorMessage.removeAttribute("hidden");
+          document.getElementById("email").style.color = "red";  
+          document.getElementById("email").style.border = "dotted red";
           checkemailInput = false;
         }
         activatesubmitButton();
@@ -459,9 +460,12 @@ const newDate = new Date();
 
         if (exp.test(phone.value)) {
           errorMessage.setAttribute("hidden", "");
+          document.getElementById("phone").style=null;
           checkphoneInput = true;
         } else {
           errorMessage.innerHTML = "Skriv med hjälp av siffor och bindestreck";
+          document.getElementById("phone").style.color = "red";  
+          document.getElementById("phone").style.border = "dotted red";
           errorMessage.removeAttribute("hidden");
           checkphoneInput = false;
         }
@@ -477,9 +481,12 @@ const newDate = new Date();
 
         if (exp.test(street.value)) {
           errorMessage.setAttribute("hidden", "");
+          document.getElementById("street").style=null;
           checkstreetInput = true;
         } else {
           errorMessage.innerHTML = "Skriv din address";
+          document.getElementById("street").style.color = "red";  
+          document.getElementById("street").style.border = "dotted red";
           errorMessage.removeAttribute("hidden");
           checkstreetInput = false;
         }
@@ -495,9 +502,12 @@ const newDate = new Date();
 
         if (exp.test(zip.value)) {
           errorMessage.setAttribute("hidden", "");
+          document.getElementById("zip").style=null;
           checkzipInput = true;
         } else {
           errorMessage.innerHTML = "Skriv ditt postnummer med hjälp av siffror";
+          document.getElementById("zip").style.color = "red";  
+          document.getElementById("zip").style.border = "dotted red";
           errorMessage.removeAttribute("hidden");
           checkzipInput = false;
         }
@@ -513,9 +523,12 @@ const newDate = new Date();
 
         if (exp.test(city.value)) {
           errorMessage.setAttribute("hidden", "");
+          document.getElementById("city").style=null;
           checkcityInput = true;
         } else {
           errorMessage.innerHTML = "Skriv din postort";
+          document.getElementById("city").style.color = "red";  
+          document.getElementById("city").style.border = "dotted red";
           errorMessage.removeAttribute("hidden");
           checkcityInput = false;
         }
@@ -526,14 +539,17 @@ const newDate = new Date();
       let checkpersonNrInput = false;
 
       function checkpersonNr() {
-        const exp = new RegExp("^[-0-9]");
+        const exp = new RegExp("^[-0-9]{10}$");
         const errorMessage = document.getElementById("errorpersonnr");
 
         if (exp.test(personNr.value)) {
           errorMessage.setAttribute("hidden", "");
+          document.getElementById("personNr").style=null;
           checkpersonNrInput = true;
         } else {
-          errorMessage.innerHTML = "Skriv med siffor och bindestreck";
+          errorMessage.innerHTML = "Skriv med siffor, 10 stycken";
+          document.getElementById("personNr").style.color = "red";  
+          document.getElementById("personNr").style.border = "dotted red";
           errorMessage.removeAttribute("hidden");
           checkpersonNrInput = false;
         }
@@ -544,14 +560,14 @@ const newDate = new Date();
       let checkcardNrInput = false;
 
       function checkcardNr() {
-        const exp = new RegExp("^[-0-9]");
+        const exp = new RegExp("^[-0-9]{10}$");
         const errorMessage = document.getElementById("errorkortnr");
 
         if (exp.test(cardNr.value)) {
           errorMessage.setAttribute("hidden", "");
           checkcardNrInput = true;
         } else {
-          errorMessage.innerHTML = "Skriv med siffor";
+          errorMessage.innerHTML = "Skriv med siffor, 16 stycken";
           errorMessage.removeAttribute("hidden");
           checkcardNrInput = false;
         }
@@ -618,14 +634,19 @@ const newDate = new Date();
 
 
       // Personnummer show/hide + rensar                              ---- Göra till en div och bara köra en rad?
-      function showfaktura() {
+      
+      radioinvoice.addEventListener('click', radioinvoiceClick);
+      function radioinvoiceClick() {
         document.getElementById("persondiv").style.display = "block";
         document.getElementById("kortdiv").style.display = "none";
         document.getElementById("cardNr").value = "";
         document.getElementById("dateNr").value = "";
         document.getElementById("cvcNr").value = "";
       }
-      function showcard() {
+
+      
+      radiocard.addEventListener('click', radiocardClick);
+      function radiocardClick() {
         document.getElementById("persondiv").style.display = "none";
         document.getElementById("kortdiv").style.display = "block";
         document.getElementById("personNr").value = "";

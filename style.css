@@ -423,6 +423,12 @@ body {
 /* /////////////////////////////////////////////  */
 /* /////////////////////////////////////////////  */
 
+#persondiv {
+  display: none;
+}
+#kortdiv {
+  display: none;
+}
 .donut {
   background-color: lightblue;
   border: 2px solid black;

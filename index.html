@@ -106,7 +106,7 @@
           <div class="cartName"></div> 
           <div class="cartTotal"></div> 
           <div>Frakt:</div>
-          <div>Leveranstid:</div>
+          
           <!-- <div></div>            Måndagsrabatt     -->
           
           
@@ -120,7 +120,7 @@
         <div class="buttonShop">
          
           <a href="#userForm"><input type="button" value="Fortsätt" id="CheckOutButton"/></a>
-          <input id="clearCart" type="reset" value="Reset order" />
+          <input id="clearCart" type="reset" value="Rensa order" />
           
         </div>
       </section>
@@ -145,7 +145,7 @@
         />
         <span class="error" id="errorfname"></span>
        
-        <label class="form-item-label" for="lname">Last name:*</label>
+        <label class="form-item-label" for="lname">Efternamn:*</label>
         <input
           class="form-item-input"
           type="text"
@@ -156,18 +156,18 @@
         />
         <span class="error" id="errorlname" ></span>
 
-        <label class="form-item-label" for="email">E-mail*</label>
+        <label class="form-item-label" for="email">E-post*</label>
         <input
           class="form-item-input"
           type="email"
           id="email"
           name="email"
-          
+          placeholder="namn@epost.se"
           required="required"
         />
         <span class="error" id="erroremail" ></span>
 
-        <label class="form-item-label" for="tel">Phone*</label>
+        <label class="form-item-label" for="phone">Telefonnummer*</label>
         <input
           type="text"
           id="phone"
@@ -184,7 +184,7 @@
           id="street"
           name="Adress"
           class="form-item-input"
-         
+          placeholder="Gata och nummer"
           required="required"
         />
         <span class="error" id="erroradress" ></span>
@@ -207,12 +207,12 @@
           id="city"
           name="Postort"
           class="form-item-input"
-          
+          placeholder="Stad"
           required="required"
         />
         <span class="error" id="errorcity" ></span>
 
-        <label class="form-item-label" for="portkod">Portkod</label>
+        <label class="form-item-label" for="portcode">Portkod</label>
         <input
           type="text"
           id="portcode"
@@ -223,18 +223,18 @@
         <div class="form-one">
           <div class="selector">
             <div class="radio-selector">
-              <h3>Betalning:</h3>
+              <h3>Betalning*:</h3>
 
               <input
                 type="radio"
                 name="betalning"
                 value="faktura"
-                id="radiofaktura"
+                id="radioinvoice"
                 class="selector-item_radio"
-                onclick="showfaktura()"
+                
                 required="required"
               />
-              <label for="radiofaktura" class="radio-selector-label">
+              <label for="radioinvoice" class="radio-selector-label">
                 Faktura
               </label><br>
               <span class="error" id="errorfaktura" ></span>
@@ -245,11 +245,10 @@
                 type="radio"
                 name="betalning"
                 value="kreditkort"
-                id="radiokort"
+                id="radiocard"
                 class="selector-item_radio"
-                onclick="showcard()"
               />
-              <label for="radiokort" class="radio-selector-label">
+              <label for="radiocard" class="radio-selector-label">
                 Kort
               </label>
               <span class="error" id="errorkort" ></span>
@@ -257,47 +256,52 @@
           </div>
         </div>
 
-        <div id="persondiv" style="display: none">
-          <label class="form-item-label" for="Number">Personnummer*</label>
+        <div id="persondiv" >
+          <label class="form-item-label" for="personNr">Personnummer*</label>
           <input
             type="text"
             id="personNr"
-            size="12"
-            minlength="10"
+            size="10"
+            maxlength="10"
             name="personnummer"
-            class="form-item-input hej"
+            class="form-item-input"
+            placeholder="YYMMDD0000"
           
           />
           <span class="errorMessage" id="errorpersonnr" ></span>
         </div>
-        <div id="kortdiv" style="display: none">
-          <label class="form-item-label" for="card">Kortnummer*</label>
+        <div id="kortdiv">
+          <label class="form-item-label" for="cardNr">Kortnummer*</label>
           <input
             type="text"
             id="cardNr"
             name="kortnummer"
             class="form-item-input"
+            size="16"
+            minlength="16"
+            placeholder="0000000000000000"
             
           />
           <span class="errorMessage" id="errorkortnr" ></span>
 
-          <label class="form-item-label" for="card">Date*</label>
+          <label class="form-item-label" for="dateNr">Date*</label>
           <input
             type="text"
             id="dateNr"
             name="datum-kort"
             class="form-item-input"
+            placeholder="MMYY"
             
           />
           <span class="errorMessage" id="errordate" ></span>
 
-          <label class="form-item-label" for="card">CVC*</label>
+          <label class="form-item-label" for="cvcNr">CVC*</label>
           <input
             type="text"
             id="cvcNr"
             name="cvc"
             class="form-item-input"
-            
+            placeholder="000"
             size="3"
           />
           <span class="errorMessage" id="errorcvc" ></span>
@@ -318,27 +322,25 @@
           type="submit"
           value="Submit"
           id="submit"
-          onclick="save()"
           class="form-button"
           disabled
         />
         
-        <input type="reset" onclick="clearForm()" value="Reset form" />
+        <input type="reset"  value="Rensa formulär" id="resetForm" />
         <a href="#shop"><input type="button" value="Tillbaka till varukorgen" id="CheckOutButtonBack"/></a>
         
       </form>
       
-    </div>
-      <div id="receiptOrder" hidden>
-    <div id="receiptOrderName"></div>
-    <div id="deliveryTime"></div>
-    <div id="receiptOrderDonutDiv"><p>Din order: <br><span id="receiptOrderDonut"></span></p></div>
-    <div id="receiptOrderContactInformation"></div>
-
-
-<input type="button" id="receiptOrderButton" value="Tillbaka till start" />
-</div>
-  </section>
+    
+    </section>
+    <div id="receiptOrder" hidden>
+          <div id="receiptOrderName"></div>
+          <div id="deliveryTime"></div>
+          <div id="receiptOrderDonutDiv"><p>Din order: <br><span id="receiptOrderDonut"></span></p></div>
+          <div id="receiptOrderContactInformation"></div>
+          <input type="button" id="receiptOrderButton" value="Tillbaka till start" />
+      </div>
+  </div>
   
   </section>
  
