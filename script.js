@@ -202,13 +202,13 @@ function renderDonuts() {
        );
     
     
-             
+       printOrdredDonuts(); 
   
     const cartPrice = document.querySelector('.cartPrice');
     cartPrice.innerHTML = `<span>Pris: ${sum} kr</span>`;
 
 
-    printOrdredDonuts();    
+       
  }  // // // // // // // // // //
 
   
