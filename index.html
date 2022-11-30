@@ -37,6 +37,7 @@
     </nav>
 
     
+<<<<<<< Updated upstream
 
     <select id="ordning">
       <option selected disabled>Filtrera</option>
@@ -45,6 +46,51 @@
       <option value="3">Rating</option>
     </select>
     
+=======
+     <div class="filter">
+    <h3>Sortera efter:</h3>
+         <div class="sortButtonContainer">
+                  <button id="sortNAme">Namn</button>
+                  <button id="sortPrice">Pris</button>
+                  <button id="sortRating">Betyg</button>
+                 
+          </div>       
+  
+  
+    <div>
+    <label>
+    <input type="radio" name="categoryFilter" value="Choklad">
+    Choklad
+    </label>
+    <label>
+    <input type="radio" name="categoryFilter" value="Bär och frukt">
+    Bär och frukt
+    </label>
+    <label>
+    <input type="radio" name="categoryFilter" value="Vanilj">
+    Vanilj
+    </label>
+    <label>
+    <input type="radio" name="categoryFilter" value="Övriga">
+    Övriga
+    </label>
+    <br>
+    <p class="space">
+      <label>
+        <span>Pris</span>
+        <span class="flex">
+          <span>0 kr</span>
+          <input type="range" min="0" max="100" value="100" id="pricRange">
+          <span>100 kr</span>
+        </span>
+        <br>
+        <span id="currentRangeValue">100</span> kr
+      </label>
+    </p>
+  </div>
+  </div>
+  
+>>>>>>> Stashed changes
 <section class="all-donuts">
   
     <div id="allDonuts"></div>
@@ -59,15 +105,53 @@
 </section>
    <section class="contact">
       <div class="form-box">
+<<<<<<< Updated upstream
+=======
+        <section class="shop" id="shop">
+          <div>
+            <h2>Varukorgssammanställning</h2>
+            <div class="cartName"></div> 
+            <div class="cartPrice"></div> 
+            <div class="cartNameOne"></div> 
+            <div>Frakt:</div>
+            
+            <!-- <div></div>            Måndagsrabatt     -->
+            
+            
+            <div class="cart-item">
+              <label class="rabattkodLabel" for="rabatt">Rabattkod</label>
+              <input type="text" name="rabatt" id="rabattkod" />
+            </div>
+            <div>Totalbelopp:</div>
+          </div>
+
+          <div class="buttonShop">
+           
+            <a href="#userForm"><input type="button" value="Fortsätt" id="CheckOutButton"/></a>
+            <input id="clearCart" type="reset" value="Rensa order" />
+            
+          </div>
+        </section>
+        <section class="userForm" id="userForm">
+>>>>>>> Stashed changes
         <form
           id="contactForm"
           class="contactForm"
           action=""
           autocomplete="on"
+<<<<<<< Updated upstream
           onsubmit="validateForm();"
         >
           <label class="form-item-label" for="fname">First name:*</label>
           <input
+=======
+          
+        ><!-- onsubmit="validateForm();" -->
+        <h2>Kontaktuppgifter</h2>
+        <label class="form-item-label"for="fname">Förnamn</label>
+          
+           <input
+>>>>>>> Stashed changes
             class="form-item-input"
             type="text"
             id="fname"
@@ -238,15 +322,37 @@
             type="submit"
             value="Submit"
             id="submit"
-            onclick="save()"
             class="form-button"
             disabled
           />
 
           <input type="reset" onclick="clearForm()" value="Reset form" />
+<<<<<<< Updated upstream
+=======
+          <a href="#shop"><input type="button" value="Tillbaka till varukorgen" id="CheckOutButtonBack"/></a>
+
+
+          
+          
+>>>>>>> Stashed changes
         </form>
+      </section>
+      <div id="receiptOrder" hidden>
+        <div id="receiptOrderName"></div>
+        <div id="deliveryTime"></div>
+        <div id="receiptOrderDonutDiv"><p>Din order: <br><span id="receiptOrderDonut"></span></p></div>
+        <div id="receiptOrderContactInformation"></div>
+      
+    
+    <input type="button" id="receiptOrderButton" value="Tillbaka till start" />
+    </div>
       </div>
     </section>
+<<<<<<< Updated upstream
+=======
+    
+    
+>>>>>>> Stashed changes
 
 
 
