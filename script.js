@@ -246,7 +246,6 @@ function renderDonuts() {
   };
 
 
-  
   // Summan av alla munkar (Denna behöver ändras när vi ska lägga till extra kostnader)
     const sum = donuts.reduce(
     (previousValue, donut) => {
