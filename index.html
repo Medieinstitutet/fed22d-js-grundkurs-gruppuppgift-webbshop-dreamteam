@@ -14,7 +14,10 @@
 
 </head>
 
+
+
 <body>
+  <header>
     <nav id="home"> 
       <div class="navbar">
         <div class="container nav-container">
@@ -25,13 +28,13 @@
               <span class="line line3"></span>
             </div>  
           <div class="logo">
-            <h1>Gottfrids Munksh p</h1>
+            <h1>Gottfrids Munkshop</h1>
           </div>
           <div class="shopping">
             <i class="fa-solid fa-cart-shopping"></i>
             <div class="cart">0</i></div>
           </div>
-          <!-- <div class="sum ">Totalsumma: <span class="totalAmount"></span></div> -->
+          
          
           <div class="toggle">
             <button id="dark-mode" class="moon"><i class="fa-solid fa-moon"></i></button>
@@ -45,312 +48,318 @@
         </div>
       </div>
     </nav>
-    
-     <div class="filter">
-    <h3>Sortera efter:</h3>
-         <div class="sortButtonContainer">
-                  <button id="sortNAme">Namn</button>
-                  <button id="sortPrice">Pris</button>
-                  <button id="sortRating">Betyg</button>
 
-          </div>       
+    
+  </header>
   
   
-    <div>
+   <div class="filter">
+  <h3>Sortera efter:</h3>
+       <div class="sortButtonContainer">
+                <button id="sortNAme">Namn</button>
+                <button id="sortPrice">Pris</button>
+                <button id="sortRating">Betyg</button>
+
+        </div>       
+
+
+  <div>
+  <label>
+  <input type="radio" name="categoryFilter" value="Choklad">
+  Choklad
+  </label>
+  <label>
+  <input type="radio" name="categoryFilter" value="Bär och frukt">
+  Bär och frukt
+  </label>
+  <label>
+  <input type="radio" name="categoryFilter" value="Vanilj">
+  Vanilj
+  </label>
+  <label>
+  <input type="radio" name="categoryFilter" value="Övriga">
+  Övriga
+  </label>
+  <br>
+  <p class="space">
     <label>
-    <input type="radio" name="categoryFilter" value="Choklad">
-    Choklad
+      <span>Pris</span>
+      <span class="flex">
+        <span>0 kr</span>
+        <input type="range" min="0" max="100" value="100" id="pricRange">
+        <span>100 kr</span>
+      </span>
+      <br>
+      <span id="currentRangeValue">100</span> kr
     </label>
-    <label>
-    <input type="radio" name="categoryFilter" value="Bär och frukt">
-    Bär och frukt
-    </label>
-    <label>
-    <input type="radio" name="categoryFilter" value="Vanilj">
-    Vanilj
-    </label>
-    <label>
-    <input type="radio" name="categoryFilter" value="Övriga">
-    Övriga
-    </label>
-    <br>
-    <p class="space">
-      <label>
-        <span>Pris</span>
-        <span class="flex">
-          <span>0 kr</span>
-          <input type="range" min="0" max="100" value="100" id="pricRange">
-          <span>100 kr</span>
-        </span>
-        <br>
-        <span id="currentRangeValue">100</span> kr
-      </label>
-    </p>
-  </div>
-  </div>
+  </p>
+</div>
+</div>
 
 <section class="all-donuts">
-    <div id="allDonuts"></div>
+  <div id="allDonuts"></div>
 
 </section>
-   <section id="shoppingCart" class="contact">
-      <div class="form-box">
-        <section class="shop" id="shop">
-          <div>
-            <h2>Varukorgssammanställning</h2>
-            <div class="cartName"></div> 
-            <div class="cartTotal"></div> 
-            <div>Frakt:</div>
-            <div>Leveranstid:</div>
-            <!-- <div></div>            Måndagsrabatt     -->
-            
-            
-            <div class="cart-item">
-              <label class="rabattkodLabel" for="rabatt">Rabattkod</label>
-              <input type="text" name="rabatt" id="rabattkod" />
-            </div>
-            <div>Totalbelopp:</div>
-          </div>
-
-          <div class="buttonShop">
-           
-            <a href="#userForm"><input type="button" value="Fortsätt" id="CheckOutButton"/></a>
-            <input class="clearCart" type="reset" value="Reset order" />
-            
-          </div>
-        </section>
-        <section class="userForm" id="userForm">
-        <form
-          id="contactForm"
-          class="contactForm"
-          action=""
-          autocomplete="on"
-          onsubmit="validateForm();"
-        >
-        <h2>Kontaktuppgifter</h2>
-        <label class="form-item-label"for="fname">Förnamn</label>
+ <section id="shoppingCart" class="contact">
+    <div class="form-box">
+      <section class="shop" id="shop">
+        <div>
+          <h2>Varukorgssammanställning</h2>
+          <div class="cartName"></div> 
+          <div class="cartTotal"></div> 
+          <div>Frakt:</div>
+          <div>Leveranstid:</div>
+          <!-- <div></div>            Måndagsrabatt     -->
           
-           <input
-            class="form-item-input"
-            type="text"
-            id="fname"
-            name="fname"
-            required="required"
-            placeholder="Tilltalsnamn"
-          />
-          <span class="error" id="errorfname"></span>
+          
+          <div class="cart-item">
+            <label class="rabattkodLabel" for="rabatt">Rabattkod</label>
+            <input type="text" name="rabatt" id="rabattkod" />
+          </div>
+          <div>Totalbelopp:</div>
+        </div>
+
+        <div class="buttonShop">
          
-          <label class="form-item-label" for="lname">Last name:*</label>
-          <input
-            class="form-item-input"
-            type="text"
-            id="lname"
-            name="lname"
-           
-            required="required"
-          />
-          <span class="error" id="errorlname" ></span>
+          <a href="#userForm"><input type="button" value="Fortsätt" id="CheckOutButton"/></a>
+          <input id="clearCart" type="reset" value="Reset order" />
+          
+        </div>
+      </section>
+      <section class="userForm" id="userForm">
+      <form
+        id="contactForm"
+        class="contactForm"
+        action=""
+        autocomplete="on"
+        onsubmit="validateForm();"
+      >
+      <h2>Kontaktuppgifter</h2>
+      <label class="form-item-label"for="fname">Förnamn</label>
+        
+         <input
+          class="form-item-input"
+          type="text"
+          id="fname"
+          name="fname"
+          required="required"
+          placeholder="Tilltalsnamn"
+        />
+        <span class="error" id="errorfname"></span>
+       
+        <label class="form-item-label" for="lname">Last name:*</label>
+        <input
+          class="form-item-input"
+          type="text"
+          id="lname"
+          name="lname"
+         
+          required="required"
+        />
+        <span class="error" id="errorlname" ></span>
 
-          <label class="form-item-label" for="email">E-mail*</label>
-          <input
-            class="form-item-input"
-            type="email"
-            id="email"
-            name="email"
-            
-            required="required"
-          />
-          <span class="error" id="erroremail" ></span>
+        <label class="form-item-label" for="email">E-mail*</label>
+        <input
+          class="form-item-input"
+          type="email"
+          id="email"
+          name="email"
+          
+          required="required"
+        />
+        <span class="error" id="erroremail" ></span>
 
-          <label class="form-item-label" for="tel">Phone*</label>
-          <input
-            type="text"
-            id="phone"
-            name="Telefon"
-            class="form-item-input"
-           
-            required="required"
-          />
-          <span class="error" id="errorphone" ></span>
+        <label class="form-item-label" for="tel">Phone*</label>
+        <input
+          type="text"
+          id="phone"
+          name="Telefon"
+          class="form-item-input"
+         
+          required="required"
+        />
+        <span class="error" id="errorphone" ></span>
 
-          <label class="form-item-label" for="street">Adress*</label>
-          <input
-            type="text"
-            id="street"
-            name="Adress"
-            class="form-item-input"
-           
-            required="required"
-          />
-          <span class="error" id="erroradress" ></span>
+        <label class="form-item-label" for="street">Adress*</label>
+        <input
+          type="text"
+          id="street"
+          name="Adress"
+          class="form-item-input"
+         
+          required="required"
+        />
+        <span class="error" id="erroradress" ></span>
 
-          <label class="form-item-label" for="zip">Postnummer*</label>
-          <input
-            type="zip"
-            id="zip"
-            name="Postnummer"
-            class="form-item-input"
-            minlength="5"
-            
-            required="required"
-          />
-          <span class="error" id="errorzip" ></span>
+        <label class="form-item-label" for="zip">Postnummer*</label>
+        <input
+          type="zip"
+          id="zip"
+          name="Postnummer"
+          class="form-item-input"
+          minlength="5"
+          
+          required="required"
+        />
+        <span class="error" id="errorzip" ></span>
 
-          <label class="form-item-label" for="city">Postort*</label>
-          <input
-            type="city"
-            id="city"
-            name="Postort"
-            class="form-item-input"
-            
-            required="required"
-          />
-          <span class="error" id="errorcity" ></span>
+        <label class="form-item-label" for="city">Postort*</label>
+        <input
+          type="city"
+          id="city"
+          name="Postort"
+          class="form-item-input"
+          
+          required="required"
+        />
+        <span class="error" id="errorcity" ></span>
 
-          <label class="form-item-label" for="portkod">Portkod</label>
-          <input
-            type="text"
-            id="portcode"
-            name="portkod"
-            class="form-item-input"
-          />
+        <label class="form-item-label" for="portkod">Portkod</label>
+        <input
+          type="text"
+          id="portcode"
+          name="portkod"
+          class="form-item-input"
+        />
 
-          <div class="form-one">
-            <div class="selector">
-              <div class="radio-selector">
-                <h3>Betalning:</h3>
+        <div class="form-one">
+          <div class="selector">
+            <div class="radio-selector">
+              <h3>Betalning:</h3>
 
-                <input
-                  type="radio"
-                  name="betalning"
-                  value="faktura"
-                  id="radiofaktura"
-                  class="selector-item_radio"
-                  onclick="showfaktura()"
-                  required="required"
-                />
-                <label for="radiofaktura" class="radio-selector-label">
-                  Faktura
-                </label><br>
-                <span class="error" id="errorfaktura" ></span>
-              </div>
+              <input
+                type="radio"
+                name="betalning"
+                value="faktura"
+                id="radiofaktura"
+                class="selector-item_radio"
+                onclick="showfaktura()"
+                required="required"
+              />
+              <label for="radiofaktura" class="radio-selector-label">
+                Faktura
+              </label><br>
+              <span class="error" id="errorfaktura" ></span>
+            </div>
 
-              <div class="radio-selector">
-                <input
-                  type="radio"
-                  name="betalning"
-                  value="kreditkort"
-                  id="radiokort"
-                  class="selector-item_radio"
-                  onclick="showcard()"
-                />
-                <label for="radiokort" class="radio-selector-label">
-                  Kort
-                </label>
-                <span class="error" id="errorkort" ></span>
-              </div>
+            <div class="radio-selector">
+              <input
+                type="radio"
+                name="betalning"
+                value="kreditkort"
+                id="radiokort"
+                class="selector-item_radio"
+                onclick="showcard()"
+              />
+              <label for="radiokort" class="radio-selector-label">
+                Kort
+              </label>
+              <span class="error" id="errorkort" ></span>
             </div>
           </div>
+        </div>
 
-          <div id="persondiv" style="display: none">
-            <label class="form-item-label" for="Number">Personnummer*</label>
-            <input
-              type="text"
-              id="personNr"
-              size="12"
-              minlength="10"
-              name="personnummer"
-              class="form-item-input hej"
-            
-            />
-            <span class="errorMessage" id="errorpersonnr" ></span>
-          </div>
-          <div id="kortdiv" style="display: none">
-            <label class="form-item-label" for="card">Kortnummer*</label>
-            <input
-              type="text"
-              id="cardNr"
-              name="kortnummer"
-              class="form-item-input"
-              
-            />
-            <span class="errorMessage" id="errorkortnr" ></span>
-
-            <label class="form-item-label" for="card">Date*</label>
-            <input
-              type="text"
-              id="dateNr"
-              name="datum-kort"
-              class="form-item-input"
-              
-            />
-            <span class="errorMessage" id="errordate" ></span>
-
-            <label class="form-item-label" for="card">CVC*</label>
-            <input
-              type="text"
-              id="cvcNr"
-              name="cvc"
-              class="form-item-input"
-              
-              size="3"
-            />
-            <span class="errorMessage" id="errorcvc" ></span>
-          </div>
-          <label>
-            <input type="checkbox" checked="checked" name="newsletter" /> 
-            Jag vill prenumerera på nyhetsbrev
-          </label> <br>
-          
-
-           <label> 
-            <input type="checkbox" id="gdpr" name="gdpr" required/> 
-            Jag godkänner behandling av personuppgifter
-             <span class="errorMessage" id="errorgdpr" ></span> 
-          </label><br>  
-
+        <div id="persondiv" style="display: none">
+          <label class="form-item-label" for="Number">Personnummer*</label>
           <input
-            type="submit"
-            value="Submit"
-            id="submit"
-            onclick="save()"
-            class="form-button"
-            disabled
+            type="text"
+            id="personNr"
+            size="12"
+            minlength="10"
+            name="personnummer"
+            class="form-item-input hej"
+          
           />
-          
-          <input type="reset" onclick="clearForm()" value="Reset form" />
-          <a href="#shop"><input type="button" value="Tillbaka till varukorgen" id="CheckOutButtonBack"/></a>
-          
-        </form>
-        <div id="receiptOrder" hidden>
-            <div id="receiptOrderName"></div>
-            <div id="deliveryTime"></div>
-            <div id="receiptOrderDonutDiv"><p>Din order: <br><span id="receiptOrderDonut"></span></p></div>
-            <div id="receiptOrderContactInformation"></div>
+          <span class="errorMessage" id="errorpersonnr" ></span>
+        </div>
+        <div id="kortdiv" style="display: none">
+          <label class="form-item-label" for="card">Kortnummer*</label>
+          <input
+            type="text"
+            id="cardNr"
+            name="kortnummer"
+            class="form-item-input"
+            
+          />
+          <span class="errorMessage" id="errorkortnr" ></span>
+
+          <label class="form-item-label" for="card">Date*</label>
+          <input
+            type="text"
+            id="dateNr"
+            name="datum-kort"
+            class="form-item-input"
+            
+          />
+          <span class="errorMessage" id="errordate" ></span>
+
+          <label class="form-item-label" for="card">CVC*</label>
+          <input
+            type="text"
+            id="cvcNr"
+            name="cvc"
+            class="form-item-input"
+            
+            size="3"
+          />
+          <span class="errorMessage" id="errorcvc" ></span>
+        </div>
+        <label>
+          <input type="checkbox" checked="checked" name="newsletter" /> 
+          Jag vill prenumerera på nyhetsbrev
+        </label> <br>
+        
+
+         <label> 
+          <input type="checkbox" id="gdpr" name="gdpr" required/> 
+          Jag godkänner behandling av personuppgifter
+           <span class="errorMessage" id="errorgdpr" ></span> 
+        </label><br>  
+
+        <input
+          type="submit"
+          value="Submit"
+          id="submit"
+          onclick="save()"
+          class="form-button"
+          disabled
+        />
+        
+        <input type="reset" onclick="clearForm()" value="Reset form" />
+        <a href="#shop"><input type="button" value="Tillbaka till varukorgen" id="CheckOutButtonBack"/></a>
+        
+      </form>
       
-    
-    <input type="button" id="receiptOrderButton" value="Tillbaka till start" />
     </div>
-      </div>
-    </section>
-    </section>
-   
+      <div id="receiptOrder" hidden>
+    <div id="receiptOrderName"></div>
+    <div id="deliveryTime"></div>
+    <div id="receiptOrderDonutDiv"><p>Din order: <br><span id="receiptOrderDonut"></span></p></div>
+    <div id="receiptOrderContactInformation"></div>
+
+
+<input type="button" id="receiptOrderButton" value="Tillbaka till start" />
+</div>
+  </section>
+  
+  </section>
+ 
 <footer id="contact">
-  <section>
-    <h2>Kontaktinformation</h2><br>
-    <ul class="listofcontact">
-      <li>Adress:<br> Gustavslundsvägen 151 D, 167 51, Stockholm </li>
-      <li>Telefon: 08-442 95 00 </li>
-    </ul>
-  </section>
-  <section>
-    <h2>Öppettider</h2><br>
-    <ul class="opentime">
-      <li>Vardagar: 07.00 - 17.00</li>
-      <li>Lördag: 09.00 - 15.00</li>
-      <li>Söndag 10.00 - 15.00</li><br>
-    </ul>
-  </section>
+<section>
+  <h2>Kontaktinformation</h2><br>
+  <ul class="listofcontact">
+    <li>Adress:<br> Gustavslundsvägen 151 D, 167 51, Stockholm </li>
+    <li>Telefon: 08-442 95 00 </li>
+  </ul>
+</section>
+<section>
+  <h2>Öppettider</h2><br>
+  <ul class="opentime">
+    <li>Vardagar: 07.00 - 17.00</li>
+    <li>Lördag: 09.00 - 15.00</li>
+    <li>Söndag 10.00 - 15.00</li><br>
+  </ul>
+</section>
 </footer>
 
 
@@ -359,8 +368,10 @@
 
 
 
-   
+ 
 <script src="script.js"></script>
 </body>
+
+
 
 </html>

@@ -1,4 +1,3 @@
-
 //dark and light
 const darkMode = document.getElementById('dark-mode');
 const lightMode = document.getElementById('light-mode');
@@ -196,26 +195,26 @@ function renderDonuts() {
      (previousValue, donut) => {
        return (donut.amount * donut.price) + previousValue;
      },
-       0
-
-       
-       );
+  
+     0
+  
+     );
     
     
-       printOrdredDonuts(); 
+    printOrdredDonuts();             
   
-    const cartPrice = document.querySelector('.cartPrice');
-    cartPrice.innerHTML = `<span>Pris: ${sum} kr</span>`;
+    const cartTotal = document.querySelector('.cartTotal');
+    cartTotal.innerHTML = `<span>Pris: ${sum} kr</span>`
 
 
-       
- }  // // // // // // // // // //
+     
+  }  // // // // // // // // // //
+
 
   
-  
- 
 
-  // Utskrift av order
+
+   // Utskrift av order
   function printOrdredDonuts() {
     document.querySelector('.cartName').innerHTML = '';
     document.querySelector('#receiptOrderDonut').innerHTML = '';
@@ -275,9 +274,9 @@ function renderDonuts() {
 
 
 
-
       const submitButton = document.getElementById("submit");
       const contactForm = document.getElementById("contactForm");
+      const userInputPayment = contactForm.elements['betalning'];
       const firstName = document.getElementById("fname");
       const secondName = document.getElementById("lname");
       const email = document.getElementById("email");
@@ -291,26 +290,21 @@ function renderDonuts() {
       const cvcNr = document.getElementById("cvcNr");
       const radioinvoice = document.getElementById("radiofaktura");
       const radiocard = document.getElementById("radiokort");
-      const userInputPayment = contactForm.elements['betalning']; // Värdet av Radio-button
       const portCode = document.getElementById("portcode");
       const gdpr = document.getElementById('gdpr');
       const userForm = document.getElementById('userForm');
       const shop = document.getElementById('shop');
       const CheckOutButton = document.getElementById('CheckOutButton');
       const CheckOutButtonBack = document.getElementById('CheckOutButtonBack');
-      const cartPrice = document.getElementById('cartPrice');
+      const cartTotal = document.getElementById('cartTotal');
       const allDonuts = document.getElementById('allDonuts');
       const clearCart = document.getElementById('clearCart');
       const deliveryTime = document.getElementById('deliveryTime');
       const receiptOrder = document.getElementById('receiptOrder');
       const receiptOrderName = document.querySelector("#receiptOrderName");
-      const receiptOrderContactInformation = document.querySelector("#receiptOrderContactInformation");
-    
-      
+      const receiptOrderContactInformation = document.getElementById("receiptOrderContactInformation");
       
 
-
-      
       // Tömmer varukorgen
 
       clearCart.addEventListener('click', clearCartButton);
@@ -331,7 +325,7 @@ function renderDonuts() {
           
           userForm.style.display = 'block';
           shop.style.display = 'none';
-          // receiptOrder.style.display = 'none';
+
           allDonuts.style.display = 'none';
           
       }
@@ -348,7 +342,7 @@ function renderDonuts() {
 
 
 
-        
+
       ///beställningsknappen///////////
 // Submit-button + kvitto
 
@@ -395,8 +389,6 @@ const newDate = new Date();
  Portkod: ${portCode.value} <br>
  Betalning: ${userInputPayment.value} <br>`;
 }
-
-
 
     
       // Förnamn
@@ -625,7 +617,7 @@ const newDate = new Date();
         }
 
 
-      // Personnummer show/hide + rensar     ---- Göra till en div och bara köra en rad?
+      // Personnummer show/hide + rensar                              ---- Göra till en div och bara köra en rad?
       function showfaktura() {
         document.getElementById("persondiv").style.display = "block";
         document.getElementById("kortdiv").style.display = "none";
@@ -638,7 +630,7 @@ const newDate = new Date();
         document.getElementById("kortdiv").style.display = "block";
         document.getElementById("personNr").value = "";
       }
-         //
+      //
 
       // Aktivering av submit-button
       function activatesubmitButton() {
