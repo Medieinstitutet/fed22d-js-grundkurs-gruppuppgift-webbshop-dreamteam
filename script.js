@@ -210,7 +210,7 @@ function renderDonuts() {
   
   }  // // // // // // // // // //
 
-// sortering efter namn pris och rating
+    // sortering efter namn pris och rating
     const nameBtn = document.querySelector("#sortName");
     nameBtn.addEventListener('click', nameOrder);
 
