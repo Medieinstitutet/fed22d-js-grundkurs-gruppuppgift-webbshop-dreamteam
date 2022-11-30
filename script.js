@@ -123,6 +123,18 @@ function renderDonuts() {
   donutContainer.innerHTML = '';
   
   for (let i = 0; i < donuts.length; i++) {
+
+    // Lägg fredags pris här?
+//     let newDate = new Date(); 
+//     let price = donuts[i].price;
+
+//     if(((newDate.getDay() == 5 && newDate.getHours() >= 15) || (newDate.getDay() > 5 || newDate.getDay() <= 1)) && ((newDate.getDay() == 1 && newDate.getHours() <= 2) || (newDate.getDay() < 1 || newDate.getDay() >= 5))) {
+//       (price *= 1.15)
+//   } else {
+//     price;
+// }
+
+
     donutContainer.innerHTML += `
         <article class="donut">
           <h2>${donuts[i].name}</h2><br>
@@ -190,27 +202,33 @@ function renderDonuts() {
   
 
   
-  // Summan av alla munkar (Denna behöver ändras när vi ska lägga till extra kostnader)
-     const sum = donuts.reduce(
-     (previousValue, donut) => {
-       return (donut.amount * donut.price) + previousValue;
-     },
   
-     0
-  
-     );
-        
+
+
+    donutsOrderPrice();
     printOrdredDonuts();             
   
-    const cartTotal = document.querySelector('.cartTotal');
-    cartTotal.innerHTML = `<span>Totaltsumma: ${sum} kr</span>`
-
-
-     
   }  // // // // // // // // // //
 
+// Summan av alla munkar (Denna behöver ändras när vi ska lägga till extra kostnader)
+  function donutsOrderPrice(){
+    const cartTotal = document.querySelector('.cartTotal');
+   // cartTotal.innerHTML = `<span>Totaltsumma: ${sum} kr</span>`
+   cartTotal.innerHTML = ``
 
+const sum = donuts.reduce(
+  (previousValue, donut) => {
+    return (donut.amount * donut.price) + previousValue;
+  },
+
+  0
+
+  );
   
+
+
+  }
+
 
 
    // Utskrift av order
@@ -224,6 +242,10 @@ function renderDonuts() {
         
       }
     }
+
+
+
+    
   }
   
   
@@ -369,7 +391,7 @@ const newDate = new Date();
 }
 
 
-// Skriver ut innehåll från formuläret "receiptOrder"
+// Skriver ut innehåll från formuläret "receiptOrder". Array istället?
 
  receiptOrderName.innerHTML = `Tack för beställningen ${fname.value} ${lname.value}!`;
  receiptOrderContactInformation.innerHTML = 
