@@ -210,6 +210,63 @@ function renderDonuts() {
   
   }  // // // // // // // // // //
 
+// sortering efter namn pris och rating
+    const nameBtn = document.querySelector("#sortName");
+    nameBtn.addEventListener('click', nameOrder);
+
+    function nameOrder() {
+    
+      donuts.sort((a, b) => {
+    
+      if (a.name < b.name) { return -1; }
+    
+      if (a.name > b.name) { return 1; }
+    
+      return 0;
+    
+    });
+    
+    renderDonuts();
+    
+    }
+    
+    const ratingBtn = document.querySelector("#sortRating");
+    ratingBtn.addEventListener("click", sortRating);
+    
+    function sortRating() {
+      donuts.sort((donut1, donut2) => donut1.rating - donut2.rating);
+  
+      renderDonuts();
+    };
+    
+
+    const priceBtn = document.querySelector("#sortPrice");
+    priceBtn.addEventListener("click", sortPrice);
+
+    function sortPrice() {
+      donuts.sort((donut1, donut2) => donut1.price - donut2.price);
+
+      renderDonuts();
+    };
+    
+    // prisrange slider
+    const filteredDonutsInPriceRange = [...donuts];
+    const priceRangeSlider = document.querySelector("#priceRange");
+    const currentRangeValue = document.querySelector("#currentRangeValue");
+  
+    priceRangeSlider.addEventListener("input", changePriceRange);
+  
+     function changePriceRange() {
+     const currentPrice = priceRangeSlider.value;
+     currentRangeValue.innerHTML = currentPrice;
+  
+      filteredDonutsInPriceRange = donuts.filter(
+     (donuts) => donuts.price <= currentPrice);
+  
+  
+   renderDonuts();
+  };
+
 // Summan av alla munkar (Denna behöver ändras när vi ska lägga till extra kostnader)
   function donutsOrderPrice(){
     const cartTotal = document.querySelector('.cartTotal');
