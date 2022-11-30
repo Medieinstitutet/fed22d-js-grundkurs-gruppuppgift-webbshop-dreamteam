@@ -79,19 +79,14 @@
   Övriga
   </label>
   <br>
-  <p class="space">
-    <label>
-      <span>Pris</span>
-      <span class="flex">
+  <div class="space">
+      <div class="priceRange">
+        <h3>Sortera efter prisspann</h3>
         <span>0 kr</span>
-        <input type="range" min="0" max="100" value="100" id="pricRange">
-        <span>100 kr</span>
-      </span>
-      <br>
-      <span id="currentRangeValue">100</span> kr
-    </label>
-  </p>
-</div>
+        <input type="range" min="0" max="35" value="35" id="priceRange" step="7">
+        <span>35 kr</span>
+        <p id="currentRangeValue">35 kr</p>        
+    </div>
 </div>
 
 <section class="all-donuts">
