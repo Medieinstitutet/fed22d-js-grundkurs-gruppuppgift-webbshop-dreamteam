@@ -20,7 +20,7 @@ lightMode.addEventListener('click', () => {
 const donuts = [
   {
     name: 'Chokladmunk med strössel',
-    price: 20,
+    price: 23,
     rating: 4,
     amount: 0,
     image1: './images/chocolate-sprinkle-1.jpg',
@@ -29,7 +29,7 @@ const donuts = [
   },
   {
     name: 'Glaserad munk',
-    price: 12,
+    price: 15,
     rating: 4,
     amount: 0,
     image1: './images/glazed-donut-1.jpg',
@@ -38,7 +38,7 @@ const donuts = [
   },
   {
     name: 'Chokladmunk',
-    price: 15,
+    price: 19,
     rating: 2,
     amount: 0,
     image1: './images/chocolate-1.jpg',
@@ -47,7 +47,7 @@ const donuts = [
   },
   {
     name: 'Vaniljmunk',
-    price: 15,
+    price: 18,
     rating: 1,
     amount: 0,
     image1: './images/vanilla-1.jpg',
@@ -65,7 +65,7 @@ const donuts = [
   },
   {
     name: 'Äppelmunk',
-    price: 17,
+    price: 25,
     rating: 4,
     amount: 0,
     image1: './images/apple-1.jpg',
@@ -74,7 +74,7 @@ const donuts = [
   },
   {
     name: 'Citronmunk',
-    price: 17,
+    price: 22,
     rating: 2,
     amount: 0,
     image1: './images/lemon-1.jpg',
@@ -83,7 +83,7 @@ const donuts = [
   },
   {
     name: 'Hallonmunk',
-    price: 18,
+    price: 20,
     rating: 5,
     amount: 0,
     image1: './images/raspberry-1.jpg',
@@ -92,7 +92,7 @@ const donuts = [
   },
   {
     name: 'Trippel chokladmunk',
-    price: 20,
+    price: 30,
     rating: 4,
     amount: 0,
     image1: './images/triple-chocolate-1.jpg',
@@ -101,7 +101,7 @@ const donuts = [
   },
   {
     name: 'Nougatmunk',
-    price: 22,
+    price: 35,
     rating: 3,
     amount: 0,
     image1: './images/nougat-1.jpg',
@@ -110,7 +110,6 @@ const donuts = [
   },
 ];
 
-// sortera munkar mostapha?
 
 
 
@@ -187,7 +186,28 @@ function renderDonuts() {
     document.querySelectorAll('.remove').forEach((btn) => {
       btn.addEventListener('click', removeDonutAmount);
     });
-  
+    
+
+    // sortering efter namn pris och rating
+    const nameBtn = document.querySelector("#sortName");
+    nameBtn.addEventListener('click', nameOrder);
+
+    function nameOrder() {
+    
+      donuts.sort((a, b) => {
+    
+      if (a.name < b.name) { return -1; }
+    
+      if (a.name > b.name) { return 1; }
+    
+      return 0;
+    
+    });
+    
+    renderDonuts();
+    
+    }
+    
     const ratingBtn = document.querySelector("#sortRating");
     ratingBtn.addEventListener("click", sortRating);
     
@@ -197,15 +217,6 @@ function renderDonuts() {
       renderDonuts();
     };
     
-    const nameBtn = document.querySelector('sortName');
-    nameBtn.addEventListener('click', sortName);
-  
-    function sortName() {}
-    donuts.sort((donut1, donut2) => donut1.name - donut2.name); 
-     
-      renderDonuts();
-    };
-
 
     const priceBtn = document.querySelector("#sortPrice");
     priceBtn.addEventListener("click", sortPrice);
@@ -215,10 +226,23 @@ function renderDonuts() {
 
       renderDonuts();
     };
-
-
-  
     
+    // prisrange slider
+    const priceRangeSlider = document.querySelector("#priceRange");
+    const currentRangeValue = document.querySelector("#currentRangeValue");
+ 
+    priceRangeSlider.addEventListener("input", changePriceRange);
+ 
+     function changePriceRange() {
+     const currentPrice = priceRangeSlider.value;
+     currentRangeValue.innerHTML = currentPrice;
+ 
+      filteredDonutsInPriceRange = donuts.filter(
+     (donuts) => donuts.price <= currentPrice);
+
+
+   renderDonuts();
+  }
 
   
   // Summan av alla munkar (Denna behöver ändras när vi ska lägga till extra kostnader)
@@ -234,7 +258,7 @@ function renderDonuts() {
   
     document.querySelector('.cartTotal').innerHTML = sum;
     document.querySelector('.totalAmount').innerHTML = sum;
-  
+  }
 
   // Utskrift i Varukorg
   function printOrdredDonuts() {
@@ -285,22 +309,6 @@ function renderDonuts() {
   }
   
   renderDonuts();
-
-  //sortera efter pris
-  const ratingBtn = document.querySelector("#sortRating");
-
-  ratingBtn.addEventListener("click", sortRating);
-
- 
-
-  function sortRating() {
-
-    donuts.sort((donut1, donut2) => donut1.rating - donut2.rating);
-
-    renderDonuts();
-
-  };
-
 
 
 // ***************Simon********************
@@ -529,6 +537,21 @@ function renderDonuts() {
         }
         activatesubmitButton();
       }
+
+
+       /*
+      På måndagar innan kl. 10 ges 
+      10 % rabatt på hela beställningssumman. 
+      Detta visas i varukorgssammanställningen som en rad 
+      med texten "Måndagsrabatt: 10 % på hela beställningen".  
+      */
+
+      if(today.getDay() == 1 && today.getHours() <= 9){
+        sum *= 0.9;
+        mondayText = document.querySelector('.monday-discount');
+        mondayText.innerHTML =
+        `<span>Måndagsrabatt: 10% på hela beställningen</span>`
+    }
 
       // checkGdprInput = gdpr.checked;  
       
