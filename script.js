@@ -437,9 +437,9 @@ submitButton.addEventListener("click", orderCompilation);
 const newDate = new Date();
 
 // Leverans på lördag och söndag
- if (newDate.getDay()==7 || newDate.getDay()==0){ 
+ if (newDate.getDay()===7 || newDate.getDay()===0){ 
   deliveryTime.innerHTML = 'Ordern levereras om 1,5 timme!';   
-} else if (newDate.getDay() == 5 && newDate.getHours() >= 11 && newDate.getHours() <= 13){
+} else if (newDate.getDay() === 5 && newDate.getHours() >= 11 && newDate.getHours() <= 13){
   deliveryTime.innerHTML = 'Ordern levereras klockan 15:00!';      
 } else if(newDate.getHours() >= 22 || newDate.getHours() <= 5) {
   deliveryTime.innerHTML = 'Ordern levereras om 45 minuter!';  
