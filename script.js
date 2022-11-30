@@ -20,7 +20,7 @@ lightMode.addEventListener('click', () => {
 const donuts = [
   {
     name: 'Chokladmunk med strössel',
-    price: 20,
+    price: 23,
     rating: 4,
     amount: 0,
     image1: './images/chocolate-sprinkle-1.jpg',
@@ -29,7 +29,7 @@ const donuts = [
   },
   {
     name: 'Glaserad munk',
-    price: 12,
+    price: 15,
     rating: 4,
     amount: 0,
     image1: './images/glazed-donut-1.jpg',
@@ -38,8 +38,8 @@ const donuts = [
   },
   {
     name: 'Chokladmunk',
-    price: 15,
-    rating: 5,
+    price: 19,
+    rating: 2,
     amount: 0,
     image1: './images/chocolate-1.jpg',
     image2: './images/chocolate-2.jpg',
@@ -47,8 +47,8 @@ const donuts = [
   },
   {
     name: 'Vaniljmunk',
-    price: 15,
-    rating: 5,
+    price: 18,
+    rating: 1,
     amount: 0,
     image1: './images/vanilla-1.jpg',
     image2: './images/vanilla-2.jpg',
@@ -65,7 +65,7 @@ const donuts = [
   },
   {
     name: 'Äppelmunk',
-    price: 17,
+    price: 25,
     rating: 4,
     amount: 0,
     image1: './images/apple-1.jpg',
@@ -74,7 +74,7 @@ const donuts = [
   },
   {
     name: 'Citronmunk',
-    price: 17,
+    price: 22,
     rating: 2,
     amount: 0,
     image1: './images/lemon-1.jpg',
@@ -83,7 +83,7 @@ const donuts = [
   },
   {
     name: 'Hallonmunk',
-    price: 18,
+    price: 20,
     rating: 5,
     amount: 0,
     image1: './images/raspberry-1.jpg',
@@ -92,7 +92,7 @@ const donuts = [
   },
   {
     name: 'Trippel chokladmunk',
-    price: 20,
+    price: 30,
     rating: 4,
     amount: 0,
     image1: './images/triple-chocolate-1.jpg',
@@ -101,7 +101,7 @@ const donuts = [
   },
   {
     name: 'Nougatmunk',
-    price: 22,
+    price: 35,
     rating: 3,
     amount: 0,
     image1: './images/nougat-1.jpg',
