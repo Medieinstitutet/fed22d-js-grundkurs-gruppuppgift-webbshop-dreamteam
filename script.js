@@ -39,7 +39,7 @@ const donuts = [
   {
     name: 'Chokladmunk',
     price: 15,
-    rating: 5,
+    rating: 2,
     amount: 0,
     image1: './images/chocolate-1.jpg',
     image2: './images/chocolate-2.jpg',
@@ -48,7 +48,7 @@ const donuts = [
   {
     name: 'Vaniljmunk',
     price: 15,
-    rating: 5,
+    rating: 1,
     amount: 0,
     image1: './images/vanilla-1.jpg',
     image2: './images/vanilla-2.jpg',
@@ -188,6 +188,37 @@ function renderDonuts() {
       btn.addEventListener('click', removeDonutAmount);
     });
   
+    const ratingBtn = document.querySelector("#sortRating");
+    ratingBtn.addEventListener("click", sortRating);
+    
+    function sortRating() {
+      donuts.sort((donut1, donut2) => donut1.rating - donut2.rating);
+  
+      renderDonuts();
+    };
+    
+    const nameBtn = document.querySelector('sortName');
+    nameBtn.addEventListener('click', sortName);
+  
+    function sortName() {}
+    donuts.sort((donut1, donut2) => donut1.name - donut2.name); 
+     
+      renderDonuts();
+    };
+
+
+    const priceBtn = document.querySelector("#sortPrice");
+    priceBtn.addEventListener("click", sortPrice);
+
+    function sortPrice() {
+      donuts.sort((donut1, donut2) => donut1.price - donut2.price);
+
+      renderDonuts();
+    };
+
+
+  
+    
 
   
   // Summan av alla munkar (Denna behöver ändras när vi ska lägga till extra kostnader)
@@ -203,7 +234,7 @@ function renderDonuts() {
   
     document.querySelector('.cartTotal').innerHTML = sum;
     document.querySelector('.totalAmount').innerHTML = sum;
-  }
+  
 
   // Utskrift i Varukorg
   function printOrdredDonuts() {
@@ -254,7 +285,22 @@ function renderDonuts() {
   }
   
   renderDonuts();
-    
+
+  //sortera efter pris
+  const ratingBtn = document.querySelector("#sortRating");
+
+  ratingBtn.addEventListener("click", sortRating);
+
+ 
+
+  function sortRating() {
+
+    donuts.sort((donut1, donut2) => donut1.rating - donut2.rating);
+
+    renderDonuts();
+
+  };
+
 
 
 // ***************Simon********************
