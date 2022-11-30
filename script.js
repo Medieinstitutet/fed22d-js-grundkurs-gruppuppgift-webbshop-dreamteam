@@ -1,3 +1,4 @@
+
 //dark and light
 const darkMode = document.getElementById('dark-mode');
 const lightMode = document.getElementById('light-mode');
@@ -195,32 +196,33 @@ function renderDonuts() {
      (previousValue, donut) => {
        return (donut.amount * donut.price) + previousValue;
      },
-  
-     0
-  
-     );
+       0
+
+       
+       );
     
     
-    printOrdredDonuts();             
+             
   
-    const cartTotal = document.querySelector('.cartTotal');
-    cartTotal.innerHTML = `<span>Pris: ${sum} kr</span>`
+    const cartPrice = document.querySelector('.cartPrice');
+    cartPrice.innerHTML = `<span>Pris: ${sum} kr</span>`;
 
 
-     
-  }  // // // // // // // // // //
-
+    printOrdredDonuts();    
+ }  // // // // // // // // // //
 
   
+  
+ 
 
-
-  // Utskrift i Varukorg
+  // Utskrift av order
   function printOrdredDonuts() {
     document.querySelector('.cartName').innerHTML = '';
-    
+    document.querySelector('#receiptOrderDonut').innerHTML = '';
     for(let i = 0; i < donuts.length; i++) {
       if (donuts[i].amount > 0) {
         document.querySelector('.cartName').innerHTML += `<span>Produkt: ${donuts[i].name} Antal: ${donuts[i].amount} Pris: ${donuts[i].amount * donuts[i].price}<br></span>`;
+        document.querySelector('#receiptOrderDonut').innerHTML += `<span>Produkt:  ${donuts[i].name} Antal: ${donuts[i].amount} Pris: ${donuts[i].amount * donuts[i].price}<br></span>`;
         
       }
     }
@@ -273,8 +275,9 @@ function renderDonuts() {
 
 
 
+
       const submitButton = document.getElementById("submit");
-      const form = document.getElementById("contactForm");
+      const contactForm = document.getElementById("contactForm");
       const firstName = document.getElementById("fname");
       const secondName = document.getElementById("lname");
       const email = document.getElementById("email");
@@ -288,17 +291,36 @@ function renderDonuts() {
       const cvcNr = document.getElementById("cvcNr");
       const radioinvoice = document.getElementById("radiofaktura");
       const radiocard = document.getElementById("radiokort");
+      const userInputPayment = contactForm.elements['betalning']; // Värdet av Radio-button
       const portCode = document.getElementById("portcode");
       const gdpr = document.getElementById('gdpr');
       const userForm = document.getElementById('userForm');
       const shop = document.getElementById('shop');
       const CheckOutButton = document.getElementById('CheckOutButton');
       const CheckOutButtonBack = document.getElementById('CheckOutButtonBack');
-      const cartTotal = document.getElementById('cartTotal');
+      const cartPrice = document.getElementById('cartPrice');
       const allDonuts = document.getElementById('allDonuts');
+      const clearCart = document.getElementById('clearCart');
+      const deliveryTime = document.getElementById('deliveryTime');
+      const receiptOrder = document.getElementById('receiptOrder');
+      const receiptOrderName = document.querySelector("#receiptOrderName");
+      const receiptOrderContactInformation = document.querySelector("#receiptOrderContactInformation");
+    
+      
       
 
+
       
+      // Tömmer varukorgen
+
+      clearCart.addEventListener('click', clearCartButton);
+      function clearCartButton(e){
+
+        for (let i = 0; i < donuts.length; i++){
+          donuts[i].amount=0;
+        }
+        renderDonuts();
+      }
 
 
         // Gå vidare till kundinformation
@@ -309,7 +331,7 @@ function renderDonuts() {
           
           userForm.style.display = 'block';
           shop.style.display = 'none';
-
+          // receiptOrder.style.display = 'none';
           allDonuts.style.display = 'none';
           
       }
@@ -326,8 +348,54 @@ function renderDonuts() {
 
 
 
-
+        
       ///beställningsknappen///////////
+// Submit-button + kvitto
+
+submitButton.addEventListener("click", orderCompilation);
+
+
+ function orderCompilation(e){
+  e.preventDefault();
+  receiptOrder.style.display = "block";
+  userForm.style.display = 'none';
+  
+
+// Leveranstid
+
+const newDate = new Date();
+
+
+// Leverans på lördag och söndag
+ if (newDate.getDay()==7 || newDate.getDay()==0){ 
+  deliveryTime.innerHTML = 'Ordern levereras om 1,5 timme!';   
+} else if (newDate.getDay() == 5 && newDate.getHours() >= 11 && newDate.getHours() <= 13){
+  deliveryTime.innerHTML = 'Ordern levereras klockan 15:00!';      
+} else if(newDate.getHours() >= 22 || newDate.getHours() <= 5) {
+  deliveryTime.innerHTML = 'Ordern levereras om 45 minuter!';  
+} else {
+  deliveryTime.innerHTML = 'Ordern levereras om 30 minuter!';       
+}
+
+
+
+
+
+// Skriver ut innehåll från formuläret "receiptOrder"
+
+ receiptOrderName.innerHTML = `Tack för beställningen ${fname.value} ${lname.value}!`;
+ receiptOrderContactInformation.innerHTML = 
+ `Kontaktuppgifter: <br>  
+ Namn: ${fname.value} ${lname.value} <br> 
+ E-mail: ${email.value} <br> 
+ Telefon: ${phone.value} <br>
+ Adress: ${street.value} <br> 
+ Postnummer: ${zip.value} <br> 
+ Postort: ${city.value} <br>
+ Portkod: ${portCode.value} <br>
+ Betalning: ${userInputPayment.value} <br>`;
+}
+
 
 
     
@@ -557,7 +625,7 @@ function renderDonuts() {
         }
 
 
-      // Personnummer show/hide + rensar                              ---- Göra till en div och bara köra en rad?
+      // Personnummer show/hide + rensar     ---- Göra till en div och bara köra en rad?
       function showfaktura() {
         document.getElementById("persondiv").style.display = "block";
         document.getElementById("kortdiv").style.display = "none";
@@ -570,7 +638,7 @@ function renderDonuts() {
         document.getElementById("kortdiv").style.display = "block";
         document.getElementById("personNr").value = "";
       }
-      //
+         //
 
       // Aktivering av submit-button
       function activatesubmitButton() {
