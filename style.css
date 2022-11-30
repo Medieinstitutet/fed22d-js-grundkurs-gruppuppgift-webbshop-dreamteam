@@ -364,6 +364,7 @@ body {
   transition: transform 0.5s ease-in-out;
   text-align: center;
   background-color: whitesmoke;
+  opacity: 80%;
 }
 
 .navbar .menu-items li {
@@ -398,6 +399,11 @@ body {
 .space {
   margin: 1rem;
 }
+
+.priceRange {
+   display:block;
+   color:#edf6f6;
+  }
 
 /*kontaktuppgifter*/
 #contact {
