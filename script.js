@@ -146,7 +146,7 @@ function renderDonuts() {
           <span class="price">Styckpris: ${donuts[i].price} kr</span><br>
           <span class="amount">Antal: ${donuts[i].amount} st</span><br>
           <span class="amount">Pris: ${donuts[i].price * donuts[i].amount} kr</span><br>
-           <span class="rating">Betyg: ${donuts[i].rating}/5</span> 
+          <span class="rating">Betyg: ${donuts[i].rating}/5</span> 
     </div>
     </div>
       <div class="donutContainerInput">
@@ -228,21 +228,23 @@ function renderDonuts() {
     };
     
     // prisrange slider
+    const filteredDonutsInPriceRange = [...donuts];
     const priceRangeSlider = document.querySelector("#priceRange");
     const currentRangeValue = document.querySelector("#currentRangeValue");
- 
+  
     priceRangeSlider.addEventListener("input", changePriceRange);
- 
+  
      function changePriceRange() {
      const currentPrice = priceRangeSlider.value;
      currentRangeValue.innerHTML = currentPrice;
- 
+  
       filteredDonutsInPriceRange = donuts.filter(
      (donuts) => donuts.price <= currentPrice);
-
-
+  
+  
    renderDonuts();
-  }
+  };
+
 
   
   // Summan av alla munkar (Denna behöver ändras när vi ska lägga till extra kostnader)
@@ -254,14 +256,14 @@ function renderDonuts() {
     0
   
     );
-    printOrdredDonuts();             
+    printOrderedDonuts();             
   
     document.querySelector('.cartTotal').innerHTML = sum;
     document.querySelector('.totalAmount').innerHTML = sum;
   }
 
   // Utskrift i Varukorg
-  function printOrdredDonuts() {
+  function printOrderedDonuts() {
     document.querySelector('.cartName').innerHTML = '';
   
     for(let i = 0; i < donuts.length; i++) {
@@ -271,8 +273,7 @@ function renderDonuts() {
       }
     }
   }
-  
-  
+
 
 
 
@@ -309,7 +310,6 @@ function renderDonuts() {
   }
   
   renderDonuts();
-
 
 // ***************Simon********************
 // Sparar input information
