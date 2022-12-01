@@ -267,23 +267,46 @@ function renderDonuts() {
    renderDonuts();
   };
 
-// Summan av alla munkar (Denna behöver ändras när vi ska lägga till extra kostnader)
+                                                          // Summan av alla munkar + totalsumman + händelser
   function donutsOrderPrice(){
-    const cartTotal = document.querySelector('.cartTotal');
-   // cartTotal.innerHTML = `<span>Totaltsumma: ${sum} kr</span>`
-   cartTotal.innerHTML = ``
+    let donutTotalPrice =0; // Totalsumma för donuts (fyller ingen funktion här)
+    const discountAlert = document.querySelector('.discountAlert'); // 
+    const newDate = new Date();
+    const startDate = new Date(newDate.getFullYear(), 0, 1);
+    const days = Math.floor((newDate - startDate) / (24 * 60 * 60 * 1000));
+    const weekNum = Math.ceil(days / 7);
 
-const sum = donuts.reduce(
+const donutValue = donuts.reduce(
   (previousValue, donut) => {
     return (donut.amount * donut.price) + previousValue;
-  },
+  }, 0 );
 
-  0
-
-  );
+ if (newDate.getDay() === 1 && newDate.getHours() < 10){
   
+  discountAlert.innerHTML = `<span> Måndagsrabatt! 10% på hela beställningen!</span>`
+ donutTotalPrice = Math.round(donutValue * 0.9);
+} 
+else if ((newDate.getDay() === 5 && newDate.getHours() > 15) || newDate.getDay() === 6 || newDate.getDay() === 0 || (newDate.getDay() === 1 && newDate.getHours() < 3)){
+  
+ donutTotalPrice = Math.round(donutValue * 1.15); ///////////////////////////////utan priset ska bara vara högre i "utskriften" av munkarna.
+  
+   
+ }  else if (weekNum % 2 === 0 && newDate.getDay()=== 2 && donutValue>25){
+  discountAlert.innerHTML = `<span> 25 kronor rabatt om du handlar för mer än 25 kronor!</span>`
+  donutTotalPrice = Math.round(donutValue - 25);
+} 
+ else {
+   donutTotalPrice = Math.round(donutValue + 0);
+}
 
+////////////////////////
 
+///////////////////////
+
+ /////////////////////////////////////// utskrift av pris
+  const cartTotal = document.querySelector('.cartTotal');
+  cartTotal.innerHTML = donutTotalPrice;
+  
   }
 
 
