@@ -159,6 +159,18 @@ function renderDonuts() {
     `;
   }
 
+  document.querySelectorAll('.add').forEach((btn) => {
+    btn.addEventListener('click', updateDonutAmount);
+  });
+  document.querySelectorAll('.CustomInput').forEach((input) => {
+    input.addEventListener('text', customDonutAmount);
+  });
+  document.querySelectorAll('.remove').forEach((btn) => {
+    btn.addEventListener('click', removeDonutAmount);
+  });
+
+  summarizeDonuts();
+
   // // // // // // // // // INPUT i - donutContainerInput - (om den ska användas)  <input class="CustomInput" type="number" value="0" data-id="${i}">
   const prevImageBtn = document.querySelectorAll('#prevImg');
   const nextImageBtn = document.querySelectorAll('#nextImg');
@@ -181,16 +193,6 @@ function swapImages(e) {
   donutcardImg1Slideshow.setAttribute('src', secondDonut);
   donutCardImg2Slideshow.setAttribute('src', firstDonut);
 }
-
-document.querySelectorAll('.add').forEach((btn) => {
-  btn.addEventListener('click', updateDonutAmount);
-});
-document.querySelectorAll('.CustomInput').forEach((input) => {
-  input.addEventListener('text', customDonutAmount);
-});
-document.querySelectorAll('.remove').forEach((btn) => {
-  btn.addEventListener('click', removeDonutAmount);
-});
 
 // sortering efter namn pris och rating
 const nameBtn = document.querySelector('#sortName');
@@ -257,8 +259,13 @@ function summarizeDonuts() {
 
   printOrderedDonuts();
 
-  document.querySelector('.cartTotal').innerHTML = sum;
-  document.querySelector('.totalAmount').innerHTML = sum;
+  if (document.querySelector('.cartTotal')) {
+    // TODO: HTML-elementen verkar saknas
+    document.querySelector('.cartTotal').innerHTML = sum;
+  }
+  if (document.querySelector('.totalAmount')) {
+    document.querySelector('.totalAmount').innerHTML = sum;
+  }
 }
 
 // Utskrift i Varukorg
@@ -298,8 +305,6 @@ function removeDonutAmount(e) {
   }
   renderDonuts();
 }
-
-changePriceRange();
 
 // ***************Simon********************
 // Sparar input information
@@ -590,3 +595,6 @@ function activatesubmitButton() {
     submitButton.setAttribute('disabled', '');
   }
 }
+
+// STARTA PROGRAMMET
+changePriceRange();
