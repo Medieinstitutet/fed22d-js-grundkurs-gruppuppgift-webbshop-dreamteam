@@ -148,7 +148,8 @@ function renderDonuts() {
           <span class="price">Styckpris: ${donuts[i].price} kr</span><br>
           <span class="amount">Antal: ${donuts[i].amount} st</span><br>
           <span class="priceDefault">Pris: ${donuts[i].price * donuts[i].amount} kr</span><br>
-           <span class="rating">Betyg: ${donuts[i].rating}/5</span> 
+           <span class="rating">Betyg: ${donuts[i].rating}/5</span><br> 
+           <span class="sortCategory">kategori: ${donuts[i].category}</span>
     </div>
     </div>
       <div class="donutContainerInput">
@@ -198,6 +199,25 @@ function renderDonuts() {
     printOrdredDonuts();             
   
   }  // // // // // // // // // //
+
+      categoryBtn.addEventListener('click', categoryOrder);
+
+      function categoryOrder() {
+
+        donuts.sort((a, b) => {
+
+        if (a.category < b.category ) { return -1; }
+
+        if (a.category  > b.category ) { return 1; }
+
+        return 0;
+
+      });
+
+      renderDonuts();
+
+      }
+
 
     // sortering efter namn pris och rating
     const nameBtn = document.querySelector("#sortName");
