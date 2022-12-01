@@ -178,8 +178,8 @@ function renderDonuts() {
   for (let i = 0; i < prevImageBtn.length; i++) {
     prevImageBtn[i].addEventListener('click', swapImages);
     nextImageBtn[i].addEventListener('click', swapImages);
-  }
-}
+  };
+};
 
 function swapImages(e) {
   const donutcardImg1Slideshow =
@@ -219,7 +219,7 @@ function nameOrder() {
     return 0;
   });
   renderDonuts();
-}
+};
 
 
 const ratingBtn = document.querySelector('#sortRating');
@@ -230,7 +230,7 @@ function sortRating() {
   donuts.sort((donut1, donut2) => donut1.rating - donut2.rating);
 
   renderDonuts();
-}
+};
 
 const priceBtn = document.querySelector('#sortPrice');
 priceBtn.addEventListener('click', sortPrice);
@@ -239,7 +239,7 @@ function sortPrice() {
   donuts.sort((donut1, donut2) => donut1.price - donut2.price);
 
   renderDonuts();
-}
+};
 
 // sortera efter pris slider
 const priceRangeSlider = document.querySelector('#priceRange');
@@ -252,15 +252,21 @@ priceRangeSlider.addEventListener('input', changePriceRange);
 function changePriceRange() {
   const currentPrice = priceRangeSlider.value;
   currentRangeValue.innerHTML = currentPrice;
-  console.log('change price', currentPrice);
-  // TODO: I arrayen nedan ingår alla de munkarna som matchar priskriteriet
+  
   // Denna är den som måste "printas/skrivas ut" i funktionen renderDonuts, istället för donuts-arrayen :)
   filteredDonutsInPriceRange = filteredDonuts.filter(
     (donut) => donut.price <= currentPrice
   );
 
   renderDonuts();
-}
+};
+
+  renderDonuts();
+  
+
+
+
+
 
 function summarizeDonuts() {
   const sum = donuts.reduce((previousValue, donut) => {
@@ -276,8 +282,10 @@ function summarizeDonuts() {
   }
   if (document.querySelector('.totalAmount')) {
     document.querySelector('.totalAmount').innerHTML = sum;
-  }
-}
+  };
+};
+
+
 
 // Utskrift i Varukorg
 function printOrderedDonuts() {
@@ -287,10 +295,9 @@ function printOrderedDonuts() {
     if (donuts[i].amount > 0) {
       document.querySelector('.cartName').innerHTML += `<p>Produkt: ${donuts[i].name} Antal: ${donuts[i].amount} Kostnad: ${donuts[i].amount * donuts[i].price}</p>`;
 
-    }
-  }
-}
-
+    };
+  };
+};
 
 
 
@@ -301,7 +308,7 @@ function customDonutAmount(e) {
 
 
   renderDonuts();
-}
+};
 
 
 
@@ -312,7 +319,7 @@ function updateDonutAmount(e) {
 
 
   renderDonuts();
-}
+};
 
 
 // Tar bort antal på munk
@@ -324,9 +331,8 @@ function removeDonutAmount(e) {
 
   renderDonuts();
 
-}
+};
 
-changePriceRange();
 
 // ***************Simon********************
 // Sparar input information
@@ -629,7 +635,5 @@ function activatesubmitButton() {
   } else {
     // Lägger till disable på submit. "" gör att den uppdateras(?)
     submitButton.setAttribute("disabled", "");
-  }
-}
-
-changePriceRange();
+  };
+};
