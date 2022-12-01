@@ -323,9 +323,6 @@ else if ((newDate.getDay() === 5 && newDate.getHours() > 15) || newDate.getDay()
       }
     }
 
-
-
-    
   }
   
   
@@ -366,6 +363,14 @@ else if ((newDate.getDay() === 5 && newDate.getHours() > 15) || newDate.getDay()
   
   renderDonuts();
     
+////////////////// Luciamunk///////////////////////////////////// 
+
+const newDate = new Date();                                                  
+    if(newDate.getMonth() === 11 && newDate.getDate() === 13 )                   
+    {
+      document.querySelector('.cartName').innerHTML += `<div> <span class="cartNameProduct">Produkt: Luciamunk <br></span> <span class="cartNameQuantity">Antal: 1</span> <span class="cartNamePrice">Pris: 0<br><hr></span></div>`;                                    
+                                                           
+    }
 
 
 // ***********************************
