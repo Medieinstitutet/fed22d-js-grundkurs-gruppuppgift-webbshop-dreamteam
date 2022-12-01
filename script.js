@@ -187,23 +187,6 @@ function renderDonuts() {
       btn.addEventListener('click', removeDonutAmount);
     });
 
-    const priceRangeSlider = document.querySelector('#priceRange');
-    const currentRangeValue = document.querySelector('#currentRangeValue');
-    let filteredDonutsInPriceRange = [...donuts];
-    let filteredDonuts = [...donuts];
-    
-    
-    function changePriceRange() {
-    currentRangeValue.innerHTML = currentPrice;
-    
-    filteredDonutsInPriceRange = filteredDonuts.filter(donut => donut.price <= currentPrice);
-    priceRangeSlider.addEventListener('input', changePriceRange);
-  
-    
-    renderDonuts();
-  };
-  changePriceRange();
-    
 
     // sortering efter namn pris och rating
     const nameBtn = document.querySelector("#sortName");
@@ -244,7 +227,27 @@ function renderDonuts() {
       renderDonuts();
     };
     
-   
+    
+    const priceRangeSlider = document.querySelector('#priceRange');
+    const currentRangeValue = document.querySelector('#currentRangeValue');
+    let filteredDonutsInPriceRange = [...donuts];
+    let filteredDonuts = [...donuts];
+
+    priceRangeSlider.addEventListener('input', changePriceRange);
+
+
+    function changePriceRange() {
+      currentRangeValue.innerHTML = currentPrice;
+      filteredDonutsInPriceRange = filteredDonuts.filter(donut => donut.price <= currentPrice);
+    
+      
+      
+    };
+
+  renderDonuts();
+
+
+    
 
  // sortera efter pris slider
 
