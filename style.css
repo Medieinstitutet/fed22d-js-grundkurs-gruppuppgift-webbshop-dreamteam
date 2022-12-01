@@ -188,17 +188,14 @@ body {
 
 .toggle {
   position: absolute;
-  top: 1rem;
-  left: 19.5rem;
-  font-size: 1.08rem;
+  top:1vw;
+  right:1vw;
 }
 
 .logo {
   top: 1rem;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
   font-style: italic;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 .moon {
@@ -553,12 +550,6 @@ body {
   background-color: blue;
   color: white;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.toggle {
-  position: absolute;
-  top: 1.5rem;
-  left: 16rem;
 }
 
 .moon {
