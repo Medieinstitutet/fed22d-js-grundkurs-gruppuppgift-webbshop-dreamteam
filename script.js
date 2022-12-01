@@ -124,16 +124,6 @@ function renderDonuts() {
   
   for (let i = 0; i < donuts.length; i++) {
 
-    // Lägg fredags pris här?
-//     let newDate = new Date(); 
-//     let price = donuts[i].price;
-
-//     if(((newDate.getDay() == 5 && newDate.getHours() >= 15) || (newDate.getDay() > 5 || newDate.getDay() <= 1)) && ((newDate.getDay() == 1 && newDate.getHours() <= 2) || (newDate.getDay() < 1 || newDate.getDay() >= 5))) {
-//       (price *= 1.15)
-//   } else {
-//     price;
-// }
-
 
     donutContainer.innerHTML += `
         <article class="donut">
@@ -204,8 +194,8 @@ function renderDonuts() {
   
   
 
-
-    donutsOrderPrice();
+    
+     donutsOrderPrice();
     printOrdredDonuts();             
     
 
@@ -269,7 +259,42 @@ function renderDonuts() {
    renderDonuts();
   };
 
-                                                            // Summan av alla munkar + totalsumman
+
+ // Utskrift av order / Lägger till donuts till varukorgen / 10%
+ function printOrdredDonuts() {
+  document.querySelector('.cartName').innerHTML = '';
+  document.querySelector('#receiptOrderDonut').innerHTML = '';
+  
+  
+
+  
+  for(let i = 0; i < donuts.length; i++) {
+
+
+    // if (donuts[i].amount >= 10){
+    //   donuts[i].price * 0.9;
+
+        
+
+    if (donuts[i].amount > 0) {
+      // document.querySelector('.cartName').innerHTML += `${hejhej} ${sumr}`;
+      document.querySelector('.cartName').innerHTML += `<div> <span class="cartNameProduct">Produkt: ${donuts[i].name}<br></span> <span class="cartNameQuantity">Antal: ${donuts[i].amount}</span> <span class="cartNamePrice">Pris: ${donuts[i].amount * donuts[i].price}<br><hr></span></div>`;
+      document.querySelector('#receiptOrderDonut').innerHTML += `<span>Produkt:  ${donuts[i].name} Antal: ${donuts[i].amount} Pris: ${donuts[i].amount * donuts[i].price}<br></span>`;
+      
+    }
+
+    
+
+
+
+  }
+  // return sumr;
+
+}
+
+
+
+                                                            // Summan av alla munkar + totalsumman + händelser
   function donutsOrderPrice(){
     let donutTotalPrice =0; // Totalsumma för donuts (fyller ingen funktion här)
     const discountAlert = document.querySelector('.discountAlert'); // 
@@ -301,57 +326,30 @@ else if ((newDate.getDay() === 5 && newDate.getHours() > 15) || newDate.getDay()
    donutTotalPrice = Math.round(donutValue + 0);
 }
 
-////////////////////////
+//////////////////////// Om man har beställt fler än 10 av en sort, 10% på den varan
 
+// if (donuts[i].amount>10){
+
+
+// }
+// let y = printOrdredDonuts()
 ///////////////////////
-
-
-
-
-
-
-
-
-
-  /////////////////////////////////////// utskrift av pris
-  const cartTotal = document.querySelector('.cartTotal');
+/////////////////////////////////////// utskrift av pris
+   const cartTotal = document.querySelector('.cartTotal');
   cartTotal.innerHTML = donutTotalPrice;
   
   }
 
+
   
- 
-
-
-   // Utskrift av order
-  function printOrdredDonuts() {
-    document.querySelector('.cartName').innerHTML = '';
-    document.querySelector('#receiptOrderDonut').innerHTML = '';
-    for(let i = 0; i < donuts.length; i++) {
-      if (donuts[i].amount > 0) {
-        document.querySelector('.cartName').innerHTML += `<div> <span class="cartNameProduct">Produkt: ${donuts[i].name}<br></span> <span class="cartNameQuantity">Antal: ${donuts[i].amount}</span> <span class="cartNamePrice">Pris: ${donuts[i].amount * donuts[i].price}<br><hr></span></div>`;
-        document.querySelector('#receiptOrderDonut').innerHTML += `<span>Produkt:  ${donuts[i].name} Antal: ${donuts[i].amount} Pris: ${donuts[i].amount * donuts[i].price}<br></span>`;
-        
-      }
-    }
-
-
-
-    
-  }
-  
-  
-
-
-
    // Lägger till antal på munk - custom  -- FUNKAR EJ (än)
-   function customDonutAmount(e) {
-   const donutClicked = e.currentTarget.dataset.id;
-    donuts[donutClicked].click;
+  //  function customDonutAmount(e) {
+  //  const donutClicked = e.currentTarget.dataset.id;
+  //   donuts[donutClicked].click;
   
   
-  renderDonuts();
-   }
+  // renderDonuts();
+  //  }
   
   
   
@@ -379,6 +377,20 @@ else if ((newDate.getDay() === 5 && newDate.getHours() > 15) || newDate.getDay()
   renderDonuts();
     
 
+////////////////// Luciamunk///////////////////////////////////// 
+
+const newDate = new Date();                                                  
+    if(newDate.getMonth() === 11 && newDate.getDate() === 13 ) 
+    {
+      document.querySelector('.cartName').innerHTML += `<div> <span class="cartNameProduct">Produkt: Luciamunk <br></span> <span class="cartNameQuantity">Antal: 1</span> <span class="cartNamePrice">Pris: 0<br><hr></span></div>`;                                    
+                                                         
+    }
+
+///////////////// Jultema////////////////////// 
+if(newDate.getMonth() === 11 && newDate.getDate() === 24){
+  const themeH1 = document.querySelector('h1');
+  themeH1.style.color = 'red';
+}
 
 // ***********************************
 // Sparar input information
@@ -516,7 +528,7 @@ const newDate = new Date();
 
         if (exp.test(firstName.value)) {
           errorMessage.setAttribute("hidden", "");
-          document.getElementById("fname").style=null;sort
+          document.getElementById("fname").style=null;
           checkfNameInput = true;
         } else {
           errorMessage.innerHTML = "Skriv ditt förnamn med bokstäver";
