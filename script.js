@@ -124,18 +124,7 @@ function renderDonuts() {
   
   for (let i = 0; i < donuts.length; i++) {
 
-    // Lägg fredags pris här?
-//     let newDate = new Date(); 
-//     let price = donuts[i].price;
-
-//     if(((newDate.getDay() == 5 && newDate.getHours() >= 15) || (newDate.getDay() > 5 || newDate.getDay() <= 1)) && ((newDate.getDay() == 1 && newDate.getHours() <= 2) || (newDate.getDay() < 1 || newDate.getDay() >= 5))) {
-//       (price *= 1.15)
-//   } else {
-//     price;
-// }
-
-
-    donutContainer.innerHTML += `
+     donutContainer.innerHTML += `
         <article class="donut">
           <h2>${donuts[i].name}</h2><br>
           <section class="donutCardContainer">
@@ -415,14 +404,14 @@ if(newDate.getMonth() === 11 && newDate.getDate() === 24){
       // Tömmer formulär
       resetForm.addEventListener('click', resetFormButton);
       function resetFormButton(){
-        document.getElementById('resetForm').reset();
-      }
-      // Timmer för återställning av formulär
-      setInterval(orderTimeOut, 900000); 
+        document.getElementById('contactForm').reset();
+        
+       }
+       setInterval(orderTimeOut, 900000);
        function orderTimeOut() {
        resetFormButton();
          alert('Du är för långsam, kontaktformuläret har återställts!');
-      }
+       }
 
       // Tömmer varukorgen
 
