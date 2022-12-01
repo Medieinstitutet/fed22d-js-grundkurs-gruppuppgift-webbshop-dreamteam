@@ -384,6 +384,12 @@ const sum = donuts.reduce(
       function resetFormButton(){
         document.getElementById('resetForm').reset();
       }
+      // Timmer för återställning av formulär
+      setInterval(orderTimeOut, 900000); 
+       function orderTimeOut() {
+       resetFormButton();
+         alert('Du är för långsam, kontaktformuläret har återställts!');
+      }
 
       // Tömmer varukorgen
 
