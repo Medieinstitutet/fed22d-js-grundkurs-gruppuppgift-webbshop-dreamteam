@@ -166,8 +166,8 @@ function renderDonuts() {
     const nextImageBtn = document.querySelectorAll('#nextImg');
 
     for (let i = 0; i < prevImageBtn.length; i++){                     
-      prevImageBtn[i].addEventListener('click', swapImages)           
-      nextImageBtn[i].addEventListener('click', swapImages)           
+      prevImageBtn[i].addEventListener('click', swapImages);           
+      nextImageBtn[i].addEventListener('click', swapImages);           
   }
   function swapImages(e){
     const donutcardImg1Slideshow = e.currentTarget.parentElement.parentElement.querySelector('#donutImage1');         
