@@ -100,21 +100,17 @@
         <div>
           <h2>Varukorgssammanställning</h2>
           <div class="cartName"></div> 
+           <div class="discountAlert"></div>
           <div class="cartTotal"></div> 
-          <div>Frakt:</div>
-          
-          <!-- <div></div>            Måndagsrabatt     -->
-          
-          
-          <div class="cart-item">
+         
+   <div class="cart-item">
             <label class="rabattkodLabel" for="rabatt">Rabattkod</label>
             <input type="text" name="rabatt" id="rabattkod" />
           </div>
           <div>Totalbelopp:</div>
         </div>
-
         <div class="buttonShop">
-         
+        
           <a href="#userForm"><input type="button" value="Fortsätt" id="CheckOutButton"/></a>
           <input id="clearCart" type="reset" value="Rensa order" />
           
@@ -126,8 +122,7 @@
         class="contactForm"
         action=""
         autocomplete="on"
-        onsubmit="validateForm();"
-      >
+            >
       <h2>Kontaktuppgifter</h2>
       <label class="form-item-label"for="fname">Förnamn</label>
         
@@ -322,7 +317,7 @@
           disabled
         />
         
-        <input type="reset"  value="Rensa formulär" id="resetForm" />
+        <input type="button"  value="Rensa formulär" id="resetForm" />
         <a href="#shop"><input type="button" value="Tillbaka till varukorgen" id="CheckOutButtonBack"/></a>
         
       </form>
