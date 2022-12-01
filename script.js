@@ -372,6 +372,11 @@ const newDate = new Date();
                                                            
     }
 
+///////////////// Jultema////////////////////// 
+if(newDate.getMonth() === 11 && newDate.getDate() === 24){
+  const themeH1 = document.querySelector('h1');
+  themeH1.style.color = 'red';
+}
 
 // ***********************************
 // Sparar input information
