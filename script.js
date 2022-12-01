@@ -1,4 +1,3 @@
-
 //dark and light
 const darkMode = document.getElementById('dark-mode');
 const lightMode = document.getElementById('light-mode');
@@ -21,7 +20,7 @@ lightMode.addEventListener('click', () => {
 const donuts = [
   {
     name: 'Chokladmunk med strössel',
-    price: 20,
+    price: 23,
     rating: 4,
     amount: 0,
     image1: './images/chocolate-sprinkle-1.jpg',
@@ -30,7 +29,7 @@ const donuts = [
   },
   {
     name: 'Glaserad munk',
-    price: 12,
+    price: 15,
     rating: 4,
     amount: 0,
     image1: './images/glazed-donut-1.jpg',
@@ -39,8 +38,8 @@ const donuts = [
   },
   {
     name: 'Chokladmunk',
-    price: 15,
-    rating: 5,
+    price: 19,
+    rating: 2,
     amount: 0,
     image1: './images/chocolate-1.jpg',
     image2: './images/chocolate-2.jpg',
@@ -48,8 +47,8 @@ const donuts = [
   },
   {
     name: 'Vaniljmunk',
-    price: 15,
-    rating: 5,
+    price: 18,
+    rating: 1,
     amount: 0,
     image1: './images/vanilla-1.jpg',
     image2: './images/vanilla-2.jpg',
@@ -66,7 +65,7 @@ const donuts = [
   },
   {
     name: 'Äppelmunk',
-    price: 17,
+    price: 25,
     rating: 4,
     amount: 0,
     image1: './images/apple-1.jpg',
@@ -75,7 +74,7 @@ const donuts = [
   },
   {
     name: 'Citronmunk',
-    price: 17,
+    price: 22,
     rating: 2,
     amount: 0,
     image1: './images/lemon-1.jpg',
@@ -84,7 +83,7 @@ const donuts = [
   },
   {
     name: 'Hallonmunk',
-    price: 18,
+    price: 20,
     rating: 5,
     amount: 0,
     image1: './images/raspberry-1.jpg',
@@ -93,7 +92,7 @@ const donuts = [
   },
   {
     name: 'Trippel chokladmunk',
-    price: 20,
+    price: 30,
     rating: 4,
     amount: 0,
     image1: './images/triple-chocolate-1.jpg',
@@ -102,7 +101,7 @@ const donuts = [
   },
   {
     name: 'Nougatmunk',
-    price: 22,
+    price: 35,
     rating: 3,
     amount: 0,
     image1: './images/nougat-1.jpg',
@@ -124,6 +123,18 @@ function renderDonuts() {
   donutContainer.innerHTML = '';
   
   for (let i = 0; i < donuts.length; i++) {
+
+    // Lägg fredags pris här?
+//     let newDate = new Date(); 
+//     let price = donuts[i].price;
+
+//     if(((newDate.getDay() == 5 && newDate.getHours() >= 15) || (newDate.getDay() > 5 || newDate.getDay() <= 1)) && ((newDate.getDay() == 1 && newDate.getHours() <= 2) || (newDate.getDay() < 1 || newDate.getDay() >= 5))) {
+//       (price *= 1.15)
+//   } else {
+//     price;
+// }
+
+
     donutContainer.innerHTML += `
         <article class="donut">
           <h2>${donuts[i].name}</h2><br>
@@ -143,7 +154,7 @@ function renderDonuts() {
               <span class="material-symbols-outlined">></span>
             </button>
     </div>
-    </div>
+    </div> 
       <div class="donutContainerPrice">
           <span class="price">Styckpris: ${donuts[i].price} kr</span><br>
           <span class="amount">Antal: ${donuts[i].amount} st</span><br>
@@ -191,41 +202,142 @@ function renderDonuts() {
   
 
   
-  // Summan av alla munkar (Denna behöver ändras när vi ska lägga till extra kostnader)
-     const sum = donuts.reduce(
-     (previousValue, donut) => {
-       return (donut.amount * donut.price) + previousValue;
-     },
-       0
-
-       
-       );
-    
-    
-             
   
-    const cartPrice = document.querySelector('.cartPrice');
-    cartPrice.innerHTML = `<span>Pris: ${sum} kr</span>`;
 
 
-    printOrdredDonuts();    
- }  // // // // // // // // // //
+    donutsOrderPrice();
+    printOrdredDonuts();             
+    
 
+
+  }  // // // // // // // // // //
+
+    // sortering efter namn pris och rating
+    const nameBtn = document.querySelector("#sortName");
+    nameBtn.addEventListener('click', nameOrder);
+
+    function nameOrder() {
+    
+      donuts.sort((a, b) => {
+    
+      if (a.name < b.name) { return -1; }
+    
+      if (a.name > b.name) { return 1; }
+    
+      return 0;
+    
+    });
+    
+    renderDonuts();
+    
+    }
+    
+    const ratingBtn = document.querySelector("#sortRating");
+    ratingBtn.addEventListener("click", sortRating);
+    
+    function sortRating() {
+      donuts.sort((donut1, donut2) => donut1.rating - donut2.rating);
   
+      renderDonuts();
+    };
+    
+
+    const priceBtn = document.querySelector("#sortPrice");
+    priceBtn.addEventListener("click", sortPrice);
+
+    function sortPrice() {
+      donuts.sort((donut1, donut2) => donut1.price - donut2.price);
+
+      renderDonuts();
+    };
+    
+    // prisrange slider
+    const filteredDonutsInPriceRange = [...donuts];
+    const priceRangeSlider = document.querySelector("#priceRange");
+    const currentRangeValue = document.querySelector("#currentRangeValue");
+  
+    priceRangeSlider.addEventListener("input", changePriceRange);
+  
+     function changePriceRange() {
+     const currentPrice = priceRangeSlider.value;
+     currentRangeValue.innerHTML = currentPrice;
+  
+      filteredDonutsInPriceRange = donuts.filter(
+     (donuts) => donuts.price <= currentPrice);
+  
+  
+   renderDonuts();
+  };
+
+                                                            // Summan av alla munkar + totalsumman
+  function donutsOrderPrice(){
+    let donutTotalPrice =0; // Totalsumma för donuts (fyller ingen funktion här)
+    const discountAlert = document.querySelector('.discountAlert'); // 
+    const newDate = new Date();
+    const startDate = new Date(newDate.getFullYear(), 0, 1);
+    const days = Math.floor((newDate - startDate) / (24 * 60 * 60 * 1000));
+    const weekNum = Math.ceil(days / 7);
+
+const donutValue = donuts.reduce(
+  (previousValue, donut) => {
+    return (donut.amount * donut.price) + previousValue;
+  }, 0 );
+
+ if (newDate.getDay() === 1 && newDate.getHours() < 10){
+  
+  discountAlert.innerHTML = `<span> Måndagsrabatt! 10% på hela beställningen!</span>`
+ donutTotalPrice = Math.round(donutValue * 0.9);
+} 
+else if ((newDate.getDay() === 5 && newDate.getHours() > 15) || newDate.getDay() === 6 || newDate.getDay() === 0 || (newDate.getDay() === 1 && newDate.getHours() < 3)){
+  
+ donutTotalPrice = Math.round(donutValue * 1.15); ///////////////////////////////utan priset ska bara vara högre i "utskriften" av munkarna.
+  
+   
+ }  else if (weekNum % 2 === 0 && newDate.getDay()=== 2 && donutValue>25){
+  discountAlert.innerHTML = `<span> 25 kronor rabatt om du handlar för mer än 25 kronor!</span>`
+  donutTotalPrice = Math.round(donutValue - 25);
+} 
+ else {
+   donutTotalPrice = Math.round(donutValue + 0);
+}
+
+////////////////////////
+
+///////////////////////
+
+
+
+
+
+
+
+
+
+  /////////////////////////////////////// utskrift av pris
+  const cartTotal = document.querySelector('.cartTotal');
+  cartTotal.innerHTML = donutTotalPrice;
+  
+  }
+
   
  
 
-  // Utskrift av order
+
+   // Utskrift av order
   function printOrdredDonuts() {
     document.querySelector('.cartName').innerHTML = '';
     document.querySelector('#receiptOrderDonut').innerHTML = '';
     for(let i = 0; i < donuts.length; i++) {
       if (donuts[i].amount > 0) {
-        document.querySelector('.cartName').innerHTML += `<span>Produkt: ${donuts[i].name} Antal: ${donuts[i].amount} Pris: ${donuts[i].amount * donuts[i].price}<br></span>`;
+        document.querySelector('.cartName').innerHTML += `<div> <span class="cartNameProduct">Produkt: ${donuts[i].name}<br></span> <span class="cartNameQuantity">Antal: ${donuts[i].amount}</span> <span class="cartNamePrice">Pris: ${donuts[i].amount * donuts[i].price}<br><hr></span></div>`;
         document.querySelector('#receiptOrderDonut').innerHTML += `<span>Produkt:  ${donuts[i].name} Antal: ${donuts[i].amount} Pris: ${donuts[i].amount * donuts[i].price}<br></span>`;
         
       }
     }
+
+
+
+    
   }
   
   
@@ -271,13 +383,9 @@ function renderDonuts() {
 // ***********************************
 // Sparar input information
 
-
-
-
-
-
       const submitButton = document.getElementById("submit");
       const contactForm = document.getElementById("contactForm");
+      const userInputPayment = contactForm.elements['betalning'];
       const firstName = document.getElementById("fname");
       const secondName = document.getElementById("lname");
       const email = document.getElementById("email");
@@ -289,29 +397,36 @@ function renderDonuts() {
       const cardNr = document.getElementById("cardNr");
       const cardDate = document.getElementById("dateNr");
       const cvcNr = document.getElementById("cvcNr");
-      const radioinvoice = document.getElementById("radiofaktura");
-      const radiocard = document.getElementById("radiokort");
-      const userInputPayment = contactForm.elements['betalning']; // Värdet av Radio-button
+      const radioinvoice = document.getElementById("radioinvoice");
+      const radiocard = document.getElementById("radiocard");
       const portCode = document.getElementById("portcode");
       const gdpr = document.getElementById('gdpr');
       const userForm = document.getElementById('userForm');
       const shop = document.getElementById('shop');
       const CheckOutButton = document.getElementById('CheckOutButton');
       const CheckOutButtonBack = document.getElementById('CheckOutButtonBack');
-      const cartPrice = document.getElementById('cartPrice');
+      const cartTotal = document.getElementById('cartTotal');
       const allDonuts = document.getElementById('allDonuts');
       const clearCart = document.getElementById('clearCart');
       const deliveryTime = document.getElementById('deliveryTime');
       const receiptOrder = document.getElementById('receiptOrder');
       const receiptOrderName = document.querySelector("#receiptOrderName");
-      const receiptOrderContactInformation = document.querySelector("#receiptOrderContactInformation");
-    
+      const receiptOrderContactInformation = document.getElementById("receiptOrderContactInformation");
+      const resetForm = document.getElementById("resetForm");
       
-      
+      // Tömmer formulär
+      resetForm.addEventListener('click', resetFormButton);
+      function resetFormButton(){
+        document.getElementById('contactForm').reset();
+        
+       }
+       setInterval(orderTimeOut, 900000);
+       function orderTimeOut() {
+       resetFormButton();
+         alert('Du är för långsam, kontaktformuläret har återställts!');
+       }
 
-
-      
-      // Tömmer varukorgen
+          // Tömmer varukorgen
 
       clearCart.addEventListener('click', clearCartButton);
       function clearCartButton(e){
@@ -327,12 +442,11 @@ function renderDonuts() {
 
         CheckOutButton.addEventListener("click", continueToPayment);
         function continueToPayment() {
-          
-          
+                    
           userForm.style.display = 'block';
           shop.style.display = 'none';
-          // receiptOrder.style.display = 'none';
           allDonuts.style.display = 'none';
+          
           
       }
 
@@ -348,12 +462,11 @@ function renderDonuts() {
 
 
 
-        
+
       ///beställningsknappen///////////
 // Submit-button + kvitto
 
 submitButton.addEventListener("click", orderCompilation);
-
 
  function orderCompilation(e){
   e.preventDefault();
@@ -365,11 +478,10 @@ submitButton.addEventListener("click", orderCompilation);
 
 const newDate = new Date();
 
-
 // Leverans på lördag och söndag
- if (newDate.getDay()==7 || newDate.getDay()==0){ 
+ if (newDate.getDay()===7 || newDate.getDay()===0){ 
   deliveryTime.innerHTML = 'Ordern levereras om 1,5 timme!';   
-} else if (newDate.getDay() == 5 && newDate.getHours() >= 11 && newDate.getHours() <= 13){
+} else if (newDate.getDay() === 5 && newDate.getHours() >= 11 && newDate.getHours() <= 13){
   deliveryTime.innerHTML = 'Ordern levereras klockan 15:00!';      
 } else if(newDate.getHours() >= 22 || newDate.getHours() <= 5) {
   deliveryTime.innerHTML = 'Ordern levereras om 45 minuter!';  
@@ -378,10 +490,7 @@ const newDate = new Date();
 }
 
 
-
-
-
-// Skriver ut innehåll från formuläret "receiptOrder"
+// Skriver ut innehåll från formuläret "receiptOrder". Array istället?
 
  receiptOrderName.innerHTML = `Tack för beställningen ${fname.value} ${lname.value}!`;
  receiptOrderContactInformation.innerHTML = 
@@ -396,8 +505,6 @@ const newDate = new Date();
  Betalning: ${userInputPayment.value} <br>`;
 }
 
-
-
     
       // Förnamn
       firstName.addEventListener("change", checkfName);
@@ -409,11 +516,12 @@ const newDate = new Date();
 
         if (exp.test(firstName.value)) {
           errorMessage.setAttribute("hidden", "");
+          document.getElementById("fname").style=null;sort
           checkfNameInput = true;
         } else {
           errorMessage.innerHTML = "Skriv ditt förnamn med bokstäver";
-          document.getElementById("errorfname").style.color = "red";  ////////////////////////////////////// Hur gör man för att lägga till alla enkelt?
-          document.getElementById("errorfname").style.border = "solid red";
+          document.getElementById("fname").style.color = "red";  
+          document.getElementById("fname").style.border = "dotted red";
           errorMessage.removeAttribute("hidden");
           checkfNameInput = false;
         }
@@ -429,9 +537,12 @@ const newDate = new Date();
 
         if (exp.test(secondName.value)) {
           errorMessage.setAttribute("hidden", "");
+          document.getElementById("lname").style=null;
           checklNameInput = true;
         } else {
           errorMessage.innerHTML = "Skriv ditt efternamn med bokstäver";
+          document.getElementById("lname").style.color = "red";  
+          document.getElementById("lname").style.border = "dotted red";
           errorMessage.removeAttribute("hidden");
           checklNameInput = false;
         }
@@ -449,10 +560,13 @@ const newDate = new Date();
 
         if (exp.test(email.value)) {
           errorMessage.setAttribute("hidden", "");
+          document.getElementById("email").style=null;
           checkemailInput = true;
         } else {
-          errorMessage.innerHTML = "Skriv e-postadress";
+          errorMessage.innerHTML = "Skriv korrekt e-postadress";
           errorMessage.removeAttribute("hidden");
+          document.getElementById("email").style.color = "red";  
+          document.getElementById("email").style.border = "dotted red";
           checkemailInput = false;
         }
         activatesubmitButton();
@@ -467,9 +581,12 @@ const newDate = new Date();
 
         if (exp.test(phone.value)) {
           errorMessage.setAttribute("hidden", "");
+          document.getElementById("phone").style=null;
           checkphoneInput = true;
         } else {
           errorMessage.innerHTML = "Skriv med hjälp av siffor och bindestreck";
+          document.getElementById("phone").style.color = "red";  
+          document.getElementById("phone").style.border = "dotted red";
           errorMessage.removeAttribute("hidden");
           checkphoneInput = false;
         }
@@ -485,9 +602,12 @@ const newDate = new Date();
 
         if (exp.test(street.value)) {
           errorMessage.setAttribute("hidden", "");
+          document.getElementById("street").style=null;
           checkstreetInput = true;
         } else {
           errorMessage.innerHTML = "Skriv din address";
+          document.getElementById("street").style.color = "red";  
+          document.getElementById("street").style.border = "dotted red";
           errorMessage.removeAttribute("hidden");
           checkstreetInput = false;
         }
@@ -503,9 +623,12 @@ const newDate = new Date();
 
         if (exp.test(zip.value)) {
           errorMessage.setAttribute("hidden", "");
+          document.getElementById("zip").style=null;
           checkzipInput = true;
         } else {
           errorMessage.innerHTML = "Skriv ditt postnummer med hjälp av siffror";
+          document.getElementById("zip").style.color = "red";  
+          document.getElementById("zip").style.border = "dotted red";
           errorMessage.removeAttribute("hidden");
           checkzipInput = false;
         }
@@ -521,9 +644,12 @@ const newDate = new Date();
 
         if (exp.test(city.value)) {
           errorMessage.setAttribute("hidden", "");
+          document.getElementById("city").style=null;
           checkcityInput = true;
         } else {
           errorMessage.innerHTML = "Skriv din postort";
+          document.getElementById("city").style.color = "red";  
+          document.getElementById("city").style.border = "dotted red";
           errorMessage.removeAttribute("hidden");
           checkcityInput = false;
         }
@@ -534,14 +660,17 @@ const newDate = new Date();
       let checkpersonNrInput = false;
 
       function checkpersonNr() {
-        const exp = new RegExp("^[-0-9]");
+        const exp = new RegExp("^[-0-9]{10}$");
         const errorMessage = document.getElementById("errorpersonnr");
 
         if (exp.test(personNr.value)) {
           errorMessage.setAttribute("hidden", "");
+          document.getElementById("personNr").style=null;
           checkpersonNrInput = true;
         } else {
-          errorMessage.innerHTML = "Skriv med siffor och bindestreck";
+          errorMessage.innerHTML = "Skriv med siffor, 10 stycken";
+          document.getElementById("personNr").style.color = "red";  
+          document.getElementById("personNr").style.border = "dotted red";
           errorMessage.removeAttribute("hidden");
           checkpersonNrInput = false;
         }
@@ -552,14 +681,14 @@ const newDate = new Date();
       let checkcardNrInput = false;
 
       function checkcardNr() {
-        const exp = new RegExp("^[-0-9]");
+        const exp = new RegExp("^[-0-9]{10}$");
         const errorMessage = document.getElementById("errorkortnr");
 
         if (exp.test(cardNr.value)) {
           errorMessage.setAttribute("hidden", "");
           checkcardNrInput = true;
         } else {
-          errorMessage.innerHTML = "Skriv med siffor";
+          errorMessage.innerHTML = "Skriv med siffor, 16 stycken";
           errorMessage.removeAttribute("hidden");
           checkcardNrInput = false;
         }
@@ -625,20 +754,25 @@ const newDate = new Date();
         }
 
 
-      // Personnummer show/hide + rensar     ---- Göra till en div och bara köra en rad?
-      function showfaktura() {
+      // Personnummer show/hide + rensar                              ---- Göra till en div och bara köra en rad?
+      
+      radioinvoice.addEventListener('click', radioinvoiceClick);
+      function radioinvoiceClick() {
         document.getElementById("persondiv").style.display = "block";
         document.getElementById("kortdiv").style.display = "none";
         document.getElementById("cardNr").value = "";
         document.getElementById("dateNr").value = "";
         document.getElementById("cvcNr").value = "";
       }
-      function showcard() {
+
+      
+      radiocard.addEventListener('click', radiocardClick);
+      function radiocardClick() {
         document.getElementById("persondiv").style.display = "none";
         document.getElementById("kortdiv").style.display = "block";
         document.getElementById("personNr").value = "";
       }
-         //
+      //
 
       // Aktivering av submit-button
       function activatesubmitButton() {
