@@ -200,6 +200,7 @@ function renderDonuts() {
   
   }  // // // // // // // // // //
 
+      categoryBtn = document.querySelector('#sortCategory');
       categoryBtn.addEventListener('click', categoryOrder);
 
       function categoryOrder() {
