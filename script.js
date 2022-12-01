@@ -1,4 +1,4 @@
-//dark and light
+// dark and light
 const darkMode = document.getElementById('dark-mode');
 const lightMode = document.getElementById('light-mode');
       
@@ -119,7 +119,6 @@ const donutContainer = document.querySelector('#allDonuts');
 const basketDonuts = document.querySelector('#basketDonuts') 
 const totalPriceBasket = document.querySelector('#totalAmountBasket');
 
-
 function renderDonuts() {
   donutContainer.innerHTML = '';
   
@@ -150,7 +149,7 @@ function renderDonuts() {
           <span class="amount">Antal: ${donuts[i].amount} st</span><br>
           <span class="priceDefault">Pris: ${donuts[i].price * donuts[i].amount} kr</span><br>
            <span class="rating">Betyg: ${donuts[i].rating}/5</span><br> 
-           <span class="sortCategory">kategori: ${donuts[i].category}</span>
+           <span class="sortCategory">Kategori: ${donuts[i].category}</span>
     </div>
     </div>
       <div class="donutContainerInput">
@@ -166,108 +165,9 @@ function renderDonuts() {
     const prevImageBtn = document.querySelectorAll('#prevImg');       
     const nextImageBtn = document.querySelectorAll('#nextImg');
 
-<<<<<<< Updated upstream
     for (let i = 0; i < prevImageBtn.length; i++){                     
       prevImageBtn[i].addEventListener('click', swapImages);           
       nextImageBtn[i].addEventListener('click', swapImages);           
-=======
-  summarizeDonuts();
-  ////////////////////////////////////
-
-  const prevImageBtn = document.querySelectorAll('#prevImg');
-  const nextImageBtn = document.querySelectorAll('#nextImg');
-
-  for (let i = 0; i < prevImageBtn.length; i++) {
-    prevImageBtn[i].addEventListener('click', swapImages);
-    nextImageBtn[i].addEventListener('click', swapImages);
-  };
-};
-
-function swapImages(e) {
-  const donutcardImg1Slideshow =
-    e.currentTarget.parentElement.parentElement.querySelector('#donutImage1');
-  const donutCardImg2Slideshow =
-    e.currentTarget.parentElement.parentElement.querySelector('#donutImage2');
-
-  const firstDonut = donutcardImg1Slideshow.getAttribute('src');
-  const secondDonut = donutCardImg2Slideshow.getAttribute('src');
-
-  donutcardImg1Slideshow.setAttribute('src', secondDonut);
-  donutCardImg2Slideshow.setAttribute('src', firstDonut);
-};
-
-// sortering efter namn pris och rating
-const nameBtn = document.querySelector('#sortName');
-nameBtn.addEventListener('click', nameOrder);
-
-function nameOrder() {
-  donuts.sort((a, b) => {
-    if (a.name < b.name) {
-      return -1;
-    }
-    if (a.name > b.name) {
-      return 1;
-    }
-    return 0;
-  });
-  renderDonuts();
-};
-
-
-const ratingBtn = document.querySelector('#sortRating');
-ratingBtn.addEventListener('click', sortRating);
-
-
-function sortRating() {
-  donuts.sort((donut1, donut2) => donut1.rating - donut2.rating);
-
-  renderDonuts();
-};
-
-const priceBtn = document.querySelector('#sortPrice');
-priceBtn.addEventListener('click', sortPrice);
-
-function sortPrice() {
-  donuts.sort((donut1, donut2) => donut1.price - donut2.price);
-
-  renderDonuts();
-};
-
-
-// filtrera på pris slider
- const priceRangeSlider = document.querySelector('#priceRange');
- const currentRangeValue = document.querySelector('#currentRangeValue');
- let filteredDonutsInPriceRange = [...donuts];
- let filteredDonuts = [...donuts];
-
- priceRangeSlider.addEventListener('input', changePriceRange);
-
-
- function changePriceRange() {
-   const currentPrice = priceRangeSlider.value;
-   currentRangeValue.innerHTML = currentPrice;
-  
-  // Denna är den som måste "printas/skrivas ut" i funktionen renderDonuts, istället för donuts-arrayen :)
-   filteredDonutsInPriceRange = filteredDonuts.filter(
-    (donut) => donut.price <= currentPrice
-  );
-  
-  renderDonuts();
-}; 
-  renderDonuts();
-
-function summarizeDonuts() {
-  const sum = donuts.reduce((previousValue, donut) => {
-    return donut.amount * donut.price + previousValue;
-  }, 0);
-
-  printOrderedDonuts();
-
-
-  if (document.querySelector('.cartTotal')) {
-    // TODO: HTML-elementen verkar saknas
-    document.querySelector('.cartTotal').innerHTML = sum;
->>>>>>> Stashed changes
   }
   function swapImages(e){
     const donutcardImg1Slideshow = e.currentTarget.parentElement.parentElement.querySelector('#donutImage1');         
@@ -294,17 +194,11 @@ function summarizeDonuts() {
   
   
 
-<<<<<<< Updated upstream
 
     donutsOrderPrice();
     printOrdredDonuts();             
   
   }  // // // // // // // // // //
-=======
-// Utskrift i Varukorg
-function printOrderedDonuts() {
-  document.querySelector('.cartName').innerHTML = '';
->>>>>>> Stashed changes
 
       categoryBtn = document.querySelector('#sortCategory');
       categoryBtn.addEventListener('click', categoryOrder);
@@ -362,7 +256,6 @@ function printOrderedDonuts() {
     function sortPrice() {
       donuts.sort((donut1, donut2) => donut1.price - donut2.price);
 
-<<<<<<< Updated upstream
       renderDonuts();
     };
     
@@ -382,35 +275,6 @@ function printOrderedDonuts() {
   
   
    renderDonuts();
-=======
-
-// Lägger till antal på munk - custom  -- FUNKAR EJ (än)
-function customDonutAmount(e) {
-  const donutClicked = e.currentTarget.dataset.id;
-  donuts[donutClicked].click;
-
-
-  renderDonuts();
-};
-
-
-
-// Lägger till antal på munk
-function updateDonutAmount(e) {
-  const donutClicked = e.currentTarget.dataset.id;
-  donuts[donutClicked].amount += 1;
-
-
-  renderDonuts();
-};
-
-
-// Tar bort antal på munk
-function removeDonutAmount(e) {
-  const donutClicked = e.currentTarget.dataset.id;
-  if (donuts[donutClicked].amount > 0) {
-    donuts[donutClicked].amount -= 1;
->>>>>>> Stashed changes
   };
 
                                                           // Summan av alla munkar + totalsumman + händelser
@@ -518,7 +382,6 @@ const newDate = new Date();
                                                            
     }
 
-<<<<<<< Updated upstream
 ///////////////// Jultema////////////////////// 
 if(newDate.getMonth() === 11 && newDate.getDate() === 24){
   const themeH1 = document.querySelector('h1');
@@ -526,9 +389,6 @@ if(newDate.getMonth() === 11 && newDate.getDate() === 24){
 }
 
 // ***********************************
-=======
-// ***************Simon********************
->>>>>>> Stashed changes
 // Sparar input information
 
       const submitButton = document.getElementById("submit");
@@ -636,17 +496,8 @@ const newDate = new Date();
   deliveryTime.innerHTML = 'Ordern levereras om 30 minuter!';       
 }
 
-<<<<<<< Updated upstream
 
 // Skriver ut innehåll från formuläret "receiptOrder". Array istället?
-=======
-/*
-På måndagar innan kl. 10 ges 
-10 % rabatt på hela beställningssumman. 
-Detta visas i varukorgssammanställningen som en rad 
-med texten "Måndagsrabatt: 10 % på hela beställningen".  
-*/
->>>>>>> Stashed changes
 
  receiptOrderName.innerHTML = `Tack för beställningen ${fname.value} ${lname.value}!`;
  receiptOrderContactInformation.innerHTML = 
@@ -895,7 +746,6 @@ med texten "Måndagsrabatt: 10 % på hela beställningen".
 
 
 
-<<<<<<< Updated upstream
         //GDPR
         gdpr.addEventListener('click', checkGdpr);
         let checkGdprInput = false;                                                  
@@ -903,11 +753,6 @@ med texten "Måndagsrabatt: 10 % på hela beställningen".
         function checkGdpr(){
           if (checkGdprInput = gdpr.checked){
              checkGdprInput=true;
-=======
-//GDPR
-gdpr.addEventListener('click', checkGdpr);
-let checkGdprInput = false;
->>>>>>> Stashed changes
 
          } else {
           checkGdprInput = false; 
