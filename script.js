@@ -186,6 +186,23 @@ function renderDonuts() {
     document.querySelectorAll('.remove').forEach((btn) => {
       btn.addEventListener('click', removeDonutAmount);
     });
+
+    const priceRangeSlider = document.querySelector('#priceRange');
+    const currentRangeValue = document.querySelector('#currentRangeValue');
+    let filteredDonutsInPriceRange = [...donuts];
+    let filteredDonuts = [...donuts];
+    
+    
+    function changePriceRange() {
+    currentRangeValue.innerHTML = currentPrice;
+    
+    filteredDonutsInPriceRange = filteredDonuts.filter(donut => donut.price <= currentPrice);
+    priceRangeSlider.addEventListener('input', changePriceRange);
+  
+    
+    renderDonuts();
+  };
+  changePriceRange();
     
 
     // sortering efter namn pris och rating
@@ -227,23 +244,13 @@ function renderDonuts() {
       renderDonuts();
     };
     
-    // prisrange slider
-    const filteredDonutsInPriceRange = [...donuts];
-    const priceRangeSlider = document.querySelector("#priceRange");
-    const currentRangeValue = document.querySelector("#currentRangeValue");
-  
-    priceRangeSlider.addEventListener("input", changePriceRange);
-  
-     function changePriceRange() {
-     const currentPrice = priceRangeSlider.value;
-     currentRangeValue.innerHTML = currentPrice;
-  
-      filteredDonutsInPriceRange = donuts.filter(
-     (donuts) => donuts.price <= currentPrice);
-  
-  
-   renderDonuts();
-  };
+   
+
+ // sortera efter pris slider
+
+
+
+
 
 
   // Summan av alla munkar (Denna behöver ändras när vi ska lägga till extra kostnader)
@@ -309,6 +316,7 @@ function renderDonuts() {
   }
   
   renderDonuts();
+  changePriceRange();
 
 // ***************Simon********************
 // Sparar input information
