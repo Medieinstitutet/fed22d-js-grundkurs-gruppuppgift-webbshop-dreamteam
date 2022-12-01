@@ -149,7 +149,7 @@ function renderDonuts() {
           <span class="amount">Antal: ${donuts[i].amount} st</span><br>
           <span class="priceDefault">Pris: ${donuts[i].price * donuts[i].amount} kr</span><br>
            <span class="rating">Betyg: ${donuts[i].rating}/5</span><br> 
-           <span class="sortCategory">kategori: ${donuts[i].category}</span>
+           <span class="sortCategory">Kategori: ${donuts[i].category}</span>
     </div>
     </div>
       <div class="donutContainerInput">
