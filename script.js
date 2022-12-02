@@ -310,12 +310,13 @@ function donutsOrderPrice() {
   cartTotal.innerHTML = donutTotalPrice;
 }
 
-// Utskrift av order
+// Utskrift av order + 10 rabatt vid kör av 10+ munk (endast utskrift) 
 function printOrdredDonuts() {
   document.querySelector(".cartName").innerHTML = "";
-  document.querySelector("#receiptOrderDonut").innerHTML = "";
+  
   for (let i = 0; i < donuts.length; i++) {
-    if (donuts[i].amount > 0) {
+    if (donuts[i].amount > 0 && donuts[i].amount <= 9) {
+      
       document.querySelector(
         ".cartName"
       ).innerHTML += `<div> <span class="cartNameProduct">Produkt: ${
@@ -325,14 +326,20 @@ function printOrdredDonuts() {
       }</span> <span class="cartNamePrice">Pris: ${
         donuts[i].amount * donuts[i].price
       }<br><hr></span></div>`;
+    
+    } else if (donuts[i].amount >=10) {  
       document.querySelector(
-        "#receiptOrderDonut"
-      ).innerHTML += `<span>Produkt:  ${donuts[i].name} Antal: ${
+        ".cartName"
+      ).innerHTML += `<div> <span class="cartNameProduct">Produkt: ${
+        donuts[i].name
+      }<br></span> <span class="cartNameQuantity">Antal: ${
         donuts[i].amount
-      } Pris: ${donuts[i].amount * donuts[i].price}<br></span>`;
+      }</span> <span class="cartNamePrice">Pris: ${Math.round((donuts[i].amount * donuts[i].price) *0.9)
+      } <span class="discountAmount">10% rabatt! </span><br><hr></span></div>`;
+      
+      }
     }
   }
-}
 
 // Lägger till antal på munk - custom  -- FUNKAR EJ (än)
 function customDonutAmount(e) {
