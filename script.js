@@ -800,7 +800,7 @@ const newDate = new Date();
         ) {
           submitButton.removeAttribute("disabled");
         } else {
-          // Lägger till disable på submit. "" gör att den uppdateras(?)
+          // Lägger till disable på submit.
           submitButton.setAttribute("disabled", "");
         }
       }
