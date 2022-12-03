@@ -25,8 +25,8 @@
           <div class="logo">
             <h1>Gottfrids Munkshop</h1>
           </div>
-          <div class="shopping">
-            <i class="fa-solid fa-cart-shopping"></i>
+          <div class="shopping" id="headerCartLogo">
+            <i class="fa-solid fa-cart-shopping" ></i>
             <span class="cart">0</i></span>
           </div>
           <div class="toggle">
@@ -40,16 +40,16 @@
   
   
    <div class="filter">
-  <h3>Sortera efter:</h3>
+  <h3><span id="sortAfterHeading">Sortera efter:</span></h3>
        <div class="sortButtonContainer">
-                <button id="sortName">Namn</button>
-                <button id="sortPrice">Pris</button>
-                <button id="sortRating">Betyg</button>  
-                <button id="sortCategory">Kategori</button>
+                <button class="buttonContainer" id="sortName">Namn</button>
+                <button class="buttonContainer" id="sortPrice">Pris</button>
+                <button class="buttonContainer" id="sortRating">Betyg</button>  
+                <button class="buttonContainer" id="sortCategory">Kategori</button>
         </div>       
   <br>
   <div class="space">
-      <div class="priceRange">
+      <div class="priceRange"  id="space">
         <h3>Sortera efter prisspann</h3>
         <span>0 kr</span>
         <input type="range" min="0" max="35" value="35" id="priceRange" step="7">
@@ -63,28 +63,28 @@
   <div id="allDonuts"></div>
 
 </section>
- <section id="shoppingCart" class="contact">
+ <section id="shoppingCartContact" class="shoppingCartContact">
     <div class="form-box">
       <section class="shop" id="shop">
         <div>
-          <h2>Varukorgssammanställning</h2>
+          <h3>Varukorg</h3>
           <div class="cartName"></div> 
+          <div class="cartPriceDiv">Summa: <span class="cartPrice"></span></div>
           <div class="shipping">Frakt: <span class="shippingValue"></span> kr</div> 
+          <div class="cart-item">
+            <label class="rabattkodLabel" for="rabattkod">Rabattkod:
+            <input type="text"  id="rabattkod" />
+            </label> </div>
            <div class="discountAlert"></div>
-          <div class="cartTotal"></div> 
+          <div class="cartTotalDiv">Totalsumma: <span class="cartTotal"></span></div> 
          
-   <div class="cart-item">
-            <label class="rabattkodLabel" for="rabatt">Rabattkod
-            <input type="text" name="rabatt" id="rabattkod" />
-            </label>
-            <input type="button" value="Använd rabattkod" id="discountButton"/>
-          </div>
-          <div>Totalbelopp:</div>
+   
+          
         </div>
         <div class="buttonShop">
-        
-          <a href="#userForm"><input type="button" value="Fortsätt" id="CheckOutButton"/></a>
-          <input id="clearCart" type="reset" value="Rensa order" />
+          <input id="clearCart" type="button" value="Rensa order"/>
+          <a href="#userForm"><input type="button" value="Fortsätt" id="checkOutButton"/></a>
+          
           
         </div>
       </section>
@@ -95,8 +95,10 @@
         action=""
         autocomplete="on"
             >
-      <h2>Kontaktuppgifter</h2>
-      <label class="form-item-label"for="fname">Förnamn</label>
+            <a href="#shop"><input type="button" value="Tillbaka till varukorgen" id="checkOutButtonBack"/></a>
+      <h3>Kontaktuppgifter</h3>
+      
+      <label class="form-item-label"for="fname">Förnamn*</label>
         
          <input
           class="form-item-input"
@@ -114,6 +116,7 @@
           type="text"
           id="lname"
           name="lname"
+          placeholder="Efternamn"
          
           required="required"
         />
@@ -125,7 +128,7 @@
           type="email"
           id="email"
           name="email"
-          placeholder="namn@epost.se"
+          placeholder="Namn@epost.se"
           required="required"
         />
         <span class="error" id="erroremail" ></span>
@@ -136,7 +139,7 @@
           id="phone"
           name="Telefon"
           class="form-item-input"
-         
+          placeholder="Mobilnummer"
           required="required"
         />
         <span class="error" id="errorphone" ></span>
@@ -159,7 +162,7 @@
           name="Postnummer"
           class="form-item-input"
           minlength="5"
-          
+          placeholder="Postnummer"
           required="required"
         />
         <span class="error" id="errorzip" ></span>
@@ -181,13 +184,15 @@
           id="portcode"
           name="portkod"
           class="form-item-input"
+          placeholder="Portkod"
         />
 
         <div class="form-one">
           <div class="selector">
+            <fieldset>
+            <legend>Betalning*:</legend>
             <div class="radio-selector">
-              <h3>Betalning*:</h3>
-
+              
               <input
                 type="radio"
                 name="betalning"
@@ -200,22 +205,22 @@
               <label for="radioinvoice" class="radio-selector-label">
                 Faktura
               </label><br>
-              <span class="error" id="errorfaktura" ></span>
-            </div>
-
-            <div class="radio-selector">
-              <input
-                type="radio"
-                name="betalning"
-                value="kreditkort"
-                id="radiocard"
-                class="selector-item_radio"
+             <span class="error" id="errorfaktura" ></span>
+             <input
+             type="radio"
+             name="betalning"
+             value="kreditkort"
+             id="radiocard"
+             class="selector-item_radio"
               />
               <label for="radiocard" class="radio-selector-label">
                 Kort
               </label>
               <span class="error" id="errorkort" ></span>
+               
+
             </div>
+          </fieldset>
           </div>
         </div>
 
@@ -266,6 +271,7 @@
             class="form-item-input"
             placeholder="000"
             size="3"
+            
           />
           <span class="errorMessage" id="errorcvc" ></span>
         </div>
@@ -281,17 +287,17 @@
            <span class="errorMessage" id="errorgdpr" ></span> 
         </label><br>  
 
-        <input
-          type="submit"
-          value="Submit"
-          id="submit"
-          class="form-button"
-          disabled
-        />
-        
+      
+        <div class="buttonContactGroup">
         <input type="button"  value="Rensa formulär" id="resetForm" />
-        <a href="#shop"><input type="button" value="Tillbaka till varukorgen" id="CheckOutButtonBack"/></a>
         
+        <input
+        type="submit"
+        value="Beställ"
+        id="submit"
+        class="form-button"
+        disabled
+      /></div>
       </form>
       
     

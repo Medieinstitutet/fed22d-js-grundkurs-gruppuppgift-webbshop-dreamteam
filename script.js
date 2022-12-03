@@ -1,3 +1,6 @@
+document.body.style.backgroundImage =
+  "radial-gradient(circle, rgba(240,240,240,1) 0%, rgba(190,189,77,1) 100%)";
+
 // dark and light
 const darkMode = document.getElementById("dark-mode");
 const lightMode = document.getElementById("light-mode");
@@ -199,7 +202,6 @@ function renderDonuts() {
   });
 
   printOrdredDonuts();
- 
 } // // // // // // // // // //
 
 categoryBtn = document.querySelector("#sortCategory");
@@ -298,25 +300,28 @@ function printOrdredDonuts() {
       donutTotalAmount += donuts[i].amount;
       document.querySelector(
         ".cartName"
-      ).innerHTML += `<div> <span class="cartNameProduct">Produkt: ${
+      ).innerHTML += ` <span class="cartNameProduct">Produkt: ${
         donuts[i].name
       }<br></span> <span class="cartNameQuantity">Antal: ${
         donuts[i].amount
       }</span> <span class="cartNamePrice">Pris: ${
         donuts[i].amount * donuts[i].price
-      }<br><hr></span></div>`;
+      }<br><hr></span>`;
+
+      document.getElementById("headerCartLogo").style.color = "grey";
     } else if (donuts[i].amount >= 10) {
       donutPriceRegular += donuts[i].amount * donuts[i].price * 0.9;
       donutTotalAmount += donuts[i].amount;
       document.querySelector(
         ".cartName"
-      ).innerHTML += `<div> <span class="cartNameProduct">Produkt: ${
+      ).innerHTML += `<span class="cartNameProduct">Produkt: ${
         donuts[i].name
       }<br></span> <span class="cartNameQuantity">Antal: ${
         donuts[i].amount
       }</span> <span class="cartNamePrice">Pris: ${Math.round(
         donuts[i].amount * donuts[i].price * 0.9
-      )} <span class="discountAmount">10% rabatt! </span><br><hr></span></div>`;
+      )}</span> <span class="discountAmount">10% rabatt! <br><hr></span>`;
+      document.getElementById("headerCartLogo").style.color = "blue";
     }
 
     // Rabatt beroende på dag
@@ -419,9 +424,18 @@ if (newDate.getMonth() === 11 && newDate.getDate() === 13) {
 ///////////////// Jultema//////////////////////
 if (newDate.getMonth() === 11 && newDate.getDate() === 24) {
   const santaPrice = document.querySelectorAll("#donutPriceTarget");
+
   for (let i = 0; i < santaPrice.length; i++) {
     santaPrice[i].style.color = "red";
   }
+  const filterBackground = document.querySelector(".filter");
+  filterBackground.style.background = "#f68989";
+
+  document.getElementById("sortAfterHeading").style.color = "black";
+  document.getElementById("space").style.color = "black";
+  document.getElementById("space").style.color = "black";
+  document.getElementById("contact").style.color = "black";
+  document.getElementById("contact").style.background = "#f68989";
 
   document.body.style.backgroundImage =
     "linear-gradient(45deg, #9e001d 25%, #ffffff 25%, #ffffff 50%, #9e001d 50%, #9e001d 75%, #ffffff 75%, #ffffff 100%)";
@@ -451,8 +465,9 @@ const portCode = document.getElementById("portcode");
 const gdpr = document.getElementById("gdpr");
 const userForm = document.getElementById("userForm");
 const shop = document.getElementById("shop");
-const CheckOutButton = document.getElementById("CheckOutButton");
-const CheckOutButtonBack = document.getElementById("CheckOutButtonBack");
+const CheckOutButton = document.getElementById("checkOutButton");
+const CheckOutButtonBack = document.getElementById("checkOutButtonBack");
+const receiptOrderButton = document.getElementById("receiptOrderButton");
 const cartTotal = document.getElementById("cartTotal");
 const allDonuts = document.getElementById("allDonuts");
 const clearCart = document.getElementById("clearCart");
@@ -825,4 +840,9 @@ function activatesubmitButton() {
     // Lägger till disable på submit.
     submitButton.setAttribute("disabled", "");
   }
+}
+
+receiptOrderButton.addEventListener("click", backToStartReceipt);
+function backToStartReceipt() {
+  document.location.reload();
 }
