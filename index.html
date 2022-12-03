@@ -27,7 +27,7 @@
           </div>
           <div class="shopping">
             <i class="fa-solid fa-cart-shopping"></i>
-            <div class="cart">0</i></div>
+            <span class="cart">0</i></span>
           </div>
           <div class="toggle">
             <button id="dark-mode" class="moon"><i class="fa-solid fa-moon"></i></button>
@@ -69,12 +69,15 @@
         <div>
           <h2>Varukorgssammanställning</h2>
           <div class="cartName"></div> 
+          <div class="shipping">Frakt: <span class="shippingValue"></span> kr</div> 
            <div class="discountAlert"></div>
           <div class="cartTotal"></div> 
          
    <div class="cart-item">
-            <label class="rabattkodLabel" for="rabatt">Rabattkod</label>
+            <label class="rabattkodLabel" for="rabatt">Rabattkod
             <input type="text" name="rabatt" id="rabattkod" />
+            </label>
+            <input type="button" value="Använd rabattkod" id="discountButton"/>
           </div>
           <div>Totalbelopp:</div>
         </div>
