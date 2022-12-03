@@ -5,62 +5,78 @@ body {
   box-sizing: border-box;
   margin: 20px;
   padding: 20px;
+  overflow-x: hidden;
 }
-.all-donuts {
-  display: grid;
-  grid-template-columns: auto;
-  justify-content: space-around;
-}
-/***************************************Mostapha*******************************************************************************************/
-/* .donutCardContainer img.donutImage2 {
-  display: none;
-}
-*/
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
-#allDonuts {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  background-color: white;
-  overflow-x: hidden;
-}
+/**********************************************************************************************************************************/
+/* black-mode */
 .toggle {
   position: absolute;
-  top: 1rem;
-  left: 19.5rem;
-  font-size: 1.08rem;
+  top: 1vw;
+  right: 1vw;
 }
-.logo {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  font-style: italic;
-  font-size: 1.2rem;
-}
+/* black-mode */
 .moon {
   border: none;
+  background-color: white;
   cursor: pointer;
 }
+/* black-mode */
 .sun {
+  border: none;
+  background-color: rgb(119, 0, 255);
+  color: white;
+  cursor: pointer;
+}
+/* black-mode */
+.dark_mode {
   background-color: rgb(119, 0, 255);
   color: white;
 }
-.dark_mode .hide .container {
+/* black-mode */
+.hide {
+  display: none;
+}
+#darkandlight {
+  cursor: pointer;
+  position: absolute;
+  top: 1.7rem;
+  left: 16rem;
+}
+/* Logotyp */
+.logo {
+  top: 1rem;
+  font-style: italic;
+  font-size: 1.5rem;
+}
+
+/* Header */
+.container {
   max-width: 1050px;
   width: 90%;
   margin: auto;
 }
+
 .navbar {
   width: 100%;
   box-shadow: 0 1px 4px rgba(140, 174, 206, 0.15);
 }
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 62px;
+}
+
 .navbar .nav-container li {
   list-style: none;
 }
+
 .navbar .nav-container a {
   text-decoration: none;
   color: #0e2431;
@@ -68,36 +84,9 @@ body {
   font-size: 3rem;
   padding: 0.7rem;
 }
+
 .navbar .nav-container a:hover {
   font-weight: bolder;
-}
-#darkandlight {
-  top: 1.7rem;
-  left: 16rem;
-}
-.sum {
-  top: 1.5rem;
-  right: 8rem;
-  font-size: 1.5rem;
-}
-.sumofall {
-  right: 7rem;
-}
-.nav-container .shopping {
-  right: 3rem;
-}
-.nav-container .cart {
-  right: 7px;
-  top: -18px;
-  border-radius: 97px;
-  font-size: 1rem;
-}
-.nav-container .hamburger-lines {
-  height: 35px;
-  width: 35px;
-  right: 0;
-  z-index: 3;
-  flex-direction: column;
 }
 .navbar .menu-items {
   position: relative;
@@ -105,105 +94,230 @@ body {
   border-radius: 3%;
   padding-top: 100px;
   height: 50vh;
+  width: 100%;
   transform: translate(-150%);
+  display: flex;
+  flex-direction: column;
   padding-left: 50px;
   transition: transform 0.5s ease-in-out;
   text-align: center;
   background-color: whitesmoke;
   opacity: 80%;
 }
+
+.navbar .menu-items li {
+  margin-bottom: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.nav-container {
+  display: block;
+  position: relative;
+  height: 60px;
+}
+
+.nav-container .shopping {
+  cursor: pointer;
+  position: absolute;
+  right: 3rem;
+  top: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.nav-container .cart {
+  position: absolute;
+  right: 7px;
+  top: -18px;
+  border-radius: 97px;
+  font-size: 1rem;
+}
+/**********************************************************************************************************************************/
 /*filter*/
 .filter {
   text-align-last: center;
   background-color: #303030;
+  color: white;
 }
+.space {
+  margin: 1rem;
+}
+
 .priceRange {
   display: block;
   color: #edf6f6;
 }
-/* ///////////////////////////////////////////// */
-/* //////////////Simon/////////////// */
-#persondiv #kortdiv .donut {
+/**********************************************************************************************************************************/
+
+/*kontaktuppgifter - footer */
+#contact {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  background-color: #303030;
+  color: white;
+  justify-content: space-evenly;
+}
+.listofcontact {
+  list-style: none;
+}
+/**********************************************************************************************************************************/
+/**********************************************************************************************************************************/
+
+.donut {
   background-color: lightblue;
   border: 2px solid black;
   border-radius: 7px;
   margin-top: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
-  box-shadow: 0 1px 4px rgb(146 161 176 / 15%);
 }
-.nav-container {
-  justify-content: space-between;
-  align-items: center;
-  height: 62px;
-  height: 60px;
+
+.donut h2 {
+  text-align: center;
 }
-.navbar .menu-items li {
-  margin-bottom: 1.2rem;
+
+.donutCardImgContainer span {
+  font-size: 1.5rem;
 }
-.space {
-  margin: 1rem;
-}
-/*kontaktuppgifter*/
-#contact {
-  justify-content: space-evenly;
-}
-.listofcontact .opentime .donut h2 .donutCardImgContainer span .left {
+
+.left {
+  position: absolute;
   top: 50%;
   margin-left: 5px;
+  cursor: pointer;
 }
+
 .right {
+  position: absolute;
+  top: 50%;
   right: 0px;
   margin-right: 5px;
+  cursor: pointer;
 }
+
+.all-donuts {
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: space-around;
+} /*# sourceMappingURL=style.css.map */
+
+#allDonuts {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+/*Döljer donut2 bild*/
+.donutCardContainer img.donutImage2 {
+  display: none;
+}
+
+.add {
+  cursor: pointer;
+}
+.remove {
+  cursor: pointer;
+}
+/*Rund ram donut*/
 .myImages img {
-  border-radius: 999px;
+  border-radius: 9990px;
 }
-.controlsImgSlideshow
-  .donutCardImgContainer
-  .donutContainerInput
-  .donutContainerInput
-  button {
+.controlsImgSlideshow {
+  position: relative;
+}
+
+.donutCardImgContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.donutContainerInput {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.donutContainerInput button {
   margin: 5px 10px 5px 10px;
   height: 30px;
   width: 30px;
-  background-color: black;
-}
-/* .donutContainerInput input {
-  width: 100px;
-  height: 30px;
-  border-radius: 5px;
-  border: black 2px solid;
-  text-align: center;
   font-size: 1.5rem;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 999px;
 }
-*/
-.userForm .form-one {
-  margin: 10px;
-  height: 100%;
+
+/*******************************************Formulär*****************************************************************/
+
+#persondiv {
+  display: none;
+}
+#kortdiv {
+  display: none;
 }
 .selector {
+  position: relative;
   width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
+.userForm {
+  display: none;
+}
+
+.form-one {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-one {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+}
+
 .selector-item_radio {
   appearance: none;
+  display: none;
 }
+
 .radio-selector {
+  position: relative;
   flex-basis: calc(50% / 2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
+
 .radio-selector-label {
+  position: relative;
   height: 80%;
+  width: 100%;
+  text-align: center;
   border-radius: 9999px;
   font-weight: 900;
   transition-duration: 0.5s;
   transition-property: transform, color, box-shadow;
   transform: none;
 }
+
 .selector-item_radio:checked + .radio-selector-label {
   background-color: blue;
+  color: white;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.5);
 }
+
 .form-box {
+  width: 100%;
   max-width: 50vw;
   margin: 0 auto;
   padding: 2rem;
@@ -213,9 +327,15 @@ body {
 }
 .form-item-label,
 .form-item-input {
+  display: block;
+  margin: auto;
+  width: 100%;
+  font-size: 1.2rem;
   line-height: 1.4;
 }
+
 #submit {
   margin-top: 10px;
 }
-/* ------------------------ */
+
+/* /////////////////////////////////////////////  */

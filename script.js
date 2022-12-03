@@ -199,7 +199,7 @@ function renderDonuts() {
   });
 
   printOrdredDonuts();
-  // donutsOrderHeader()
+ 
 } // // // // // // // // // //
 
 categoryBtn = document.querySelector("#sortCategory");
