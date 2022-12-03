@@ -21,8 +21,8 @@ const donuts = [
     price: 23,
     rating: 4,
     amount: 0,
-    image1: "./images/chocolate-sprinkle-1.jpg",
-    image2: "./images/chocolate-sprinkle-2.jpg",
+    image1: "./Images/chocolate-sprinkle-1.jpg",
+    image2: "./Images/chocolate-sprinkle-2.jpg",
     category: "Choklad"
   },
   {
@@ -30,8 +30,8 @@ const donuts = [
     price: 15,
     rating: 4,
     amount: 0,
-    image1: "./images/glazed-donut-1.jpg",
-    image2: "./images/glazed-donut-2.jpg",
+    image1: "./Images/glazed-donut-1.jpg",
+    image2: "./Images/glazed-donut-2.jpg",
     category: "Övriga"
   },
   {
@@ -39,8 +39,8 @@ const donuts = [
     price: 19,
     rating: 2,
     amount: 0,
-    image1: "./images/chocolate-1.jpg",
-    image2: "./images/chocolate-2.jpg",
+    image1: "./Images/chocolate-1.jpg",
+    image2: "./Images/chocolate-2.jpg",
     category: "Choklad"
   },
   {
@@ -48,8 +48,8 @@ const donuts = [
     price: 18,
     rating: 1,
     amount: 0,
-    image1: "./images/vanilla-1.jpg",
-    image2: "./images/vanilla-2.jpg",
+    image1: "./Images/vanilla-1.jpg",
+    image2: "./Images/vanilla-2.jpg",
     category: "Vanilj"
   },
   {
@@ -57,8 +57,8 @@ const donuts = [
     price: 15,
     rating: 4,
     amount: 0,
-    image1: "./images/strawberry-1.jpg",
-    image2: "./images/strawberry-2.jpg",
+    image1: "./Images/strawberry-1.jpg",
+    image2: "./Images/strawberry-2.jpg",
     category: "Bär och frukt"
   },
   {
@@ -66,8 +66,8 @@ const donuts = [
     price: 25,
     rating: 4,
     amount: 0,
-    image1: "./images/apple-1.jpg",
-    image2: "./images/apple-2.jpg",
+    image1: "./Images/apple-1.jpg",
+    image2: "./Images/apple-2.jpg",
     category: "Bär och frukt"
   },
   {
@@ -75,8 +75,8 @@ const donuts = [
     price: 22,
     rating: 2,
     amount: 0,
-    image1: "./images/lemon-1.jpg",
-    image2: "./images/lemon-2.jpg",
+    image1: "./Images/lemon-1.jpg",
+    image2: "./Images/lemon-2.jpg",
     category: "Bär och frukt"
   },
   {
@@ -84,8 +84,8 @@ const donuts = [
     price: 20,
     rating: 5,
     amount: 0,
-    image1: "./images/raspberry-1.jpg",
-    image2: "./images/raspberry-2.jpg",
+    image1: "./Images/raspberry-1.jpg",
+    image2: "./Images/raspberry-2.jpg",
     category: "Bär och frukt"
   },
   {
@@ -93,8 +93,8 @@ const donuts = [
     price: 30,
     rating: 4,
     amount: 0,
-    image1: "./images/triple-chocolate-1.jpg",
-    image2: "./images/triple-chocolate-2.jpg",
+    image1: "./Images/triple-chocolate-1.jpg",
+    image2: "./Images/triple-chocolate-2.jpg",
     category: "Choklad"
   },
   {
@@ -102,8 +102,8 @@ const donuts = [
     price: 35,
     rating: 3,
     amount: 0,
-    image1: "./images/nougat-1.jpg",
-    image2: "./images/nougat-2.jpg",
+    image1: "./Images/nougat-1.jpg",
+    image2: "./Images/nougat-2.jpg",
     category: "Choklad"
   }
 ];
