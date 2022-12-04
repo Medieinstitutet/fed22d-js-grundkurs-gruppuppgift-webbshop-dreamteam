@@ -20,37 +20,19 @@ body {
 /**********************************************************************************************************************************/
 /* black-mode */
 .toggle {
+  display: flex;
+  justify-content: end;
+  font-size: 1.08rem;
+}
+#light-mode {
   position: absolute;
-  top: 1vw;
-  right: 1vw;
+  width: 2rem;
 }
-/* black-mode */
-.moon {
-  border: none;
-  cursor: pointer;
-}
-/* black-mode */
-.sun {
-  border: none;
 
-  color: white;
-  cursor: pointer;
+#dark-mode {
+  width: 2rem;  
 }
-/* black-mode */
-.dark_mode {
-  background-color: rgb(119, 0, 255);
-  color: white;
-}
-/* black-mode */
-.hide {
-  display: none;
-}
-#darkandlight {
-  cursor: pointer;
-  position: absolute;
-  top: 1.7rem;
-  left: 16rem;
-}
+
 /* Logotyp */
 .logo {
   top: 1rem;
