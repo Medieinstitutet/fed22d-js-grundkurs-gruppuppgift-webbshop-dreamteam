@@ -386,7 +386,7 @@ header {
   border: 1px solid;
   border-radius: 6px;
   color: #ffffff;
-  background-color: #fd1100;
+  background-color: #700700;
   border-color: #fafafa;
   text-align: center;
   font-weight: bold;
@@ -428,8 +428,8 @@ header {
   vertical-align: middle;
   border: 1px solid;
   border-radius: 6px;
-  background-color: #005719;
-  border-color: #fafafa;
+  background-color: #00661d;
+  border-color: #ffffff;
   text-align: center;
   font-weight: bold;
 }
