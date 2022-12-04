@@ -1,21 +1,21 @@
-const darkMode = document.querySelector("#dark-mode");
-const lightMode = document.querySelector("#light-mode");
+// const darkMode = document.querySelector("#dark-mode");
+// const lightMode = document.querySelector("#light-mode");
 
-darkMode.addEventListener("click", darkTeam);
-lightMode.addEventListener("click", lightTeam);
+// darkMode.addEventListener("click", darkTeam);
+// lightMode.addEventListener("click", lightTeam);
 
-function darkTeam() {
-  document.body.style.backgroundColor = "gray ";
-  document.body.style.transition = "ease-in-out 0.3s";
-  darkMode.style.visibility = "hidden";
-  lightMode.style.visibility = "visible";
-}
+// function darkTeam() {
+//   document.body.style.backgroundColor = "gray ";
+//   document.body.style.transition = "ease-in-out 0.3s";
+//   darkMode.style.visibility = "hidden";
+//   lightMode.style.visibility = "visible";
+// }
 
-function lightTeam() {
-  document.body.style.backgroundColor = "white";
-  lightMode.style.visibility = "hidden";
-  darkMode.style.visibility = "visible";
-}
+// function lightTeam() {
+//   document.body.style.backgroundColor = "white";
+//   lightMode.style.visibility = "hidden";
+//   darkMode.style.visibility = "visible";
+// }
 
 // Skapar munkar i en array
 const donuts = [
@@ -126,15 +126,15 @@ function renderDonuts() {
           <h2>${donuts[i].name}</h2><br>
           <section class="donutCardContainer">
 <div class="donutCardImgContainer">
-<div class="controlsImgSlideshow" id="controlsImgSlideshow">
+<div class="controlsImgSlideshow">
          
       <div class="myImages">
             <img src="${
               donuts[i].image1
-            }" width="290" height="290" alt="" class="donutImage1" id="donutImage1">
+            }" width="290" height="290" alt="" class="donutImage1">
             <img src="${
               donuts[i].image2
-            }" width="290" height="290" alt="" class="donutImage2" id="donutImage2">                                 
+            }" width="290" height="290" alt="" class="donutImage2">                                 
     </div>
       <div class="controls" id="controls">
             <button class="left" id="prevImg">
@@ -178,9 +178,9 @@ function renderDonuts() {
 
   function swapImages(e) {
     const donutcardImg1Slideshow =
-      e.currentTarget.parentElement.parentElement.querySelector("#donutImage1");
+      e.currentTarget.parentElement.parentElement.querySelector(".donutImage1");
     const donutCardImg2Slideshow =
-      e.currentTarget.parentElement.parentElement.querySelector("#donutImage2");
+      e.currentTarget.parentElement.parentElement.querySelector(".donutImage2");
 
     const firstDonut = donutcardImg1Slideshow.getAttribute("src");
     const secondDonut = donutCardImg2Slideshow.getAttribute("src");
@@ -262,6 +262,7 @@ const filteredDonutsInPriceRange = [...donuts];
 const priceRangeSlider = document.querySelector("#priceRange");
 const currentRangeValue = document.querySelector("#currentRangeValue");
 
+/*
 priceRangeSlider.addEventListener("input", changePriceRange);
 
 function changePriceRange() {
@@ -274,7 +275,7 @@ function changePriceRange() {
 
   renderDonuts();
 }
-
+*/
 function printOrdredDonuts() {
   document.querySelector(".cartName").innerHTML = "";
   document.querySelector("#receiptOrderDonut").innerHTML = "";

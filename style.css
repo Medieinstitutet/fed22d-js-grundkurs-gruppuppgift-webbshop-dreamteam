@@ -30,7 +30,7 @@ body {
 }
 
 #dark-mode {
-  width: 2rem;  
+  width: 2rem;
 }
 
 /* Logotyp */
@@ -318,7 +318,7 @@ header {
   border: 1px solid;
   border-radius: 6px;
   color: #ffffff;
-  background-color: #2ea44f;
+  background-color: #005719;
   border-color: #fafafa;
   text-align: center;
   font-weight: bold;
@@ -428,7 +428,7 @@ header {
   vertical-align: middle;
   border: 1px solid;
   border-radius: 6px;
-  background-color: #2ea44f;
+  background-color: #005719;
   border-color: #fafafa;
   text-align: center;
   font-weight: bold;
