@@ -1,18 +1,22 @@
 // dark and light
-const darkMode = document.getElementById("dark-mode");
-const lightMode = document.getElementById("light-mode");
+const darkMode = document.querySelector('#dark-mode');
+const lightMode = document.querySelector('#light-mode')
 
-darkMode.addEventListener("click", () => {
-  document.body.classList.toggle("dark_mode");
-  darkMode.classList.toggle("hide");
-  lightMode.classList.remove("hide");
-});
+darkMode.addEventListener('click', darkTeam);
+lightMode.addEventListener('click', lightTeam)
 
-lightMode.addEventListener("click", () => {
-  document.body.classList.remove("dark_mode");
-  lightMode.classList.toggle("hide");
-  darkMode.classList.remove("hide");
-});
+function darkTeam () {
+  document.body.style.backgroundColor='gray ';
+  document.body.style.transition='ease-in-out 0.3s';
+  darkMode.style.visibility ='hidden';
+  lightMode.style.visibility ='visible';
+}
+
+function lightTeam () {
+  document.body.style.backgroundColor='white';
+  lightMode.style.visibility ='hidden';
+  darkMode.style.visibility ='visible';
+}
 
 // Skapar munkar i en array
 const donuts = [
