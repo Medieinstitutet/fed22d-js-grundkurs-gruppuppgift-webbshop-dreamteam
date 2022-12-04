@@ -1,6 +1,3 @@
-document.body.style.backgroundImage =
-  "radial-gradient(circle, rgba(240,240,240,1) 0%, rgba(190,189,77,1) 100%)";
-
 // dark and light
 const darkMode = document.getElementById("dark-mode");
 const lightMode = document.getElementById("light-mode");
@@ -17,16 +14,16 @@ lightMode.addEventListener("click", () => {
   darkMode.classList.remove("hide");
 });
 
-// munkarray filip
+// Skapar munkar i en array
 const donuts = [
   {
-    name: "Chokladmunk med strössel",
-    price: 23,
-    rating: 4,
-    amount: 0,
-    image1: "./Images/chocolate-sprinkle-1.jpg",
-    image2: "./Images/chocolate-sprinkle-2.jpg",
-    category: "Choklad"
+    name: "Chokladmunk med strössel", // Namn på munk
+    price: 23, // Pris
+    rating: 4, // Betyg
+    amount: 0, // Antal munkar vid start
+    image1: "./Images/chocolate-sprinkle-1.jpg", // Bild 1
+    image2: "./Images/chocolate-sprinkle-2.jpg", // Bild 2
+    category: "Choklad", // Kategori för sortering
   },
   {
     name: "Glaserad munk",
@@ -35,7 +32,7 @@ const donuts = [
     amount: 0,
     image1: "./Images/glazed-donut-1.jpg",
     image2: "./Images/glazed-donut-2.jpg",
-    category: "Övriga"
+    category: "Övriga",
   },
   {
     name: "Chokladmunk",
@@ -44,7 +41,7 @@ const donuts = [
     amount: 0,
     image1: "./Images/chocolate-1.jpg",
     image2: "./Images/chocolate-2.jpg",
-    category: "Choklad"
+    category: "Choklad",
   },
   {
     name: "Vaniljmunk",
@@ -53,7 +50,7 @@ const donuts = [
     amount: 0,
     image1: "./Images/vanilla-1.jpg",
     image2: "./Images/vanilla-2.jpg",
-    category: "Vanilj"
+    category: "Vanilj",
   },
   {
     name: "Jordgubbsmunk",
@@ -62,7 +59,7 @@ const donuts = [
     amount: 0,
     image1: "./Images/strawberry-1.jpg",
     image2: "./Images/strawberry-2.jpg",
-    category: "Bär och frukt"
+    category: "Bär och frukt",
   },
   {
     name: "Äppelmunk",
@@ -71,7 +68,7 @@ const donuts = [
     amount: 0,
     image1: "./Images/apple-1.jpg",
     image2: "./Images/apple-2.jpg",
-    category: "Bär och frukt"
+    category: "Bär och frukt",
   },
   {
     name: "Citronmunk",
@@ -80,7 +77,7 @@ const donuts = [
     amount: 0,
     image1: "./Images/lemon-1.jpg",
     image2: "./Images/lemon-2.jpg",
-    category: "Bär och frukt"
+    category: "Bär och frukt",
   },
   {
     name: "Hallonmunk",
@@ -89,7 +86,7 @@ const donuts = [
     amount: 0,
     image1: "./Images/raspberry-1.jpg",
     image2: "./Images/raspberry-2.jpg",
-    category: "Bär och frukt"
+    category: "Bär och frukt",
   },
   {
     name: "Trippel chokladmunk",
@@ -98,7 +95,7 @@ const donuts = [
     amount: 0,
     image1: "./Images/triple-chocolate-1.jpg",
     image2: "./Images/triple-chocolate-2.jpg",
-    category: "Choklad"
+    category: "Choklad",
   },
   {
     name: "Nougatmunk",
@@ -107,21 +104,20 @@ const donuts = [
     amount: 0,
     image1: "./Images/nougat-1.jpg",
     image2: "./Images/nougat-2.jpg",
-    category: "Choklad"
-  }
+    category: "Choklad",
+  },
 ];
-
-// sortera munkar mostapha?
-
-// munk render filip
+// Container från HTML
 const donutContainer = document.querySelector("#allDonuts");
 const basketDonuts = document.querySelector("#basketDonuts");
 const totalPriceBasket = document.querySelector("#totalAmountBasket");
 
+// Funktion för skapande av munkar
 function renderDonuts() {
   donutContainer.innerHTML = "";
-
+  // For-loop
   for (let i = 0; i < donuts.length; i++) {
+    // Skriver ut innehåll
     donutContainer.innerHTML += `
         <article class="donut">
           <h2>${donuts[i].name}</h2><br>
@@ -168,7 +164,7 @@ function renderDonuts() {
         </article>
     `;
   }
-  // // // // // // // // // INPUT i - donutContainerInput - (om den ska användas)  <input class="CustomInput" type="number" value="0" data-id="${i}">
+  // Container från HTML
   const prevImageBtn = document.querySelectorAll("#prevImg");
   const nextImageBtn = document.querySelectorAll("#nextImg");
 
@@ -176,13 +172,12 @@ function renderDonuts() {
     prevImageBtn[i].addEventListener("click", swapImages);
     nextImageBtn[i].addEventListener("click", swapImages);
   }
+
   function swapImages(e) {
-    const donutcardImg1Slideshow = e.currentTarget.parentElement.parentElement.querySelector(
-      "#donutImage1"
-    );
-    const donutCardImg2Slideshow = e.currentTarget.parentElement.parentElement.querySelector(
-      "#donutImage2"
-    );
+    const donutcardImg1Slideshow =
+      e.currentTarget.parentElement.parentElement.querySelector("#donutImage1");
+    const donutCardImg2Slideshow =
+      e.currentTarget.parentElement.parentElement.querySelector("#donutImage2");
 
     const firstDonut = donutcardImg1Slideshow.getAttribute("src");
     const secondDonut = donutCardImg2Slideshow.getAttribute("src");
@@ -194,9 +189,7 @@ function renderDonuts() {
   document.querySelectorAll(".add").forEach((btn) => {
     btn.addEventListener("click", updateDonutAmount);
   });
-  // document.querySelectorAll('.CustomInput').forEach((input) => {
-  //   input.addEventListener('text', customDonutAmount);
-  // });
+
   document.querySelectorAll(".remove").forEach((btn) => {
     btn.addEventListener("click", removeDonutAmount);
   });
@@ -353,14 +346,12 @@ function printOrdredDonuts() {
   if (donutTotalAmount < 16 && donutTotalAmount >= 1) {
     shippingPrice = 25;
     shippingTotal += donutPriceRegular * 1.1 + shipping;
-    document.querySelector(".shippingValue").innerHTML = Math.round(
-      shippingTotal
-    );
+    document.querySelector(".shippingValue").innerHTML =
+      Math.round(shippingTotal);
     donutPriceTotal = donutPriceTotal + shippingTotal;
   } else {
-    document.querySelector(".shippingValue").innerHTML = Math.round(
-      shippingTotal
-    );
+    document.querySelector(".shippingValue").innerHTML =
+      Math.round(shippingTotal);
     donutPriceTotal = donutPriceTotal + shippingTotal;
   }
 
@@ -481,10 +472,12 @@ const resetForm = document.getElementById("resetForm");
 
 // Tömmer formulär
 resetForm.addEventListener("click", resetFormButton);
+
 function resetFormButton() {
   document.getElementById("contactForm").reset();
 }
 setInterval(orderTimeOut, 900000);
+
 function orderTimeOut() {
   resetFormButton();
   alert("Du är för långsam, kontaktformuläret har återställts!");
@@ -493,6 +486,7 @@ function orderTimeOut() {
 // Tömmer varukorgen
 
 clearCart.addEventListener("click", clearCartButton);
+
 function clearCartButton(e) {
   for (let i = 0; i < donuts.length; i++) {
     donuts[i].amount = 0;
@@ -500,55 +494,64 @@ function clearCartButton(e) {
   renderDonuts();
 }
 
-// Gå vidare till kundinformation
-
+// Knapp för att gå vidare till kundinformation
 CheckOutButton.addEventListener("click", continueToPayment);
+
 function continueToPayment() {
+  // visar
   userForm.style.display = "block";
+  // Döljer
   shop.style.display = "none";
+  // Döljer
   allDonuts.style.display = "none";
 }
 
-// Gå tillbaka till varukorgen
-
+// Click funktion för gå tillbaka till varukorgen
 CheckOutButtonBack.addEventListener("click", backToCheckout);
+
 function backToCheckout() {
+  // Döljer
   userForm.style.display = "none";
+  // Visar
   shop.style.display = "block";
+  // Visar munkar igen
   allDonuts.style.display = "";
 }
 
-///beställningsknappen///////////
-// Submit-button + kvitto
-
+// Funktion för orderknapp, kvitto och leveranstid
 submitButton.addEventListener("click", orderCompilation);
-
 function orderCompilation(e) {
+  // Event för att förhindra att knappen använder sina standardvärden
   e.preventDefault();
+  // Visar nästa fönster efter man tryckt på knappen
   receiptOrder.style.display = "block";
+  // Döljer förgående fönster
   userForm.style.display = "none";
 
-  // Leveranstid
-
+  // Leveranstid av order
   const newDate = new Date();
-
-  // Leverans på lördag och söndag
+  // Om beställningen läggs på lördag eller söndag, skrivs text ut
   if (newDate.getDay() === 7 || newDate.getDay() === 0) {
     deliveryTime.innerHTML = "Ordern levereras om 1,5 timme!";
-  } else if (
+  }
+  // Om beställningen läggs på fredag mellan klockan 11 och 13
+  else if (
     newDate.getDay() === 5 &&
     newDate.getHours() >= 11 &&
     newDate.getHours() <= 13
   ) {
     deliveryTime.innerHTML = "Ordern levereras klockan 15:00!";
-  } else if (newDate.getHours() >= 22 || newDate.getHours() <= 5) {
+  }
+  // Om beställningen läggs mitt i natten
+  else if (newDate.getHours() >= 22 || newDate.getHours() <= 5) {
     deliveryTime.innerHTML = "Ordern levereras om 45 minuter!";
-  } else {
+  }
+  // Om inget stämmer in
+  else {
     deliveryTime.innerHTML = "Ordern levereras om 30 minuter!";
   }
 
-  // Skriver ut innehåll från formuläret "receiptOrder". Array istället?
-
+  // Skriver ut värdet/inputen från kontaktformuläret, efter ordern är lagd
   receiptOrderName.innerHTML = `Tack för beställningen ${fname.value} ${lname.value}!`;
   receiptOrderContactInformation.innerHTML = `Kontaktuppgifter: <br>  
  Namn: ${fname.value} ${lname.value} <br> 
@@ -561,25 +564,37 @@ function orderCompilation(e) {
  Betalning: ${userInputPayment.value} <br>`;
 }
 
-// Förnamn
+// Event för förnamn
 firstName.addEventListener("change", checkfName);
+// Variabeln har värdet falskt
 let checkfNameInput = false;
-
+// Skapar en funktion
 function checkfName() {
+  // Vilka tecken som godkänds och inte
   const exp = new RegExp("^[A-Za-zÅÄÖåäö-]{1,}");
+  // Hämtar in vart felmeddelande ska skrivas
   const errorMessage = document.getElementById("errorfname");
-
+  // Om input-värdet stämmer överens med dom godkända tecknen
   if (exp.test(firstName.value)) {
+    // Tar bart felmeddelandet ifall användaren skrev fel innan
     errorMessage.setAttribute("hidden", "");
+    // Tar bort den tidigare stylingen ifall användaren skrev fel innan
     document.getElementById("fname").style = null;
+    // Ändrar värdet till sant
     checkfNameInput = true;
+    // Vid fel
   } else {
+    // Skriver ut meddelande
     errorMessage.innerHTML = "Skriv ditt förnamn med bokstäver";
+    // Styling text och ram
     document.getElementById("fname").style.color = "red";
     document.getElementById("fname").style.border = "dotted red";
+    // Meddelandet kan skrivas ut igen
     errorMessage.removeAttribute("hidden");
+    // Värdet är falskt
     checkfNameInput = false;
   }
+  // Synkar med aktivering av knapp
   activatesubmitButton();
 }
 // Efternamn
@@ -690,7 +705,6 @@ function checkzip() {
 // Postort
 city.addEventListener("change", checkcity);
 let checkcityInput = false;
-
 function checkcity() {
   const exp = new RegExp("^[A-Za-zÅÄÖåäö-]{1,}$");
   const errorMessage = document.getElementById("errorcity");
@@ -711,7 +725,6 @@ function checkcity() {
 // Personnummer
 personNr.addEventListener("change", checkpersonNr);
 let checkpersonNrInput = false;
-
 function checkpersonNr() {
   const exp = new RegExp("^[-0-9]{10}$");
   const errorMessage = document.getElementById("errorpersonnr");
@@ -732,7 +745,6 @@ function checkpersonNr() {
 // Kortnummer*
 cardNr.addEventListener("change", checkcardNr);
 let checkcardNrInput = false;
-
 function checkcardNr() {
   const exp = new RegExp("^[-0-9]{10}$");
   const errorMessage = document.getElementById("errorkortnr");
@@ -750,7 +762,6 @@ function checkcardNr() {
 // Datum för kort
 dateNr.addEventListener("change", checkdateNr);
 let checkdateNrInput = false;
-
 function checkdateNr() {
   const exp = new RegExp("^[-0-9]");
   const errorMessage = document.getElementById("errordate");
@@ -768,7 +779,6 @@ function checkdateNr() {
 // CVC
 cvcNr.addEventListener("change", checkcvcNr);
 let checkcvcNrInput = false;
-
 function checkcvcNr() {
   const exp = new RegExp("^[0-9]");
   const errorMessage = document.getElementById("errorcvc");
@@ -784,8 +794,6 @@ function checkcvcNr() {
   activatesubmitButton();
 }
 
-// checkGdprInput = gdpr.checked;
-
 //GDPR
 gdpr.addEventListener("click", checkGdpr);
 let checkGdprInput = false;
@@ -799,24 +807,30 @@ function checkGdpr() {
   activatesubmitButton();
 }
 
-// Personnummer show/hide + rensar                              ---- Göra till en div och bara köra en rad?
-
+// Personnummer
+// Vid klick körs funktionen
 radioinvoice.addEventListener("click", radioinvoiceClick);
 function radioinvoiceClick() {
+  // Innehåll visas
   document.getElementById("persondiv").style.display = "block";
+  // Innehåll döljs
   document.getElementById("kortdiv").style.display = "none";
+  // Om något värde har skrivits i input, rensas det
   document.getElementById("cardNr").value = "";
   document.getElementById("dateNr").value = "";
   document.getElementById("cvcNr").value = "";
 }
 
 radiocard.addEventListener("click", radiocardClick);
+
 function radiocardClick() {
+  // Innehåll döljs
   document.getElementById("persondiv").style.display = "none";
+  // Innehåll visas
   document.getElementById("kortdiv").style.display = "block";
+  // Om något värde har skrivits i input, rensas det
   document.getElementById("personNr").value = "";
 }
-//
 
 // Aktivering av submit-button
 function activatesubmitButton() {
@@ -835,14 +849,17 @@ function activatesubmitButton() {
       radiocard.checked) ||
       (checkpersonNrInput && radioinvoice.checked))
   ) {
+    // Sålänge alla 'if' är godkända, aktiveras submit knappen för order
     submitButton.removeAttribute("disabled");
   } else {
-    // Lägger till disable på submit.
+    // Om någon 'if' inte stämmer övererns, blir submit knappen inaktiv
     submitButton.setAttribute("disabled", "");
   }
 }
-
+// Funktion för knapp vid orderbekräftelse
 receiptOrderButton.addEventListener("click", backToStartReceipt);
+
 function backToStartReceipt() {
+  // Laddar om sidan
   document.location.reload();
 }

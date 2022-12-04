@@ -6,6 +6,11 @@ body {
   margin: 20px;
   padding: 20px;
   overflow-x: hidden;
+  background-image: radial-gradient(
+    circle,
+    rgba(240, 240, 240, 1) 0%,
+    rgba(190, 189, 77, 1) 100%
+  );
 }
 * {
   margin: 0;
@@ -306,7 +311,6 @@ h3 {
 .cart-item input {
   padding: 3px;
   border-radius: 5px;
-  border: 1;
 }
 #checkOutButton {
   cursor: pointer;
@@ -471,8 +475,7 @@ h3 {
 }
 
 .selector-item_radio {
-  appearance: none;
-  display: none;
+  cursor: pointer;
 }
 
 .radio-selector {
