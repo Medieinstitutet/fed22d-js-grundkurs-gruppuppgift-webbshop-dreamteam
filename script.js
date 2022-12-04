@@ -1,18 +1,21 @@
-// dark and light
-const darkMode = document.getElementById("dark-mode");
-const lightMode = document.getElementById("light-mode");
+const darkMode = document.querySelector("#dark-mode");
+const lightMode = document.querySelector("#light-mode");
 
-darkMode.addEventListener("click", () => {
-  document.body.classList.toggle("dark_mode");
-  darkMode.classList.toggle("hide");
-  lightMode.classList.remove("hide");
-});
+darkMode.addEventListener("click", darkTeam);
+lightMode.addEventListener("click", lightTeam);
 
-lightMode.addEventListener("click", () => {
-  document.body.classList.remove("dark_mode");
-  lightMode.classList.toggle("hide");
-  darkMode.classList.remove("hide");
-});
+function darkTeam() {
+  document.body.style.backgroundColor = "gray ";
+  document.body.style.transition = "ease-in-out 0.3s";
+  darkMode.style.visibility = "hidden";
+  lightMode.style.visibility = "visible";
+}
+
+function lightTeam() {
+  document.body.style.backgroundColor = "white";
+  lightMode.style.visibility = "hidden";
+  darkMode.style.visibility = "visible";
+}
 
 // Skapar munkar i en array
 const donuts = [
@@ -119,7 +122,7 @@ function renderDonuts() {
   for (let i = 0; i < donuts.length; i++) {
     // Skriver ut innehåll
     donutContainer.innerHTML += `
-        <article class="donut">
+        <article class="donut" id=myImages>
           <h2>${donuts[i].name}</h2><br>
           <section class="donutCardContainer">
 <div class="donutCardImgContainer">
@@ -143,7 +146,7 @@ function renderDonuts() {
     </div>
     </div>
       <div class="donutContainerPrice">
-          <span class="price">Styckpris:<span id="donutPriceTarget"> ${
+          <span class="price">Styckpris:<span id="donutPriceTarget[i]"> ${
             donuts[i].price
           }</span> kr</span><br>
           <span class="amount">Antal: ${donuts[i].amount} st</span><br>
@@ -272,25 +275,22 @@ function changePriceRange() {
   renderDonuts();
 }
 
-// Utskrift av order
 function printOrdredDonuts() {
   document.querySelector(".cartName").innerHTML = "";
   document.querySelector("#receiptOrderDonut").innerHTML = "";
   const discountButton = document.getElementById("discountButton");
+  // Sätter ett värde
   donutPriceRegular = 0;
   donutPriceTotal = 0;
   donutTotalAmount = 0;
-  //Datum
-  const discountAlert = document.querySelector(".discountAlert"); //
-  const newDate = new Date();
-  const startDate = new Date(newDate.getFullYear(), 0, 1);
-  const days = Math.floor((newDate - startDate) / (24 * 60 * 60 * 1000));
-  const weekNum = Math.ceil(days / 7);
 
+  // Utskrift av order
   for (let i = 0; i < donuts.length; i++) {
+    // Om 1-9 munkar av en sort är beställda
     if (donuts[i].amount > 0 && donuts[i].amount <= 9) {
       donutPriceRegular += donuts[i].amount * donuts[i].price;
       donutTotalAmount += donuts[i].amount;
+      // Skriver ut
       document.querySelector(
         ".cartName"
       ).innerHTML += ` <span class="cartNameProduct">Produkt: ${
@@ -301,10 +301,14 @@ function printOrdredDonuts() {
         donuts[i].amount * donuts[i].price
       }<br><hr></span>`;
 
-      document.getElementById("headerCartLogo").style.color = "grey";
+      // Skriver ut summan för alla donuts
+      document.querySelector(".cartPrice").innerHTML = donutPriceRegular;
+      // Om 10+ munkar av en sort är beställda
     } else if (donuts[i].amount >= 10) {
+      // Rabatt på munksort
       donutPriceRegular += donuts[i].amount * donuts[i].price * 0.9;
       donutTotalAmount += donuts[i].amount;
+      // Utskrift
       document.querySelector(
         ".cartName"
       ).innerHTML += `<span class="cartNameProduct">Produkt: ${
@@ -314,12 +318,24 @@ function printOrdredDonuts() {
       }</span> <span class="cartNamePrice">Pris: ${Math.round(
         donuts[i].amount * donuts[i].price * 0.9
       )}</span> <span class="discountAmount">10% rabatt! <br><hr></span>`;
-      document.getElementById("headerCartLogo").style.color = "blue";
+
+      // Skriver ut summan för alla donuts
+      document.querySelector(".cartPrice").innerHTML = donutPriceRegular;
     }
 
+    //Datum
+    const discountAlert = document.querySelector(".discountAlert");
+    const newDate = new Date();
+    const startDate = new Date(newDate.getFullYear(), 0, 1);
+    const days = Math.floor((newDate - startDate) / (24 * 60 * 60 * 1000));
+    const weekNum = Math.ceil(days / 7);
+
     // Rabatt beroende på dag
+
     if (newDate.getDay() === 1 && newDate.getHours() < 10) {
+      // Skriver ut text
       discountAlert.innerHTML = `<span> Måndagsrabatt! 10% på hela beställningen!</span>`;
+      // Nytt värde
       donutPriceTotal = Math.round(donutPriceRegular * 0.9);
     } else if (
       (newDate.getDay() === 5 && newDate.getHours() > 15) ||
@@ -333,58 +349,77 @@ function printOrdredDonuts() {
       newDate.getDay() === 2 &&
       donutPriceRegular > 25
     ) {
+      // Skriver ut text
       discountAlert.innerHTML = `<span>Rabatt: 25 kronor!</span>`;
+      // Nytt värde
       donutPriceTotal = Math.round(donutPriceRegular - 25);
     } else {
+      // Behåller värdet
       donutPriceTotal = Math.round(donutPriceRegular + 0);
     }
   }
 
-  //////// // Frakt
+  //Frakt
+
   let shipping = 25; // Fraktkostnad
   let shippingTotal = 0; // Skapar fraktsumman
   if (donutTotalAmount < 16 && donutTotalAmount >= 1) {
-    shippingPrice = 25;
+    // Nytt värde
     shippingTotal += donutPriceRegular * 1.1 + shipping;
+    // Skriver ut fraktkostnad
     document.querySelector(".shippingValue").innerHTML =
       Math.round(shippingTotal);
     donutPriceTotal = donutPriceTotal + shippingTotal;
   } else {
+    // Skriver ut fraktkostnad
     document.querySelector(".shippingValue").innerHTML =
       Math.round(shippingTotal);
+    // Behåller värdet
     donutPriceTotal = donutPriceTotal + shippingTotal;
   }
 
   // Rabattkod
 
   // Inaktivera faktura om kostnad överstiger 800 kr
-
   if (donutPriceTotal > 800) {
     document.getElementById("radioinvoice").disabled = true;
   } else {
     document.getElementById("radioinvoice").disabled = false;
   }
 
-  // Skriver ut
+  // const discountInputCode = document.getElementById("discountInputCode");
+  // discountInputCode.addEventListener("change", checkDiscountInputCode);
+
+  // // Rabattkod
+  // if (checkDiscountInputCode.value === "a") {
+  //   donutPriceTotal = donutPriceTotal * 0;
+  // } else {
+  //   checkDiscountInputCode = false;
+  // }
+
+  // Skriver ut total summan
   const cartTotal = document.querySelector(".cartTotal");
+  // Avrundar innan utskrift
   cartTotal.innerHTML = Math.round(donutPriceTotal);
+  const cartTotalReceipt = document.querySelector("#receiptOrderDonut");
+  cartTotalReceipt.innerHTML = Math.round(donutPriceTotal);
   // Skriver ut antal munkar i header
   const cartamount = document.querySelector(".cart");
-  cartamount.innerHTML = donutTotalAmount;
+  cartamount.innerHTML = Math.round(donutTotalAmount);
 }
-
-// Lägger till antal på munk - custom  -- FUNKAR EJ (än)
-function customDonutAmount(e) {
-  const donutClicked = e.currentTarget.dataset.id;
-  donuts[donutClicked].click;
-
-  renderDonuts();
-}
-
+var colorChangeLogo = document.getElementById("headerCartLogo");
+var colorChange = document.getElementById("cartTotal");
+// Lägger in färger i en array
+colors = ["darkorchid", "darkblue", "darkmagenta", "black"];
 // Lägger till antal på munk
 function updateDonutAmount(e) {
   const donutClicked = e.currentTarget.dataset.id;
   donuts[donutClicked].amount += 1;
+
+  color = colors.shift();
+  colors.push(color);
+  colorChange.style.color = color;
+  colorChangeLogo.style.color = color;
 
   renderDonuts();
 }
@@ -395,6 +430,11 @@ function removeDonutAmount(e) {
 
   if (donuts[donutClicked].amount > 0) {
     donuts[donutClicked].amount -= 1;
+
+    color = colors.shift();
+    colors.push(color);
+    colorChange.style.color = color;
+    colorChangeLogo.style.color = color;
   }
   renderDonuts();
 }
@@ -402,32 +442,32 @@ function removeDonutAmount(e) {
 renderDonuts();
 
 ////////////////// Luciamunk/////////////////////////////////////
+// Hade varit enklast att lagt den i vanliga if-utskriften, där den max kan läggas till en gång
 
+document.querySelector(".gift").innerHTML = "";
 const newDate = new Date();
-let luciaDonut = 0;
+
 if (newDate.getMonth() === 11 && newDate.getDate() === 13) {
-  let luciaDonut = 1;
+  let luciaDonutValue = 1;
   document.querySelector(
-    ".cartName"
-  ).innerHTML += `<div> <span class="cartNameProduct">Produkt: Luciamunk <br></span> <span class="cartNameQuantity">Antal: 1</span> <span class="cartNamePrice">Pris: 0<br><hr></span></div>`; // ÄNDRA
+    ".gift"
+  ).innerHTML += `<span class="cartNameProduct">Gåva: Luciamunk <br></span> <span class="cartNameQuantity">Antal: ${luciaDonutValue}</span> <span class="cartNamePrice">Pris: 0<br><hr></span>`; // ÄNDRA
 }
 
 ///////////////// Jultema//////////////////////
 if (newDate.getMonth() === 11 && newDate.getDate() === 24) {
-  const santaPrice = document.querySelectorAll("#donutPriceTarget");
+  const santaPrice = document.querySelectorAll(".price");
 
   for (let i = 0; i < santaPrice.length; i++) {
     santaPrice[i].style.color = "red";
   }
   const filterBackground = document.querySelector(".filter");
   filterBackground.style.background = "#f68989";
-
   document.getElementById("sortAfterHeading").style.color = "black";
   document.getElementById("space").style.color = "black";
   document.getElementById("space").style.color = "black";
   document.getElementById("contact").style.color = "black";
   document.getElementById("contact").style.background = "#f68989";
-
   document.body.style.backgroundImage =
     "linear-gradient(45deg, #9e001d 25%, #ffffff 25%, #ffffff 50%, #9e001d 50%, #9e001d 75%, #ffffff 75%, #ffffff 100%)";
   document.body.style.backgroundSize = "40.00px 40.00px";
@@ -455,9 +495,10 @@ const radiocard = document.getElementById("radiocard");
 const portCode = document.getElementById("portcode");
 const gdpr = document.getElementById("gdpr");
 const userForm = document.getElementById("userForm");
+const filterHeading = document.getElementById("filter");
 const shop = document.getElementById("shop");
-const CheckOutButton = document.getElementById("checkOutButton");
-const CheckOutButtonBack = document.getElementById("checkOutButtonBack");
+const checkOutButton = document.getElementById("checkOutButton");
+const checkOutButtonBack = document.getElementById("checkOutButtonBack");
 const receiptOrderButton = document.getElementById("receiptOrderButton");
 const cartTotal = document.getElementById("cartTotal");
 const allDonuts = document.getElementById("allDonuts");
@@ -490,12 +531,13 @@ clearCart.addEventListener("click", clearCartButton);
 function clearCartButton(e) {
   for (let i = 0; i < donuts.length; i++) {
     donuts[i].amount = 0;
+    document.querySelector(".cartPrice").innerHTML = "";
   }
   renderDonuts();
 }
 
 // Knapp för att gå vidare till kundinformation
-CheckOutButton.addEventListener("click", continueToPayment);
+checkOutButton.addEventListener("click", continueToPayment);
 
 function continueToPayment() {
   // visar
@@ -504,10 +546,12 @@ function continueToPayment() {
   shop.style.display = "none";
   // Döljer
   allDonuts.style.display = "none";
+  // Döljer
+  filterHeading.style.display = "none";
 }
 
 // Click funktion för gå tillbaka till varukorgen
-CheckOutButtonBack.addEventListener("click", backToCheckout);
+checkOutButtonBack.addEventListener("click", backToCheckout);
 
 function backToCheckout() {
   // Döljer
@@ -516,6 +560,7 @@ function backToCheckout() {
   shop.style.display = "block";
   // Visar munkar igen
   allDonuts.style.display = "";
+  filterHeading.style.display = "block";
 }
 
 // Funktion för orderknapp, kvitto och leveranstid
@@ -553,7 +598,7 @@ function orderCompilation(e) {
 
   // Skriver ut värdet/inputen från kontaktformuläret, efter ordern är lagd
   receiptOrderName.innerHTML = `Tack för beställningen ${fname.value} ${lname.value}!`;
-  receiptOrderContactInformation.innerHTML = `Kontaktuppgifter: <br>  
+  receiptOrderContactInformation.innerHTML = `Ifyllda kontaktuppgifter: <br>  
  Namn: ${fname.value} ${lname.value} <br> 
  E-mail: ${email.value} <br> 
  Telefon: ${phone.value} <br>
@@ -561,7 +606,7 @@ function orderCompilation(e) {
  Postnummer: ${zip.value} <br> 
  Postort: ${city.value} <br>
  Portkod: ${portCode.value} <br>
- Betalning: ${userInputPayment.value} <br>`;
+ Vald betalning: ${userInputPayment.value} <br>`;
 }
 
 // Event för förnamn
@@ -746,14 +791,14 @@ function checkpersonNr() {
 cardNr.addEventListener("change", checkcardNr);
 let checkcardNrInput = false;
 function checkcardNr() {
-  const exp = new RegExp("^[-0-9]{10}$");
+  const exp = new RegExp("^[-0-9]");
   const errorMessage = document.getElementById("errorkortnr");
 
   if (exp.test(cardNr.value)) {
     errorMessage.setAttribute("hidden", "");
     checkcardNrInput = true;
   } else {
-    errorMessage.innerHTML = "Skriv med siffor, 16 stycken";
+    errorMessage.innerHTML = "Skriv med siffor";
     errorMessage.removeAttribute("hidden");
     checkcardNrInput = false;
   }

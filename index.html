@@ -44,6 +44,7 @@
         <button class="buttonContainer" id="sortCategory">Kategori</button>
       </div>
       <br />
+
       <div class="space">
         <div class="priceRange" id="space">
           <h3>Sortera efter prisspann</h3>
@@ -68,8 +69,9 @@
       <div class="form-box">
         <section class="shop" id="shop">
           <div>
-            <h3>Varukorg</h3>
+            <div id="shopHeading">Varukorg</div>
             <div class="cartName"></div>
+            <div class="gift"></div>
             <div class="cartPriceDiv">
               Summa: <span class="cartPrice"></span>
             </div>
@@ -77,14 +79,16 @@
               Frakt: <span class="shippingValue"></span> kr
             </div>
             <div class="cart-item">
-              <label class="rabattkodLabel" for="rabattkod"
+              <label class="rabattkodLabel" for="discountInputCode"
                 >Rabattkod:
-                <input type="text" id="rabattkod" />
+                <input type="text" id="discountInputCode" />
               </label>
             </div>
             <div class="discountAlert"></div>
             <div class="cartTotalDiv">
-              Totalsumma: <span class="cartTotal"></span>
+              <span class="cartTotalSpan">
+                Totalsumma: <span class="cartTotal" id="cartTotal"></span
+              ></span>
             </div>
           </div>
           <div class="buttonShop">
@@ -99,7 +103,7 @@
               value="Tillbaka till varukorgen"
               id="checkOutButtonBack"
             />
-            <h3>Kontaktuppgifter</h3>
+            <div id="formHeading">Kontaktuppgifter</div>
             <label class="form-item-label" for="fname">Förnamn*</label>
             <input
               class="form-item-input"
@@ -265,7 +269,7 @@
             <br />
             <label>
               <input type="checkbox" id="gdpr" name="gdpr" required />
-              Jag godkänner behandling av personuppgifter
+              Jag godkänner behandling av personuppgifter*
               <span class="errorMessage" id="errorgdpr"></span> </label
             ><br />
             <div class="buttonContactGroup">
@@ -284,7 +288,7 @@
           <div id="receiptOrderName"></div>
           <div id="deliveryTime"></div>
           <div id="receiptOrderDonutDiv">
-            <p>Din order: <br /><span id="receiptOrderDonut"></span></p>
+            <p>Totalsumma: <span id="receiptOrderDonut"> kronor</span></p>
           </div>
           <div id="receiptOrderContactInformation"></div>
           <input
