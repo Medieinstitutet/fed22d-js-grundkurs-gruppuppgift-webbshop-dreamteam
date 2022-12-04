@@ -6,6 +6,11 @@ body {
   margin: 20px;
   padding: 20px;
   overflow-x: hidden;
+  background-image: radial-gradient(
+    circle,
+    rgba(240, 240, 240, 1) 0%,
+    rgba(190, 189, 77, 1) 100%
+  );
 }
 * {
   margin: 0;
@@ -22,22 +27,10 @@ body {
 #light-mode {
   position: absolute;
   width: 2rem;
-  border: 2px solid;
-  border-radius: 6px;
-  color: #ffffff;
-  background-color: #000000;
-  border-color: #fafafa;
-  text-align: center;
 }
 
 #dark-mode {
-  width: 2rem;
-  border: 2px solid;
-  border-radius: 6px;
-  color: #ffffff;
-  background-color: #000000;
-  border-color: #fafafa;
-  text-align: center;
+  width: 2rem;  
 }
 
 /* Logotyp */
