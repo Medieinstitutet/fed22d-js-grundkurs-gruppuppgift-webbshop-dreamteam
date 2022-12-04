@@ -33,7 +33,7 @@ body {
   width: 2rem;
 }
 
-/* Logotyp */
+/* Logotyp  ////*/
 .logo {
   top: 1rem;
   font-style: italic;
@@ -522,10 +522,6 @@ fieldset {
   .cartName,
   .gift {
     font-size: 1.3rem;
-  }
-  .shipping:focus {
-    background-color: yellow;
-    color: yellow;
   }
 }
 @media only screen and (max-width: 400px) {

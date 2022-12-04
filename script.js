@@ -379,8 +379,6 @@ function printOrdredDonuts() {
     donutPriceTotal = donutPriceTotal + shippingTotal;
   }
 
-  // Rabattkod
-
   // Inaktivera faktura om kostnad överstiger 800 kr
   if (donutPriceTotal > 800) {
     document.getElementById("radioinvoice").disabled = true;
@@ -392,8 +390,8 @@ function printOrdredDonuts() {
   // discountInputCode.addEventListener("change", checkDiscountInputCode);
 
   // // Rabattkod
-  // if (checkDiscountInputCode.value === "a") {
-  //   donutPriceTotal = donutPriceTotal * 0;
+  // if (checkDiscountInputCode.value === "") {
+  //
   // } else {
   //   checkDiscountInputCode = false;
   // }
@@ -459,14 +457,15 @@ if (newDate.getMonth() === 11 && newDate.getDate() === 13) {
 if (newDate.getMonth() === 11 && newDate.getDate() === 24) {
   const santaPrice = document.querySelectorAll(".price");
 
-  for (let i = 0; i < santaPrice.length; i++) {
-    santaPrice[i].style.color = "red";
-  }
+  document.querySelectorAll(".price").forEach((element) => {
+    element.style.color = "red";
+  });
+  // for (let i = 0; i < santaPrice.length; i++) {
+  //   santaPrice[i].style.color = "red";
+  // }
   const filterBackground = document.querySelector(".filter");
   filterBackground.style.background = "#f68989";
   document.getElementById("sortAfterHeading").style.color = "black";
-  document.getElementById("space").style.color = "black";
-  document.getElementById("space").style.color = "black";
   document.getElementById("contact").style.color = "black";
   document.getElementById("contact").style.background = "#f68989";
   document.body.style.backgroundImage =
