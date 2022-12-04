@@ -1,4 +1,4 @@
-const darkMode = document.querySelector("#dark-mode");
+/*const darkMode = document.querySelector("#dark-mode");
 const lightMode = document.querySelector("#light-mode");
 
 darkMode.addEventListener("click", darkTeam);
@@ -16,6 +16,7 @@ function lightTeam() {
   lightMode.style.visibility = "hidden";
   darkMode.style.visibility = "visible";
 }
+*/
 
 // Skapar munkar i en array
 const donuts = [
